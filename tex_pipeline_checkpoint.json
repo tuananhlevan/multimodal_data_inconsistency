@@ -1,38 +1,990 @@
 {
   "processed": {
-    "1wTsDsGmi5a4Ep4ufPrE5J9bXkJO03h5P": {
-      "name": "Quantifying_Uncertainty_in_the_Presence_of_Distrib.tar.gz",
-      "processed_at": "2026-06-18T11:01:50.625855Z",
+    "1l5UuW8ktJYehOTKwa4RkeKBJpMY7ZySa": {
+      "name": "Spatial_Aware_Decision_Making_with_Ring_Attractors.tar.gz",
+      "processed_at": "2026-06-18T14:35:52.922243Z",
       "output_paths": [
-        "./structured_tex_output/Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts"
+        "./structured_tex_output/Spatial-Aware_Decision-Making_with_Ring_Attractors_in_Reinforcement_Learning_Systems"
       ]
     },
-    "1s68NIdLNUVRdE2rqhadFm7ogC7wJHG58": {
-      "name": "Learning_Parameterized_Skills_from_Demonstrations.tar.gz",
-      "processed_at": "2026-06-18T11:02:57.694376Z",
+    "1U25cOP8C5H0bO5Oo-khjw36JmJouW-Pf": {
+      "name": "ESCA__Enabling_Seamless_Codec_Avatar_Execution_thr.tar.gz",
+      "processed_at": "2026-06-18T14:36:22.813425Z",
       "output_paths": [
-        "./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations"
+        "./structured_tex_output/ESCA_Enabling_Seamless_Codec_Avatar_Execution_through_Algorithm_and_Hardware_Co-Optimization_for_Virtual_Reality"
       ]
     },
-    "1tLJyZCXxaxYqItlBBte-R87EQB_XrN3m": {
-      "name": "Fair_Cooperation_in_Mixed_Motive_Games_via_Conflic.tar.gz",
-      "processed_at": "2026-06-18T11:03:38.800834Z",
+    "1g5amFgbVKDlQ3YS1aRFqR5H8AdU-UiAr": {
+      "name": "TrackingWorld__World_centric_Monocular_3D_Tracking.tar.gz",
+      "processed_at": "2026-06-18T14:37:47.007329Z",
       "output_paths": [
-        "./structured_tex_output/Fair_Cooperation_in_Mixed-Motive_Games_via_Conflict-Aware_Gradient_Adjustment"
+        "./structured_tex_output/TrackingWorld_World-centric_Monocular_3D_Tracking_of_Almost_All_Pixels"
       ]
     },
-    "1vfSVyPBa2EYdHj6IQFdKLOk5v4Hh7Y-j": {
-      "name": "Small_Singular_Values_Matter__A_Random_Matrix_Anal.tar.gz",
-      "processed_at": "2026-06-18T11:04:44.802863Z",
+    "1WaMN2jRTCavtCiZ4jvl1ygC5Sy-JNeRs": {
+      "name": "WarpGAN__Warping_Guided_3D_GAN_Inversion_with_Styl.tar.gz",
+      "processed_at": "2026-06-18T14:38:07.168784Z",
       "output_paths": [
-        "./structured_tex_output/Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models"
+        "./structured_tex_output/WarpGAN_Warping-Guided_3D_GAN_Inversion_with_Style-Based_Novel_View_Inpainting"
       ]
     },
-    "1US_DCU1VMqUx5JPsuiKsaeAGyrHUcNfo": {
-      "name": "Efficient_Speech_Language_Modeling_via_Energy_Dist.tar.gz",
-      "processed_at": "2026-06-18T11:05:31.656752Z",
+    "1A1dkR5v7eJngGNI8pi6BWxH6BnCIulI4": {
+      "name": "Auto_Compressing_Networks.tar.gz",
+      "processed_at": "2026-06-18T14:38:57.394974Z",
       "output_paths": [
-        "./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space"
+        "./structured_tex_output/Auto_Compressing_Networks"
+      ]
+    },
+    "1j_rhk7dpjMZ2ZF5dM1gLyi6QVjzo-mLN": {
+      "name": "More_Thinking__Less_Seeing__Assessing_Amplified_Ha.tar.gz",
+      "processed_at": "2026-06-18T14:39:32.880678Z",
+      "output_paths": [
+        "./structured_tex_output/More_Thinking_Less_Seeing_Assessing_Amplified_Hallucination_in_Multimodal_Reasoning_Models"
+      ]
+    },
+    "19yV1pgkxBRVh11IiktN8m1uhw74sHWt2": {
+      "name": "Dynamic_Semantic_Aware_Correlation_Modeling_for_UA.tar.gz",
+      "processed_at": "2026-06-18T14:40:41.543058Z",
+      "output_paths": [
+        "./structured_tex_output/Dynamic_Semantic-Aware_Correlation_Modeling_for_UAV_Tracking"
+      ]
+    },
+    "1z-ofcRjuGghoRbcZFD5hGCJhLaWYwqIH": {
+      "name": "Model_Selection_for_Off_policy_Evaluation__New_Alg.tar.gz",
+      "processed_at": "2026-06-18T14:41:59.865088Z",
+      "output_paths": [
+        "./structured_tex_output/Model_Selection_for_Off_policy_Evaluation__New_Alg"
+      ]
+    },
+    "1LBOg8RFmvBL3aoqKcWvoDRlUTLC29U0Q": {
+      "name": "Physics_Driven_Spatiotemporal_Modeling_for_AI_Gene.tar.gz",
+      "processed_at": "2026-06-18T14:43:34.545931Z",
+      "output_paths": [
+        "./structured_tex_output/Physics-Driven_Spatiotemporal_Modeling_for_AI-Generated_Video_Detection"
+      ]
+    },
+    "1WL2dbRrZiDzLxJp2YR_4jx8ZDOHzI6Kq": {
+      "name": "PlayerOne__Egocentric_World_Simulator.tar.gz",
+      "processed_at": "2026-06-18T14:44:27.977776Z",
+      "output_paths": [
+        "./structured_tex_output/PlayerOne_Egocentric_World_Simulator"
+      ]
+    },
+    "1BHDBmH2AaRgFRyXOZKybdUGTraf4sam4": {
+      "name": "Uni_MuMER__Unified_Multi_Task_Fine_Tuning_of_Visio.tar.gz",
+      "processed_at": "2026-06-18T14:46:21.054766Z",
+      "output_paths": [
+        "./structured_tex_output/Uni_MuMER__Unified_Multi_Task_Fine_Tuning_of_Visio"
+      ]
+    },
+    "1pr8inkUNmkUztTf3_SH7hdW_aELCalhy": {
+      "name": "Balanced_Token_Pruning__Accelerating_Vision_Langua.tar.gz",
+      "processed_at": "2026-06-18T14:47:23.816550Z",
+      "output_paths": [
+        "./structured_tex_output/Balanced_Token_Pruning_Accelerating_Vision_Language_Models_Beyond_Local_Optimization"
+      ]
+    },
+    "1f9z9SmwvL3xIyIhDvwWrm2Sgs9lalvRn": {
+      "name": "LLM_Meeting_Decision_Trees_on_Tabular_Data.tar.gz",
+      "processed_at": "2026-06-18T14:49:32.327800Z",
+      "output_paths": [
+        "./structured_tex_output/LLM_Meeting_Decision_Trees_on_Tabular_Data"
+      ]
+    },
+    "1KmzOoz5zvgVlGSnYedVsBdb8pkhpzblF": {
+      "name": "Conditioning_Matters___Training_Diffusion_Policies.tar.gz",
+      "processed_at": "2026-06-18T14:50:33.937072Z",
+      "output_paths": [
+        "./structured_tex_output/Conditioning_Matters_Training_Diffusion_Policies_is_Faster_Than_You_Think"
+      ]
+    },
+    "1YPEVR2XvSSaOHMM1UcLcN5nIF0_lcjAo": {
+      "name": "Time_Masked_Transformers_with_Lightweight_Test_Tim.tar.gz",
+      "processed_at": "2026-06-18T14:51:22.799461Z",
+      "output_paths": [
+        "./structured_tex_output/Time-Masked_Transformers_with_Lightweight_Test-Time_Adaptation_for_Neural_Speech_Decoding"
+      ]
+    },
+    "1FiJB6dbweeyty09abr3GUiS2fWtKzwsg": {
+      "name": "Better_Estimation_of_the_Kullback__Leibler_Diverge.tar.gz",
+      "processed_at": "2026-06-18T14:51:42.617755Z",
+      "output_paths": [
+        "./structured_tex_output/Better_Estimation_of_the_Kullback--Leibler_Divergence_Between_Language_Models"
+      ]
+    },
+    "1X7z4pKrUpcKICbeFXZG3hmUgCm-C8oTj": {
+      "name": "KORGym__A_Dynamic_Game_Platform_for_LLM_Reasoning_.tar.gz",
+      "processed_at": "2026-06-18T14:53:31.127399Z",
+      "output_paths": [
+        "./structured_tex_output/KORGym_A_Dynamic_Game_Platform_for_LLM_Reasoning_Evaluation"
+      ]
+    },
+    "18O9uvLsoUrmlLlWoMAfnNhmvec47sBCl": {
+      "name": "Does_Object_Binding_Naturally_Emerge_in_Large_Pret.tar.gz",
+      "processed_at": "2026-06-18T14:54:22.401443Z",
+      "output_paths": [
+        "./structured_tex_output/Does_Object_Binding_Naturally_Emerge_in_Large_Pretrained_Vision_Transformers"
+      ]
+    },
+    "1RRRr9KHYRXIEAuWnC28f-Sqjr_uxTERM": {
+      "name": "KGGen__Extracting_Knowledge_Graphs_from_Plain_Text.tar.gz",
+      "processed_at": "2026-06-18T14:55:30.975421Z",
+      "output_paths": [
+        "./structured_tex_output/KGGen_Extracting_Knowledge_Graphs_from_Plain_Text_with_Language_Models"
+      ]
+    },
+    "1EbKuuIkmK9ZVkAH0vP4iGqwGbFb_TILA": {
+      "name": "Autoencoding_Random_Forests.tar.gz",
+      "processed_at": "2026-06-18T14:56:19.564231Z",
+      "output_paths": [
+        "./structured_tex_output/Autoencoding_Random_Forests"
+      ]
+    },
+    "1al4dtKGIzPmnP9Pj42vdNI7bG7KsNKd8": {
+      "name": "Redundancy_Aware_Test_Time_Graph_Out_of_Distributi.tar.gz",
+      "processed_at": "2026-06-18T14:59:01.211253Z",
+      "output_paths": [
+        "./structured_tex_output/Redundancy-Aware_Test-Time_Graph_Out-of-Distribution_Detection"
+      ]
+    },
+    "1pEiVAsRWCK9AgiwjvDRa42RtFXJbrAiC": {
+      "name": "Pre_Trained_Policy_Discriminators_are_General_Rewa.tar.gz",
+      "processed_at": "2026-06-18T15:00:37.499883Z",
+      "output_paths": [
+        "./structured_tex_output/Pre-Trained_Policy_Discriminators_are_General_Reward_Models"
+      ]
+    },
+    "1PtRi5xwmPulX69yrrVx5gC0zg68OAyjI": {
+      "name": "Emergent_Risk_Awareness_in_Rational_Agents_under_R.tar.gz",
+      "processed_at": "2026-06-18T15:01:01.653822Z",
+      "output_paths": [
+        "./structured_tex_output/Emergent_Risk_Awareness_in_Rational_Agents_under_Resource_Constraints"
+      ]
+    },
+    "1GwCbw1QjBCdBITTq8DIpBcCywKJCq5ZZ": {
+      "name": "FUDOKI__Discrete_Flow_based_Unified_Understanding_.tar.gz",
+      "processed_at": "2026-06-18T15:01:48.530016Z",
+      "output_paths": [
+        "./structured_tex_output/centering_logo_FUDOKI_Discrete_Flow-based_Unified_Understanding_and_Generation_via_Kinetic-Optimal_Velocities"
+      ]
+    },
+    "1UWvc4x4K47CSzTBUx6oIi0n3FPVbUrRl": {
+      "name": "E_MoFlow__Learning_Egomotion_and_Optical_Flow_from.tar.gz",
+      "processed_at": "2026-06-18T15:02:58.344909Z",
+      "output_paths": [
+        "./structured_tex_output/E_MoFlow__Learning_Egomotion_and_Optical_Flow_from"
+      ]
+    },
+    "1TYBRYyqVoi79PDEhVkGXSQsWy-aW20V6": {
+      "name": "Photography_Perspective_Composition__Towards_Aesth.tar.gz",
+      "processed_at": "2026-06-18T15:04:19.235529Z",
+      "output_paths": [
+        "./structured_tex_output/Photography_Perspective_Composition_Towards_Aesthetic_Perspective_Recommendation"
+      ]
+    },
+    "1bYZf_XOtd4sAozwfBLWsxgLXD1PQbX3Y": {
+      "name": "Scaling_can_lead_to_compositional_generalization.tar.gz",
+      "processed_at": "2026-06-18T15:05:22.447055Z",
+      "output_paths": [
+        "./structured_tex_output/Scaling_can_lead_to_compositional_generalization"
+      ]
+    },
+    "1kjZ3wfJ5eBBTiyi4IAfnn9idVX_I6tIS": {
+      "name": "SAFEPATH__Preventing_Harmful_Reasoning_in_Chain_of.tar.gz",
+      "processed_at": "2026-06-18T15:06:33.658016Z",
+      "output_paths": [
+        "./structured_tex_output/SAFEPATH__Preventing_Harmful_Reasoning_in_Chain_of"
+      ]
+    },
+    "1SOD_5vaPSk12Z4RB27vbXw-TiJKwyVrW": {
+      "name": "Beyond_the_Seen__Bounded_Distribution_Estimation_f.tar.gz",
+      "processed_at": "2026-06-18T15:08:14.921850Z",
+      "output_paths": [
+        "./structured_tex_output/Beyond_the_Seen_Bounded_Distribution_Estimation_for_Open-Vocabulary_Learning"
+      ]
+    },
+    "1fLbuJWIGhLdFL9gi1ecw1gYT3bPz_zwd": {
+      "name": "Conformal_Information_Pursuit_for_Interactively_Gu.tar.gz",
+      "processed_at": "2026-06-18T15:10:28.038588Z",
+      "output_paths": [
+        "./structured_tex_output/Conformal_Information_Pursuit_for_Interactively_Gu"
+      ]
+    },
+    "1g4UKzpE18Ai0mOI_B8njzPoHyTHcPJm9": {
+      "name": "Inferring_stochastic_dynamics_with_growth_from_cro.tar.gz",
+      "processed_at": "2026-06-18T15:11:30.964646Z",
+      "output_paths": [
+        "./structured_tex_output/Inferring_stochastic_dynamics_with_growth_from_cross-sectional_data"
+      ]
+    },
+    "1YASN53a859qdoEDGo0FngSNkDzwRL_U1": {
+      "name": "Differentiable_Structure_Learning_and_Causal_Disco.tar.gz",
+      "processed_at": "2026-06-18T15:11:46.232142Z",
+      "output_paths": [
+        "./structured_tex_output/Differentiable_Structure_Learning_and_Causal_Disco"
+      ]
+    },
+    "1m2QVBMS_7NRYUfDAvB1p2fElcTzO0yVQ": {
+      "name": "TiRex__Zero_Shot_Forecasting_Across_Long_and_Short.tar.gz",
+      "processed_at": "2026-06-18T15:16:27.435445Z",
+      "output_paths": [
+        "./structured_tex_output/TiRex__Zero_Shot_Forecasting_Across_Long_and_Short"
+      ]
+    },
+    "1cbWqc2YZanrg6hZWPlHjS7xOZds-0pFJ": {
+      "name": "The_Rise_of_Parameter_Specialization_for_Knowledge.tar.gz",
+      "processed_at": "2026-06-18T15:17:11.278926Z",
+      "output_paths": [
+        "./structured_tex_output/The_Rise_of_Parameter_Specialization_for_Knowledge"
+      ]
+    },
+    "1RJVzpAxLcRjQC1bP7yk_eE7vbMKVtpRa": {
+      "name": "Probabilistic_Stability_Guarantees_for_Feature_Att.tar.gz",
+      "processed_at": "2026-06-18T15:20:55.835368Z",
+      "output_paths": [
+        "./structured_tex_output/Probabilistic_Stability_Guarantees_for_Feature_Attributions"
+      ]
+    },
+    "1H93P-FLs8Y8ic1i0eqven0PUGZ9onMcu": {
+      "name": "Vid_SME__Membership_Inference_Attacks_against_Larg.tar.gz",
+      "processed_at": "2026-06-18T15:22:00.229897Z",
+      "output_paths": [
+        "./structured_tex_output/raisebox_-0.4em_includegraphics_height_1.2em_figures_video-editor.png_Vid-SME_Membership_Inference_Attacks_agains"
+      ]
+    },
+    "101fG38OkscH3oyijrD5XIxA9ifIUd-lE": {
+      "name": "Feature_Distillation_is_the_Better_Choice_for_Mode.tar.gz",
+      "processed_at": "2026-06-18T15:22:32.920658Z",
+      "output_paths": [
+        "./structured_tex_output/Feature_Distillation_is_the_Better_Choice_for_Mode"
+      ]
+    },
+    "16uWwKygUC44U278lfLSe2v6als_z4udt": {
+      "name": "Incentivizing_Reasoning_for_Advanced_Instruction_F.tar.gz",
+      "processed_at": "2026-06-18T15:29:27.608566Z",
+      "output_paths": [
+        "./structured_tex_output/Incentivizing_Reasoning_for_Advanced_Instruction_F"
+      ]
+    },
+    "1Sy-rwNwhf2R4fj4pRZ-WHhuh7FZOalAj": {
+      "name": "Hierarchical_Semantic_Augmented_Navigation__Optima.tar.gz",
+      "processed_at": "2026-06-18T15:29:59.357668Z",
+      "output_paths": [
+        "./structured_tex_output/Hierarchical_Semantic-Augmented_Navigation_Optimal_Transport_and_Graph-Driven_Reasoning_for_Vision-Language_Navigation"
+      ]
+    },
+    "1bXZy_VBSNj3B1555jwcXyORKW8ZXaTXz": {
+      "name": "One_Sample_is_Enough_to_Make_Conformal_Prediction_.tar.gz",
+      "processed_at": "2026-06-18T15:34:40.862653Z",
+      "output_paths": [
+        "./structured_tex_output/One_Sample_is_Enough_to_Make_Conformal_Prediction"
+      ]
+    },
+    "1NRMOEOQiIR9YaG4rWH586ZA17PRxvaUJ": {
+      "name": "Conformal_Inference_under_High_Dimensional_Covaria.tar.gz",
+      "processed_at": "2026-06-18T15:35:01.515080Z",
+      "output_paths": [
+        "./structured_tex_output/Large_Conformal_Inference_under_High-Dimensional_Covariate_Shifts_via_Likelihood-Ratio_Regularization"
+      ]
+    },
+    "1fK5tqR8UXAQH-TvbEWRPBJm6CnzE06nt": {
+      "name": "RadarQA__Multi_modal_Quality_Analysis_of_Weather_R.tar.gz",
+      "processed_at": "2026-06-18T15:38:36.034245Z",
+      "output_paths": [
+        "./structured_tex_output/RadarQA_Multi-modal_Quality_Analysis_of_Weather_Radar_Forecasts"
+      ]
+    },
+    "1jcidLp-mXa0FdfrQ9ONZmhOFyh-QCYxI": {
+      "name": "ArchCAD_400K__A_Large_Scale_CAD_drawings_Dataset_a.tar.gz",
+      "processed_at": "2026-06-18T15:40:48.714252Z",
+      "output_paths": [
+        "./structured_tex_output/ArchCAD_400K__A_Large_Scale_CAD_drawings_Dataset_a"
+      ]
+    },
+    "1p-lfh7C_54MeYC22N1TYOWVCIxv5iBDM": {
+      "name": "Conformal_Risk_Training__End_to_End_Optimization_o.tar.gz",
+      "processed_at": "2026-06-18T15:41:44.442551Z",
+      "output_paths": [
+        "./structured_tex_output/Conformal_Risk_Training__End_to_End_Optimization_o"
+      ]
+    },
+    "1T94yP_k6h0Sxps9LTDr_Dk2B-Lv14fBO": {
+      "name": "Gradient_Variation_Online_Adaptivity_for_Accelerat.tar.gz",
+      "processed_at": "2026-06-18T15:41:54.354847Z",
+      "output_paths": [
+        "./structured_tex_output/Gradient_Variation_Online_Adaptivity_for_Accelerat"
+      ]
+    },
+    "1EkQ7i34nRraDPxHj8yOHm0kc7wu-BwhY": {
+      "name": "Mind_the_Gap__Bridging_Thought_Leap_for_Improved_C.tar.gz",
+      "processed_at": "2026-06-18T15:42:55.406713Z",
+      "output_paths": [
+        "./structured_tex_output/Mind_the_Gap__Bridging_Thought_Leap_for_Improved_C"
+      ]
+    },
+    "1IeipBWKiHp-OyHrgeD1i7QvkkwVOEDBG": {
+      "name": "UFO_RL__Uncertainty_Focused_Optimization_for_Effic.tar.gz",
+      "processed_at": "2026-06-18T15:43:32.891990Z",
+      "output_paths": [
+        "./structured_tex_output/UFO-RL_Uncertainty-Focused_Optimization_for_Efficient_Reinforcement_Learning_Data_Selection"
+      ]
+    },
+    "1uh_4FutdOOWH6-sXozpvic5zI84nG0hE": {
+      "name": "Masked_Gated_Linear_Unit.tar.gz",
+      "processed_at": "2026-06-18T15:45:39.759973Z",
+      "output_paths": [
+        "./structured_tex_output/Masked_Gated_Linear_Unit"
+      ]
+    },
+    "1qdDpQyVOILVeho6rehHk8PNbAxY-bXBE": {
+      "name": "Improved_Algorithms_for_Fair_Matroid_Submodular_Ma.tar.gz",
+      "processed_at": "2026-06-18T15:45:49.775087Z",
+      "output_paths": [
+        "./structured_tex_output/Improved_Algorithms_for_Fair_Matroid_Submodular_Maximization_iffull_full_version_fi"
+      ]
+    },
+    "1r4QEeOULC9AQ1B2yGuKzuuZ7o5J9iN_k": {
+      "name": "A_Principled_Path_to_Fitted_Distributional_Evaluat.tar.gz",
+      "processed_at": "2026-06-18T15:49:08.557148Z",
+      "output_paths": [
+        "./structured_tex_output/A_Principled_Path_to_Fitted_Distributional_Evaluation"
+      ]
+    },
+    "1dcrggVa_j_R0rdu80CJSa0YUO4CJkI-c": {
+      "name": "Density_Ratio_Free_Doubly_Robust_Proxy_Causal_Lear.tar.gz",
+      "processed_at": "2026-06-18T15:50:19.511089Z",
+      "output_paths": [
+        "./structured_tex_output/Density_Ratio_Free_Doubly_Robust_Proxy_Causal_Lear"
+      ]
+    },
+    "1lmqNkSN4uHDrR0fhIbBQYyqB-os_iBXG": {
+      "name": "OLinear__A_Linear_Model_for_Time_Series_Forecastin.tar.gz",
+      "processed_at": "2026-06-18T15:59:29.545649Z",
+      "output_paths": [
+        "./structured_tex_output/OLinear_A_Linear_Model_for_Time_Series_Forecasting_in_Orthogonally_Transformed_Domain"
+      ]
+    },
+    "1JGMUuLF__TIlsV7725GosCtXbRautggJ": {
+      "name": "Treasure_Hunt__Real_time_Targeting_of_the_Long_Tai.tar.gz",
+      "processed_at": "2026-06-18T16:00:15.015477Z",
+      "output_paths": [
+        "./structured_tex_output/Treasure_Hunt_Real-time_Targeting_of_the_Long_Tail_using_Training-Time_Markers"
+      ]
+    },
+    "1c8QY80vYB46ehafVZNqG0U2erNOw37Qp": {
+      "name": "Uni_Instruct__One_step_Diffusion_Model_through_Uni.tar.gz",
+      "processed_at": "2026-06-18T16:01:52.913242Z",
+      "output_paths": [
+        "./structured_tex_output/Uni_Instruct__One_step_Diffusion_Model_through_Uni"
+      ]
+    },
+    "1txNK9R4UQgR7xQ6_gY44T9uLTSIMBPMw": {
+      "name": "Dynamics_of_Spontaneous_Topic_Changes_in_Next_Toke.tar.gz",
+      "processed_at": "2026-06-18T16:03:07.092703Z",
+      "output_paths": [
+        "./structured_tex_output/Dynamics_of_Spontaneous_Topic_Changes_in_Next_Token_Prediction_with_Self-Attention"
+      ]
+    },
+    "14DRAOM-46y4KLENpZBuhZilJvtmE3W6D": {
+      "name": "Adaptive_Prediction_Powered_AutoEval_with_Reliabil.tar.gz",
+      "processed_at": "2026-06-18T16:04:16.048818Z",
+      "output_paths": [
+        "./structured_tex_output/Adaptive_Prediction-Powered_AutoEval_with_Reliability_and_Efficiency_Guarantees"
+      ]
+    },
+    "1m72JZtf4RbhGdR7p9-QaH_eOgb8DoU0e": {
+      "name": "Fr\u00e9chet_Geodesic_Boosting.tar.gz",
+      "processed_at": "2026-06-18T16:05:22.116605Z",
+      "output_paths": [
+        "./structured_tex_output/f_Geodesic_Boosting"
+      ]
+    },
+    "1e_4fnkjJUy4JMF4yvjBxM_-5Kk7P810Y": {
+      "name": "Can_Knowledge_Graph_based_Retrieval_Augmented_Gene.tar.gz",
+      "processed_at": "2026-06-18T16:06:09.760785Z",
+      "output_paths": [
+        "./structured_tex_output/Can_Knowledge_Graph_based_Retrieval_Augmented_Gene"
+      ]
+    },
+    "1kSmV6Q_T_mdUOhK3D4wtaqw9HLcfDe__": {
+      "name": "LoTA_QAF__Lossless_Ternary_Adaptation_for_Quantiza.tar.gz",
+      "processed_at": "2026-06-18T16:06:34.176799Z",
+      "output_paths": [
+        "./structured_tex_output/LoTA_QAF__Lossless_Ternary_Adaptation_for_Quantiza"
+      ]
+    },
+    "1CGpQ_2npJJ2CwS0LwB79Tf1O64kGgXhq": {
+      "name": "ShapeLLM_Omni__A_Native_Multimodal_LLM_for_3D_Gene.tar.gz",
+      "processed_at": "2026-06-18T16:10:54.855540Z",
+      "output_paths": [
+        "./structured_tex_output/ShapeLLM_Omni__A_Native_Multimodal_LLM_for_3D_Gene"
+      ]
+    },
+    "1pdzNbzgipLYR7X8OFdObDrsPiLN-Nf6e": {
+      "name": "SuperCLIP__CLIP_with_Simple_Classification_Supervi.tar.gz",
+      "processed_at": "2026-06-18T16:12:13.760722Z",
+      "output_paths": [
+        "./structured_tex_output/SuperCLIP_CLIP_with_Simple_Classification_Supervision"
+      ]
+    },
+    "1x-I5mjpNp-CDe0jQimyaNQqZA4iYy9Eq": {
+      "name": "Variational_Transdimensional_Inference.tar.gz",
+      "processed_at": "2026-06-18T16:12:56.024313Z",
+      "output_paths": [
+        "./structured_tex_output/Variational_Transdimensional_Inference"
+      ]
+    },
+    "1wiswOrQTtVoBurC63jEj_EhhNUuK-DJs": {
+      "name": "Can_Multi_Modal_LLMs_Provide_Live_Step_by_Step_Tas.tar.gz",
+      "processed_at": "2026-06-18T16:13:37.979903Z",
+      "output_paths": [
+        "./structured_tex_output/Can_Multi-Modal_LLMs_Provide_Live_Step-by-Step_Task_Guidance"
+      ]
+    },
+    "1y4-0F7-4uAUqFoPaO4csmtEei2y-m1BV": {
+      "name": "Steering_When_Necessary__Flexible_Steering_Large_L.tar.gz",
+      "processed_at": "2026-06-18T16:15:24.921765Z",
+      "output_paths": [
+        "./structured_tex_output/Steering_When_Necessary_Flexible_Steering_Large_Language_Models_with_Backtracking"
+      ]
+    },
+    "1IvXhhWF4q1pSYe2d5htYpFdNpphik5jf": {
+      "name": "Robust_Federated_Finetuning_of_LLMs_via_Alternatin.tar.gz",
+      "processed_at": "2026-06-18T16:18:41.880471Z",
+      "output_paths": [
+        "./structured_tex_output/Robust_Federated_Finetuning_of_LLMs_via_Alternating_Optimization_of_LoRA"
+      ]
+    },
+    "1PL79rCB9e-wK19G5XXoGxA_mGkrR7V6r": {
+      "name": "Structural_Information_based_Hierarchical_Diffusio.tar.gz",
+      "processed_at": "2026-06-18T16:19:51.532842Z",
+      "output_paths": [
+        "./structured_tex_output/Structural_Information-based_Hierarchical_Diffusion_for_Offline_Reinforcement_Learning"
+      ]
+    },
+    "1Iu6yLF16G97ChthoFCYP1Z--ILO6rcHW": {
+      "name": "DePass__Unified_Feature_Attributing_by_Simple_Deco.tar.gz",
+      "processed_at": "2026-06-18T16:21:21.436634Z",
+      "output_paths": [
+        "./structured_tex_output/DePass_Unified_Feature_Attributing_by_Simple_Decomposed_Forward_Pass"
+      ]
+    },
+    "1VE4ISDLl4G3Pc2EHYWwr5p0ABrYRnxv7": {
+      "name": "AutoData__A_Multi_Agent_System_for_Open_Web_Data_C.tar.gz",
+      "processed_at": "2026-06-18T16:21:48.500307Z",
+      "output_paths": [
+        "./structured_tex_output/AutoData__A_Multi_Agent_System_for_Open_Web_Data_C"
+      ]
+    },
+    "1lk1Kv_lUNVXfUvncC3lkNavh2h3Zxtre": {
+      "name": "Differentially_Private_Quantiles_with_Smaller_Erro.tar.gz",
+      "processed_at": "2026-06-18T16:22:14.448120Z",
+      "output_paths": [
+        "./structured_tex_output/Differentially_Private_Quantiles_with_Smaller_Erro"
+      ]
+    },
+    "13zPc2OklIV8i6SstKw7nuojMWJLZY6zC": {
+      "name": "Fairness_under_Competition.tar.gz",
+      "processed_at": "2026-06-18T16:23:17.454116Z",
+      "output_paths": [
+        "./structured_tex_output/Fairness_under_Competition"
+      ]
+    },
+    "1EGL8RqjCYtfiF_6P1VmnfOmywAj15_6R": {
+      "name": "Nonlinear_Laplacians__Tunable_principal_component_.tar.gz",
+      "processed_at": "2026-06-18T16:24:01.555678Z",
+      "output_paths": [
+        "./structured_tex_output/Nonlinear_Laplacians_Tunable_principal_component_analysis_under_directional_prior_information"
+      ]
+    },
+    "1UBEOiqNvrVc-kgBZMxToyBPmg2-xHMFp": {
+      "name": "Causal_Spatio_Temporal_Prediction__An_Effective_an.tar.gz",
+      "processed_at": "2026-06-18T16:24:47.971026Z",
+      "output_paths": [
+        "./structured_tex_output/Causal_Spatio_Temporal_Prediction__An_Effective_an"
+      ]
+    },
+    "1mQUJQe30Ev7tHsRiJI-V7ImUB8KVWVH5": {
+      "name": "Inference_with_correlated_priors_using_sisters_cel.tar.gz",
+      "processed_at": "2026-06-18T16:24:58.348787Z",
+      "output_paths": [
+        "./structured_tex_output/Inference_with_correlated_priors_using_sisters_cells"
+      ]
+    },
+    "1qfhrucBvsa4RcusBm-nrZ6MDS6eOfjz9": {
+      "name": "Improving_Monte_Carlo_Tree_Search_for_Symbolic_Reg.tar.gz",
+      "processed_at": "2026-06-18T16:26:16.124240Z",
+      "output_paths": [
+        "./structured_tex_output/Improving_Monte_Carlo_Tree_Search_for_Symbolic_Regression"
+      ]
+    },
+    "1VfckL7I7H-en8nag4Qq1tCqhF_NZzeQP": {
+      "name": "Computational_Efficiency_under_Covariate_Shift_in_.tar.gz",
+      "processed_at": "2026-06-18T16:26:30.434414Z",
+      "output_paths": [
+        "./structured_tex_output/Computational_Efficiency_under_Covariate_Shift_in_Kernel_Ridge_Regression"
+      ]
+    },
+    "1hOplrZ3aH8Hk1ij7q_5Zp9wY3oRdN9Ku": {
+      "name": "PROFIT__A_Specialized_Optimizer_for_Deep_Fine_Tuni.tar.gz",
+      "processed_at": "2026-06-18T16:28:06.728248Z",
+      "output_paths": [
+        "./structured_tex_output/ourmethod_A_Specialized_Optimizer_for_Deep_Fine_Tuning"
+      ]
+    },
+    "1vASarO3C9QLWilq0dvL4BXDPo3MGbxrj": {
+      "name": "NeedleInATable__Exploring_Long_Context_Capability_.tar.gz",
+      "processed_at": "2026-06-18T16:29:10.673295Z",
+      "output_paths": [
+        "./structured_tex_output/textsc_NeedleInATable_Exploring_Long-Context_Capability_of_Large_Language_Models_towards_Long-Structured_Tables"
+      ]
+    },
+    "108VEOeL51vm5984ZjGbQ9d9NAnjon0FK": {
+      "name": "Mechanism_Design_via_the_Interim_Relaxation.tar.gz",
+      "processed_at": "2026-06-18T16:29:18.806092Z",
+      "output_paths": [
+        "./structured_tex_output/Mechanism_Design_via_the_Interim_Relaxation"
+      ]
+    },
+    "1WAB1qmpAzr94pAdGFimyYebkInzlqHtS": {
+      "name": "Execution_Guided_Line_by_Line_Code_Generation.tar.gz",
+      "processed_at": "2026-06-18T16:30:09.398339Z",
+      "output_paths": [
+        "./structured_tex_output/Execution_Guided_Line-by-Line_Code_Generation"
+      ]
+    },
+    "1nFDUN_BXKYcI0eDnG-JCiH0yE5OLCuEb": {
+      "name": "Robust_Satisficing_Gaussian_Process_Bandits_Under_.tar.gz",
+      "processed_at": "2026-06-18T16:30:55.331593Z",
+      "output_paths": [
+        "./structured_tex_output/Robust_Satisficing_Gaussian_Process_Bandits_Under_Adversarial_Attacks"
+      ]
+    },
+    "1vcL8F38vvb7VvHESTFeK_9bVtsJpa1vt": {
+      "name": "Diffusion_Classifier_Synergy__Reward_Aligned_Learn.tar.gz",
+      "processed_at": "2026-06-18T16:31:40.424153Z",
+      "output_paths": [
+        "./structured_tex_output/Diffusion-Classifier_Synergy_Reward-Aligned_Learning_via_Mutual_Boosting_Loop_for_FSCIL"
+      ]
+    },
+    "19U0qJX0nS2lyy8uzorn0kL_2SbrY4v6F": {
+      "name": "EAGLE_3__Scaling_up_Inference_Acceleration_of_Larg.tar.gz",
+      "processed_at": "2026-06-18T16:32:29.777023Z",
+      "output_paths": [
+        "./structured_tex_output/includegraphics_width_0.06_textwidth_._figs_logo.png_EAGLE-3_Scaling_up_Inference_Acceleration_of_Large_Language_Mod"
+      ]
+    },
+    "1R1bpb4-ED9NCNHIo-d5na_ultv-3uNFc": {
+      "name": "Differentiable_Generalized_Sliced_Wasserstein_Plan.tar.gz",
+      "processed_at": "2026-06-18T16:33:17.694769Z",
+      "output_paths": [
+        "./structured_tex_output/Differentiable_Generalized_Sliced_Wasserstein_Plans"
+      ]
+    },
+    "19f8rZrKeUYBhK22oIpo3kRHCRKvryuKr": {
+      "name": "MAP_Estimation_with_Denoisers__Convergence_Rates_a.tar.gz",
+      "processed_at": "2026-06-18T16:33:34.678963Z",
+      "output_paths": [
+        "./structured_tex_output/MAP_Estimation_with_Denoisers__Convergence_Rates_a"
+      ]
+    },
+    "188eUdE2OKM1cIqRmT-FzvaFmSL_QXG-N": {
+      "name": "Convergence_Theorems_for_Entropy_Regularized_and_D.tar.gz",
+      "processed_at": "2026-06-18T16:33:52.990299Z",
+      "output_paths": [
+        "./structured_tex_output/Limit_Theorems_for_Entropy-Regularized_and_Distributional_Reinforcement_Learning"
+      ]
+    },
+    "1K8lBXded8DdppLIOoacI6Ug3cOzH8wOZ": {
+      "name": "SimSort__A_Data_Driven_Framework_for_Spike_Sorting.tar.gz",
+      "processed_at": "2026-06-18T16:35:13.126652Z",
+      "output_paths": [
+        "./structured_tex_output/SimSort_A_Data-Driven_Framework_for_Spike_Sorting_by_Large-Scale_Electrophysiology_Simulation"
+      ]
+    },
+    "1VZTnBeKcr25QbwPKRXWZXTnbjkvl6Xz8": {
+      "name": "Router_R1__Teaching_LLMs_Multi_Round_Routing_and_A.tar.gz",
+      "processed_at": "2026-06-18T16:36:13.262752Z",
+      "output_paths": [
+        "./structured_tex_output/Router_R1__Teaching_LLMs_Multi_Round_Routing_and_A"
+      ]
+    },
+    "1JPLrMTCcMlQNvFPpccSfoeFoUMBCMqix": {
+      "name": "SynLogic__Synthesizing_Verifiable_Reasoning_Data_a.tar.gz",
+      "processed_at": "2026-06-18T16:37:20.415143Z",
+      "output_paths": [
+        "./structured_tex_output/SynLogic__Synthesizing_Verifiable_Reasoning_Data_a"
+      ]
+    },
+    "1zwtNxOwQgHoHq7D7s9dPaCqRsvDt7t5c": {
+      "name": "Neural_B_frame_Video_Compression_with_Bi_direction.tar.gz",
+      "processed_at": "2026-06-18T16:38:02.406325Z",
+      "output_paths": [
+        "./structured_tex_output/Neural_B-frame_Video_Compression_with_Bi-directional_Reference_Harmonization"
+      ]
+    },
+    "1X2Qf_XRNi2WkXNdsgjkJPW6MaWTcu9TJ": {
+      "name": "LLMs_Encode_Harmfulness_and_Refusal_Separately.tar.gz",
+      "processed_at": "2026-06-18T16:41:03.652378Z",
+      "output_paths": [
+        "./structured_tex_output/LLMs_Encode_Harmfulness_and_Refusal_Separately"
+      ]
+    },
+    "1RO5ITXAmGL3vhB5uI197qWPtZ3Z2VFuH": {
+      "name": "Holistic_Order_Prediction_in_Natural_Scenes.tar.gz",
+      "processed_at": "2026-06-18T16:42:22.802294Z",
+      "output_paths": [
+        "./structured_tex_output/Holistic_Order_Prediction_in_Natural_Scenes"
+      ]
+    },
+    "1R0X3R0fkKyM9IBVzGRnPeWcYE2-f7ymo": {
+      "name": "Wan_Move__Motion_controllable_Video_Generation_via.tar.gz",
+      "processed_at": "2026-06-18T16:43:58.354540Z",
+      "output_paths": [
+        "./structured_tex_output/textcolor_tongyi_Wan-Move_Motion-controllable_Video_Generation_via_Latent_Trajectory_Guidance"
+      ]
+    },
+    "1PX3DiJzP3TxzpBK6TVgumjIRClZoSiOB": {
+      "name": "Inverse_Optimization_Latent_Variable_Models_for_Le.tar.gz",
+      "processed_at": "2026-06-18T16:45:17.521794Z",
+      "output_paths": [
+        "./structured_tex_output/IO-LVM_Inverse_Optimization_Latent_Variable_Models_with_Graph-based_Planning_Applications"
+      ]
+    },
+    "1DZe7qU-qR3pOMqgr1a6WYVQ54Eb3CznF": {
+      "name": "TreeSynth__Synthesizing_Diverse_Data_from_Scratch_.tar.gz",
+      "processed_at": "2026-06-18T16:46:56.811379Z",
+      "output_paths": [
+        "./structured_tex_output/TreeSynth__Synthesizing_Diverse_Data_from_Scratch"
+      ]
+    },
+    "1XPyQV8Ra0PcSLQc1aIHn3SJtnaYOLjnm": {
+      "name": "URDF_Anything__Constructing_Articulated_Objects_wi.tar.gz",
+      "processed_at": "2026-06-18T16:48:47.232126Z",
+      "output_paths": [
+        "./structured_tex_output/URDF-Anything_Constructing_Articulated_Objects_with_3D_Multimodal_Language_Model"
+      ]
+    },
+    "1jR6IlL1GzSyf4w44VsJB6fY-ggqoYoN5": {
+      "name": "RobustMerge__Parameter_Efficient_Model_Merging_for.tar.gz",
+      "processed_at": "2026-06-18T16:49:45.590778Z",
+      "output_paths": [
+        "./structured_tex_output/modelname_Parameter-Efficient_Model_Merging_for_MLLMs_with_Direction_Robustness"
+      ]
+    },
+    "1wzY0IupYYuTOZ47YNKiMKeLBRdg8ktnf": {
+      "name": "VQ_Seg__Vector_Quantized_Token_Perturbation_for_Se.tar.gz",
+      "processed_at": "2026-06-18T16:50:38.015184Z",
+      "output_paths": [
+        "./structured_tex_output/VQ_Seg__Vector_Quantized_Token_Perturbation_for_Se"
+      ]
+    },
+    "10yiWQynu-7foVO7wIK3IOoAgu1XXP9zr": {
+      "name": "SiriuS__Self_improving_Multi_agent_Systems_via_Boo.tar.gz",
+      "processed_at": "2026-06-18T16:51:31.987381Z",
+      "output_paths": [
+        "./structured_tex_output/SiriuS__Self_improving_Multi_agent_Systems_via_Boo"
+      ]
+    },
+    "1oJTLYRK6rAVVVJgWU45m-rDl_zu-gqoL": {
+      "name": "Dense_SAE_Latents_Are_Features__Not_Bugs.tar.gz",
+      "processed_at": "2026-06-18T16:53:17.405265Z",
+      "output_paths": [
+        "./structured_tex_output/Dense_SAE_Latents_Are_Features_Not_Bugs"
+      ]
+    },
+    "1wr0ptx_4SvjCxRvmwmyxdeNR76F2ke5K": {
+      "name": "SoPo__Text_to_Motion_Generation_Using_Semi_Online_.tar.gz",
+      "processed_at": "2026-06-18T16:54:03.953927Z",
+      "output_paths": [
+        "./structured_tex_output/SoPo_Text-to-Motion_Generation_Using_Semi-Online_Preference_Optimization"
+      ]
+    },
+    "1zeTsG62SMh14rwzTyeFYKeUOfLUWlwPW": {
+      "name": "An_Analysis_of_Concept_Bottleneck_Models__Measurin.tar.gz",
+      "processed_at": "2026-06-18T16:57:04.043273Z",
+      "output_paths": [
+        "./structured_tex_output/An_Analysis_of_Concept_Bottleneck_Models__Measurin"
+      ]
+    },
+    "1AD8bP_TKnQvR8zbUxZ6Y22NEOXjG1Vfn": {
+      "name": "Sample_Complexity_of_Distributionally_Robust_Avera.tar.gz",
+      "processed_at": "2026-06-18T16:57:38.389317Z",
+      "output_paths": [
+        "./structured_tex_output/Sample_Complexity_of_Distributionally_Robust_Avera"
+      ]
+    },
+    "1kgaMS-mREMbClCVu5FK4iE-q01Dl4IAY": {
+      "name": "Agentic_Plan_Caching__Test_Time_Memory_for_Fast_an.tar.gz",
+      "processed_at": "2026-06-18T16:58:55.116978Z",
+      "output_paths": [
+        "./structured_tex_output/Agentic_Plan_Caching__Test_Time_Memory_for_Fast_an"
+      ]
+    },
+    "1ltmU9q6oVh2FHJi0g-etFwf52o6PbVU4": {
+      "name": "Certifying_Concavity_and_Monotonicity_in_Games_via.tar.gz",
+      "processed_at": "2026-06-18T16:59:01.834432Z",
+      "output_paths": [
+        "./structured_tex_output/Certifying_Concavity_and_Monotonicity_in_Games_via"
+      ]
+    },
+    "1uWjytE9NWjxiabQLhzQKtNE20NkCnsGs": {
+      "name": "Finite_Time_Bounds_for_Average_Reward_Fitted_Q_Ite.tar.gz",
+      "processed_at": "2026-06-18T16:59:11.782632Z",
+      "output_paths": [
+        "./structured_tex_output/Finite-Time_Bounds_for_Average-Reward_Fitted_Q-Iteration"
+      ]
+    },
+    "13AiSk-ePHUesv8SHXdm8L1Oyp7T_aHJN": {
+      "name": "Ultrametric_Cluster_Hierarchies__I_Want__em_All_.tar.gz",
+      "processed_at": "2026-06-18T16:59:42.125491Z",
+      "output_paths": [
+        "./structured_tex_output/Ultrametric_Cluster_Hierarchies__I_Want__em_All"
+      ]
+    },
+    "1IkDBt-5GqH5ZjPlqZ2W4x2QlfD4Z57iC": {
+      "name": "Evolutionary_Prediction_Games.tar.gz",
+      "processed_at": "2026-06-18T17:00:14.903751Z",
+      "output_paths": [
+        "./structured_tex_output/Evolutionary_Prediction_Games"
+      ]
+    },
+    "1hrXe-yFzXaUQO_SUGY-cr7-UisJaFBMy": {
+      "name": "Root_Cause_Analysis_of_Outliers_with_Missing_Struc.tar.gz",
+      "processed_at": "2026-06-18T17:01:29.449407Z",
+      "output_paths": [
+        "./structured_tex_output/Root_Cause_Analysis_of_Outliers_with_Missing_Struc"
+      ]
+    },
+    "1ke8GBTZ-Ac70f8zd5-FJ-iNG6ewcwZpe": {
+      "name": "Structured_Spectral_Reasoning_for_Frequency_Adapti.tar.gz",
+      "processed_at": "2026-06-18T17:02:02.670527Z",
+      "output_paths": [
+        "./structured_tex_output/Structured_Spectral_Reasoning_for_Frequency-Adaptive_Multimodal_Recommendation"
+      ]
+    },
+    "1PhXNHOLQGHBSm4ykorHi_g2SjXsfO5IB": {
+      "name": "CausalPFN__Amortized_Causal_Effect_Estimation_via_.tar.gz",
+      "processed_at": "2026-06-18T17:03:14.643030Z",
+      "output_paths": [
+        "./structured_tex_output/CausalPFN__Amortized_Causal_Effect_Estimation_via"
+      ]
+    },
+    "1wW5B7zJfN9d17zlMeLPJ9EyZDYyz62Ja": {
+      "name": "In_Context_Learning_Strategies_Emerge_Rationally.tar.gz",
+      "processed_at": "2026-06-18T17:03:44.120633Z",
+      "output_paths": [
+        "./structured_tex_output/In-Context_Learning_Strategies_Emerge_Rationally"
+      ]
+    },
+    "1HokhzSZMQt7etC73fSTwOwVu117NDAir": {
+      "name": "FlowCut__Rethinking_Redundancy_via_Information_Flo.tar.gz",
+      "processed_at": "2026-06-18T17:05:09.790404Z",
+      "output_paths": [
+        "./structured_tex_output/centering_raisebox_-0.23_height_includegraphics_scale_0.055_._icon7.png_FlowCut_Rethinking_Redundancy_via_Informat"
+      ]
+    },
+    "1dsNkc3Rni8u9dShxYARrWnsRRfODrNGi": {
+      "name": "Incentivizing_LLMs_to_Self_Verify_Their_Answers.tar.gz",
+      "processed_at": "2026-06-18T17:06:31.972424Z",
+      "output_paths": [
+        "./structured_tex_output/Incentivizing_LLMs_to_Self-Verify_Their_Answers"
+      ]
+    },
+    "12VboDFWDmr3Gjp6CL5E8GQKUx3N5r2dO": {
+      "name": "Quantum_Doubly_Stochastic_Transformers.tar.gz",
+      "processed_at": "2026-06-18T17:08:00.590943Z",
+      "output_paths": [
+        "./structured_tex_output/Quantum_Doubly_Stochastic_Transformers"
+      ]
+    },
+    "1ZEi78Jf7fBuSYG9yNQMlOUpmeQreZ9ae": {
+      "name": "Self_Iterative_Label_Refinement_via_Robust_Unlabel.tar.gz",
+      "processed_at": "2026-06-18T17:09:07.828128Z",
+      "output_paths": [
+        "./structured_tex_output/Self_Iterative_Label_Refinement_via_Robust_Unlabel"
+      ]
+    },
+    "14K2MrSk10K7w4YfeiwAXbNwWlkj5IWcA": {
+      "name": "Remasking_Discrete_Diffusion_Models_with_Inference.tar.gz",
+      "processed_at": "2026-06-18T17:11:02.321812Z",
+      "output_paths": [
+        "./structured_tex_output/Remasking_Discrete_Diffusion_Models_with_Inference"
+      ]
+    },
+    "1fKjgPI1FdAUTt2ATH8Ms07c5XOTCr6IK": {
+      "name": "VIKING__Deep_variational_inference_with_stochastic.tar.gz",
+      "processed_at": "2026-06-18T17:12:12.885557Z",
+      "output_paths": [
+        "./structured_tex_output/VIKING_Deep_variational_inference_with_stochastic_projections"
+      ]
+    },
+    "16E-KUhq8-cRCl1bPpGS3uC9WQ1lrbU7S": {
+      "name": "SAM_R1__Leveraging_SAM_for_Reward_Feedback_in_Mult.tar.gz",
+      "processed_at": "2026-06-18T17:13:01.536873Z",
+      "output_paths": [
+        "./structured_tex_output/ModelName_Leveraging_SAM_for_Reward_Feedback_in_Multimodal_Segmentation_via_Reinforcement_Learning"
+      ]
+    },
+    "16CzBmR9OR0lSrQfXe_2IPkYiR1co_fpm": {
+      "name": "Scalable__Explainable_and_Provably_Robust_Anomaly_.tar.gz",
+      "processed_at": "2026-06-18T17:15:13.234511Z",
+      "output_paths": [
+        "./structured_tex_output/Scalable__Explainable_and_Provably_Robust_Anomaly"
+      ]
+    },
+    "1nyGzEs4oZJFj87x7Pz_4DVAFnsgrYLk5": {
+      "name": "PeRL__Permutation_Enhanced_Reinforcement_Learning_.tar.gz",
+      "processed_at": "2026-06-18T17:16:04.649823Z",
+      "output_paths": [
+        "./structured_tex_output/PeRL__Permutation_Enhanced_Reinforcement_Learning"
+      ]
+    },
+    "1iAPa5HZh748VHQKyUMkozw9h43aXVPCN": {
+      "name": "Virtual_Fitting_Room__Generating_Arbitrarily_Long_.tar.gz",
+      "processed_at": "2026-06-18T17:16:49.925412Z",
+      "output_paths": [
+        "./structured_tex_output/Virtual_Fitting_Room_Generating_Arbitrarily_Long_Videos_of_Virtual_Try-On_from_a_Single_Image_Technical_Preview"
+      ]
+    },
+    "1RweoflPjVHIt6s4WCX_d1ux7rhA8hEaw": {
+      "name": "Robust_Graph_Condensation_via_Classification_Compl.tar.gz",
+      "processed_at": "2026-06-18T17:17:47.280178Z",
+      "output_paths": [
+        "./structured_tex_output/Robust_Graph_Condensation_via_Classification_Complexity_Mitigation"
+      ]
+    },
+    "1AyFussKAeMNuH59UA8rC_yRvduUr6Ymz": {
+      "name": "Eliciting_Reasoning_in_Language_Models_with_Cognit.tar.gz",
+      "processed_at": "2026-06-18T17:18:38.217062Z",
+      "output_paths": [
+        "./structured_tex_output/Eliciting_Reasoning_in_Language_Models_with_Cognitive_Tools"
+      ]
+    },
+    "1bq60uhhJlEEZczMbrrP7Fhhpp_mhVk1L": {
+      "name": "Asymptotically_Stable_Quaternion_valued_Hopfield_s.tar.gz",
+      "processed_at": "2026-06-18T17:19:10.732221Z",
+      "output_paths": [
+        "./structured_tex_output/Asymptotically_Stable_Quaternionic_Hopfield_Structured_Neural_Network_with_Supervised_Projection-based_Manifold_Learning"
+      ]
+    },
+    "1wcRxF4A7isY_vuRwFH4hfyG3QY5KufTN": {
+      "name": "Neural_Driven_Image_Editing.tar.gz",
+      "processed_at": "2026-06-18T17:20:28.866292Z",
+      "output_paths": [
+        "./structured_tex_output/Neural_Driven_Image_Editing"
+      ]
+    },
+    "1C9cctj0sFPGffDdyab0mgFsFMLpLdK9g": {
+      "name": "Alternating_Gradient_Flows__A_Theory_of_Feature_Le.tar.gz",
+      "processed_at": "2026-06-18T17:20:52.678799Z",
+      "output_paths": [
+        "./structured_tex_output/Alternating_Gradient_Flows__A_Theory_of_Feature_Le"
+      ]
+    },
+    "1JQuNNB2rOr1gQsKm8RlOuNs-dmifZTal": {
+      "name": "Restricted_Spectral_Gap_Decomposition_for_Simulate.tar.gz",
+      "processed_at": "2026-06-18T17:21:06.670191Z",
+      "output_paths": [
+        "./structured_tex_output/Restricted_Spectral_Gap_Decomposition_for_Simulated_Tempering_Targeting_Mixture_Distributions"
+      ]
+    },
+    "1QmOSXjZhP7zB94wqpqZ-Js1FK1XmJ_SM": {
+      "name": "New_Parallel_and_Streaming_Algorithms_for_Directed.tar.gz",
+      "processed_at": "2026-06-18T17:22:20.059780Z",
+      "output_paths": [
+        "./structured_tex_output/New_Parallel_and_Streaming_Algorithms_for_Directed"
+      ]
+    },
+    "1NpssB9ZxiKsHKihA65GKMi2gjQP1Es-M": {
+      "name": "Sound_Logical_Explanations_for_Mean_Aggregation_Gr.tar.gz",
+      "processed_at": "2026-06-18T17:23:12.454058Z",
+      "output_paths": [
+        "./structured_tex_output/Sound_Logical_Explanations_for_Mean_Aggregation_Gr"
+      ]
+    },
+    "1NyB7AXhCEptFcJzE9q_a1gKeyMZklAC1": {
+      "name": "SDTagNet__Leveraging_Text_Annotated_Navigation_Map.tar.gz",
+      "processed_at": "2026-06-18T17:25:14.330845Z",
+      "output_paths": [
+        "./structured_tex_output/SDTagNet_Leveraging_Text-Annotated_Navigation_Maps_for_Online_HD_Map_Construction"
+      ]
+    },
+    "1ORKzQSDp9yLwaF2u-jCO4P_F6fDddaNs": {
+      "name": "ALTER__All_in_One_Layer_Pruning_and_Temporal_Exper.tar.gz",
+      "processed_at": "2026-06-18T17:26:15.335815Z",
+      "output_paths": [
+        "./structured_tex_output/ALTER_underline_A_ll-in-One_underline_L_ayer_Pruning_and_underline_T_emporal_underline_E_xpert_underline_R_outing"
+      ]
+    },
+    "1lnMm1rD0Obl7kwwznTzFHLU_no6sDUFQ": {
+      "name": "A_Semantic_Parsing_Framework_for_End_to_End_Time_N.tar.gz",
+      "processed_at": "2026-06-18T17:26:48.042649Z",
+      "output_paths": [
+        "./structured_tex_output/A_Semantic_Parsing_Framework_for_End_to_End_Time_N"
+      ]
+    },
+    "1Zl7Fd8T6MC5PjEVsI_cBrOhu7bszNWPc": {
+      "name": "Blending_Complementary_Memory_Systems_in_Hybrid_Qu.tar.gz",
+      "processed_at": "2026-06-18T17:27:37.711436Z",
+      "output_paths": [
+        "./structured_tex_output/Blending_Complementary_Memory_Systems_in_Hybrid_Quadratic-Linear_Transformers"
+      ]
+    },
+    "16rQe6RzWsu-iB3fi2tbbBqID2V4GL3Aa": {
+      "name": "Provable_Sample_Efficient_Transfer_Learning_Condit.tar.gz",
+      "processed_at": "2026-06-18T17:27:59.113861Z",
+      "output_paths": [
+        "./structured_tex_output/Provable_Sample_Efficient_Transfer_Learning_Condit"
+      ]
+    },
+    "1TN4VGuioMZSGnErruN8nYBzzlvFhZJiZ": {
+      "name": "A_is_for_Absorption__Studying_Feature_Splitting_an.tar.gz",
+      "processed_at": "2026-06-18T17:29:55.289588Z",
+      "output_paths": [
+        "./structured_tex_output/A_is_for_Absorption_Studying_Feature_Splitting_and_Absorption_in_Sparse_Autoencoders"
+      ]
+    },
+    "1FJWpUbpEf9sc3rqNOvlUOTqEoNIcik7L": {
+      "name": "Universal_Few_shot_Spatial_Control_for_Diffusion_M.tar.gz",
+      "processed_at": "2026-06-18T17:31:11.379755Z",
+      "output_paths": [
+        "./structured_tex_output/Universal_Few_shot_Spatial_Control_for_Diffusion_M"
+      ]
+    },
+    "1iadKev0PxsTzNUYdm82IBtR16jZU4J7e": {
+      "name": "KTAE__A_Model_Free_Algorithm_to_Key_Tokens_Advanta.tar.gz",
+      "processed_at": "2026-06-18T17:31:59.633181Z",
+      "output_paths": [
+        "./structured_tex_output/KTAE__A_Model_Free_Algorithm_to_Key_Tokens_Advanta"
+      ]
+    },
+    "1ny5FdSAvB640k3i8QKC576QpDKLTyh7-": {
+      "name": "Beyond_Last_Click__An_Optimal_Mechanism_for_Ad_Att.tar.gz",
+      "processed_at": "2026-06-18T17:32:49.223116Z",
+      "output_paths": [
+        "./structured_tex_output/Beyond_Last_Click__An_Optimal_Mechanism_for_Ad_Att"
+      ]
+    },
+    "1yA1S2K-672FuofCP-2o1oDekUS_-5EhZ": {
+      "name": "Measure_Theoretic_Anti_Causal_Representation_Learn.tar.gz",
+      "processed_at": "2026-06-18T17:34:17.127472Z",
+      "output_paths": [
+        "./structured_tex_output/Measure_Theoretic_Anti_Causal_Representation_Learn"
+      ]
+    },
+    "1XQ1vL7h8dzn7mePtObc6Ju2-W9lcSVLk": {
+      "name": "QoQ_Med__Building_Multimodal_Clinical_Foundation_M.tar.gz",
+      "processed_at": "2026-06-18T17:35:43.394264Z",
+      "output_paths": [
+        "./structured_tex_output/QoQ-Med_Building_Multimodal_Clinical_Foundation_Models_with_Domain-Aware_GRPO_Training"
+      ]
+    },
+    "1tbLNEvJf72o_iDrWP7isuoBS31Fz04vU": {
+      "name": "Flatness_is_Necessary__Neural_Collapse_is_Not__Ret.tar.gz",
+      "processed_at": "2026-06-18T17:36:32.425810Z",
+      "output_paths": [
+        "./structured_tex_output/Flatness_is_Necessary__Neural_Collapse_is_Not__Ret"
       ]
     }
   },

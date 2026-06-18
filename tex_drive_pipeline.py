@@ -907,7 +907,7 @@ def _copy_ref_assets_list(
 
 # Common academic LaTeX packages that tables typically use.
 _TABLE_STANDALONE_TEMPLATE = r"""
-\documentclass[varwidth=17cm,border=4pt]{{standalone}}
+\documentclass[varwidth=100cm,border=4pt]{{standalone}}
 \usepackage{{booktabs}}
 \usepackage{{multirow}}
 \usepackage{{multicol}}
