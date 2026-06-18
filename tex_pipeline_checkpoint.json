@@ -1,0 +1,40 @@
+{
+  "processed": {
+    "1wTsDsGmi5a4Ep4ufPrE5J9bXkJO03h5P": {
+      "name": "Quantifying_Uncertainty_in_the_Presence_of_Distrib.tar.gz",
+      "processed_at": "2026-06-18T11:01:50.625855Z",
+      "output_paths": [
+        "./structured_tex_output/Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts"
+      ]
+    },
+    "1s68NIdLNUVRdE2rqhadFm7ogC7wJHG58": {
+      "name": "Learning_Parameterized_Skills_from_Demonstrations.tar.gz",
+      "processed_at": "2026-06-18T11:02:57.694376Z",
+      "output_paths": [
+        "./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations"
+      ]
+    },
+    "1tLJyZCXxaxYqItlBBte-R87EQB_XrN3m": {
+      "name": "Fair_Cooperation_in_Mixed_Motive_Games_via_Conflic.tar.gz",
+      "processed_at": "2026-06-18T11:03:38.800834Z",
+      "output_paths": [
+        "./structured_tex_output/Fair_Cooperation_in_Mixed-Motive_Games_via_Conflict-Aware_Gradient_Adjustment"
+      ]
+    },
+    "1vfSVyPBa2EYdHj6IQFdKLOk5v4Hh7Y-j": {
+      "name": "Small_Singular_Values_Matter__A_Random_Matrix_Anal.tar.gz",
+      "processed_at": "2026-06-18T11:04:44.802863Z",
+      "output_paths": [
+        "./structured_tex_output/Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models"
+      ]
+    },
+    "1US_DCU1VMqUx5JPsuiKsaeAGyrHUcNfo": {
+      "name": "Efficient_Speech_Language_Modeling_via_Energy_Dist.tar.gz",
+      "processed_at": "2026-06-18T11:05:31.656752Z",
+      "output_paths": [
+        "./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space"
+      ]
+    }
+  },
+  "skipped": []
+}

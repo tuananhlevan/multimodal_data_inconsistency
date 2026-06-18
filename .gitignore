@@ -1,0 +1,7 @@
+structured_tex_output
+tex_pipeline_work
+downloaded_tex
+.vscode
+__pycache__
+.env
+credentials.json

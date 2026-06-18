@@ -1,0 +1,238 @@
+2026-06-18 18:00:49 [INFO] ============================================================
+2026-06-18 18:00:49 [INFO] tex_drive_pipeline starting
+2026-06-18 18:00:49 [INFO] Log file: /home/levantuananh/FFT_FPT/data_inconsistency/tex_pipeline.log
+2026-06-18 18:00:49 [INFO] ============================================================
+2026-06-18 18:00:49 [INFO] Mode: Google Drive  source=1g2uGiWJMCiMenw8_IKFga1M7iIJIaLax  output=1PqhB3lAWt5j1lilXg0Mg5ldM2U8M_1_-
+2026-06-18 18:00:49 [WARNING] Could not load checkpoint tex_pipeline_checkpoint.json: Expecting value: line 1 column 1 (char 0) — starting fresh.
+2026-06-18 18:00:49 [INFO] Checkpoint file: /home/levantuananh/FFT_FPT/data_inconsistency/tex_pipeline_checkpoint.json
+2026-06-18 18:00:49 [INFO] Checkpoint status on start: 0 processed, 0 skipped.
+2026-06-18 18:00:49 [INFO] Listing files in Drive folder id=1g2uGiWJMCiMenw8_IKFga1M7iIJIaLax ...
+2026-06-18 18:00:55 [INFO] Found 4604 file(s) in Drive folder.
+2026-06-18 18:00:55 [INFO] --- [1/4604] Quantifying_Uncertainty_in_the_Presence_of_Distrib.tar.gz (parent: /)
+2026-06-18 18:00:55 [INFO] Downloading archive: Quantifying_Uncertainty_in_the_Presence_of_Distrib.tar.gz (id=1wTsDsGmi5a4Ep4ufPrE5J9bXkJO03h5P)
+2026-06-18 18:00:57 [DEBUG] Extracting Quantifying_Uncertainty_in_the_Presence_of_Distrib.tar.gz → ./tex_pipeline_work/Quantifying_Uncertainty_in_the_Presence_of_Distrib.tar.gz/Quantifying_Uncertainty_in_the_Presence_of_Distrib.tar.gz_extracted
+2026-06-18 18:00:57 [INFO] [Quantifying_Uncertainty_in_the_Presence_of_Distrib] Found 1 .tex file(s). Running two-pass asset extraction...
+2026-06-18 18:00:57 [INFO] [Quantifying_Uncertainty_in_the_Presence_of_Distrib] Pass 1+2 complete: 18 asset(s) with reference context.
+2026-06-18 18:00:57 [INFO] [Quantifying_Uncertainty_in_the_Presence_of_Distrib] Copied 9 referenced asset file(s) into ref/.
+2026-06-18 18:00:57 [DEBUG] Collected 6 custom command definition(s) for table compilation.
+2026-06-18 18:00:58 [DEBUG] Compiled table PDF → ./structured_tex_output/Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts/ref/tab_simulation_results.pdf
+2026-06-18 18:00:58 [DEBUG] Compiled table PDF → ./structured_tex_output/Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts/ref/table_1.pdf
+2026-06-18 18:00:59 [DEBUG] Compiled table PDF → ./structured_tex_output/Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts/ref/tbl_synthetic_hyper.pdf
+2026-06-18 18:00:59 [DEBUG] Compiled table PDF → ./structured_tex_output/Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts/ref/table_3.pdf
+2026-06-18 18:01:00 [DEBUG] Compiled table PDF → ./structured_tex_output/Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts/ref/tbl_classification_hyper.pdf
+2026-06-18 18:01:01 [DEBUG] Compiled table PDF → ./structured_tex_output/Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts/ref/table_5.pdf
+2026-06-18 18:01:01 [DEBUG] Compiled table PDF → ./structured_tex_output/Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts/ref/tbl_uci_params.pdf
+2026-06-18 18:01:02 [DEBUG] Compiled table PDF → ./structured_tex_output/Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts/ref/table_7.pdf
+2026-06-18 18:01:03 [DEBUG] Compiled table PDF → ./structured_tex_output/Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts/ref/tbl_runtime_comparison.pdf
+2026-06-18 18:01:03 [DEBUG] Compiled table PDF → ./structured_tex_output/Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts/ref/table_9.pdf
+2026-06-18 18:01:03 [INFO] [Quantifying_Uncertainty_in_the_Presence_of_Distrib] Compiled 10 table PDF(s) into ref/.
+2026-06-18 18:01:03 [INFO] [Quantifying_Uncertainty_in_the_Presence_of_Distrib] ✅ Output folder → ./structured_tex_output/Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts  (18 asset(s), 9 ref file(s))
+2026-06-18 18:01:03 [INFO]   Uploading folder 'Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts' → Drive folder id=1PqhB3lAWt5j1lilXg0Mg5ldM2U8M_1_-
+2026-06-18 18:01:04 [DEBUG] Created Drive folder 'Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts' (id=1CKZ_6y2ilto6ux0TdDGEvaeb2tHfPm8i)
+2026-06-18 18:01:06 [DEBUG]   Uploaded file: Quantifying_Uncertainty_in_the_Presence_of_Distrib.json
+2026-06-18 18:01:07 [DEBUG] Created Drive folder 'ref' (id=1d_5lGcuIBv0EwMeohvkNUeCu-Abs3otw)
+2026-06-18 18:01:10 [DEBUG]   Uploaded file: Boltzman.pdf
+2026-06-18 18:01:12 [DEBUG]   Uploaded file: Boltzman_no_shift.pdf
+2026-06-18 18:01:15 [DEBUG]   Uploaded file: Hetroscedastic_Linear_25_75.png
+2026-06-18 18:01:18 [DEBUG]   Uploaded file: Hetroscedastic_Linear_50.png
+2026-06-18 18:01:21 [DEBUG]   Uploaded file: Logistic_03.png
+2026-06-18 18:01:24 [DEBUG]   Uploaded file: UCI_boxplots.pdf
+2026-06-18 18:01:26 [DEBUG]   Uploaded file: classification_boxplots.pdf
+2026-06-18 18:01:27 [DEBUG]   Uploaded file: diagram_partial.pdf
+2026-06-18 18:01:30 [DEBUG]   Uploaded file: logistic_illustartion.pdf
+2026-06-18 18:01:32 [DEBUG]   Uploaded file: tab_simulation_results.pdf
+2026-06-18 18:01:34 [DEBUG]   Uploaded file: table_1.pdf
+2026-06-18 18:01:36 [DEBUG]   Uploaded file: table_3.pdf
+2026-06-18 18:01:38 [DEBUG]   Uploaded file: table_5.pdf
+2026-06-18 18:01:40 [DEBUG]   Uploaded file: table_7.pdf
+2026-06-18 18:01:42 [DEBUG]   Uploaded file: table_9.pdf
+2026-06-18 18:01:44 [DEBUG]   Uploaded file: tbl_classification_hyper.pdf
+2026-06-18 18:01:46 [DEBUG]   Uploaded file: tbl_runtime_comparison.pdf
+2026-06-18 18:01:48 [DEBUG]   Uploaded file: tbl_synthetic_hyper.pdf
+2026-06-18 18:01:50 [DEBUG]   Uploaded file: tbl_uci_params.pdf
+2026-06-18 18:01:50 [INFO]   ✅ Folder uploaded: Quantifying_Uncertainty_in_the_Presence_of_Distribution_Shifts
+2026-06-18 18:01:50 [DEBUG] Checkpoint saved for file_id=1wTsDsGmi5a4Ep4ufPrE5J9bXkJO03h5P (Quantifying_Uncertainty_in_the_Presence_of_Distrib.tar.gz)
+2026-06-18 18:01:50 [INFO] --- [2/4604] Learning_Parameterized_Skills_from_Demonstrations.tar.gz (parent: /)
+2026-06-18 18:01:50 [INFO] Downloading archive: Learning_Parameterized_Skills_from_Demonstrations.tar.gz (id=1s68NIdLNUVRdE2rqhadFm7ogC7wJHG58)
+2026-06-18 18:01:52 [DEBUG] Extracting Learning_Parameterized_Skills_from_Demonstrations.tar.gz → ./tex_pipeline_work/Learning_Parameterized_Skills_from_Demonstrations.tar.gz/Learning_Parameterized_Skills_from_Demonstrations.tar.gz_extracted
+2026-06-18 18:01:53 [INFO] [Learning_Parameterized_Skills_from_Demonstrations] Found 7 .tex file(s). Running two-pass asset extraction...
+2026-06-18 18:01:53 [DEBUG] Propagated 18 meta field(s) across 7 document(s).
+2026-06-18 18:01:53 [INFO] [Learning_Parameterized_Skills_from_Demonstrations] Pass 1+2 complete: 21 asset(s) with reference context.
+2026-06-18 18:01:53 [INFO] [Learning_Parameterized_Skills_from_Demonstrations] Copied 5 referenced asset file(s) into ref/.
+2026-06-18 18:01:53 [DEBUG] Collected 18 custom command definition(s) for table compilation.
+2026-06-18 18:01:53 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/table_0.pdf
+2026-06-18 18:01:54 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/table_1.pdf
+2026-06-18 18:01:54 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/tab_libero-ood-tasks.pdf
+2026-06-18 18:01:55 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/table_3.pdf
+2026-06-18 18:01:56 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/tab_mw-tasks.pdf
+2026-06-18 18:01:57 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/table_5.pdf
+2026-06-18 18:01:57 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/table_6.pdf
+2026-06-18 18:01:58 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/tab_mw-10-resuls.pdf
+2026-06-18 18:01:59 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/table_8.pdf
+2026-06-18 18:01:59 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/tab_compression-ablation.pdf
+2026-06-18 18:02:00 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/table_10.pdf
+2026-06-18 18:02:01 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/tab_k_values.pdf
+2026-06-18 18:02:02 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/table_12.pdf
+2026-06-18 18:02:02 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/tab_K.pdf
+2026-06-18 18:02:03 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/table_14.pdf
+2026-06-18 18:02:04 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/tab_bc-comparison.pdf
+2026-06-18 18:02:04 [DEBUG] Compiled table PDF → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations/ref/table_16.pdf
+2026-06-18 18:02:04 [INFO] [Learning_Parameterized_Skills_from_Demonstrations] Compiled 17 table PDF(s) into ref/.
+2026-06-18 18:02:04 [INFO] [Learning_Parameterized_Skills_from_Demonstrations] ✅ Output folder → ./structured_tex_output/Learning_Parameterized_Skills_from_Demonstrations  (21 asset(s), 5 ref file(s))
+2026-06-18 18:02:04 [INFO]   Uploading folder 'Learning_Parameterized_Skills_from_Demonstrations' → Drive folder id=1PqhB3lAWt5j1lilXg0Mg5ldM2U8M_1_-
+2026-06-18 18:02:05 [DEBUG] Created Drive folder 'Learning_Parameterized_Skills_from_Demonstrations' (id=1i1gF3Hdlm-_LhEWvnKAyiM95AuSAa4zp)
+2026-06-18 18:02:07 [DEBUG]   Uploaded file: Learning_Parameterized_Skills_from_Demonstrations.json
+2026-06-18 18:02:08 [DEBUG] Created Drive folder 'ref' (id=1Ze6G4dhtAclgl0d9UWJtI3RM3uLcMLUI)
+2026-06-18 18:02:10 [DEBUG]   Uploaded file: 1D_state_viz.pdf
+2026-06-18 18:02:12 [DEBUG]   Uploaded file: libero.pdf
+2026-06-18 18:02:14 [DEBUG]   Uploaded file: metaworld.pdf
+2026-06-18 18:02:16 [DEBUG]   Uploaded file: plots_new.pdf
+2026-06-18 18:02:19 [DEBUG]   Uploaded file: skill_storyboard_cropped.pdf
+2026-06-18 18:02:21 [DEBUG]   Uploaded file: tab_K.pdf
+2026-06-18 18:02:23 [DEBUG]   Uploaded file: tab_bc-comparison.pdf
+2026-06-18 18:02:25 [DEBUG]   Uploaded file: tab_compression-ablation.pdf
+2026-06-18 18:02:27 [DEBUG]   Uploaded file: tab_k_values.pdf
+2026-06-18 18:02:29 [DEBUG]   Uploaded file: tab_libero-ood-tasks.pdf
+2026-06-18 18:02:31 [DEBUG]   Uploaded file: tab_mw-10-resuls.pdf
+2026-06-18 18:02:33 [DEBUG]   Uploaded file: tab_mw-tasks.pdf
+2026-06-18 18:02:35 [DEBUG]   Uploaded file: table_0.pdf
+2026-06-18 18:02:37 [DEBUG]   Uploaded file: table_1.pdf
+2026-06-18 18:02:40 [DEBUG]   Uploaded file: table_10.pdf
+2026-06-18 18:02:41 [DEBUG]   Uploaded file: table_12.pdf
+2026-06-18 18:02:44 [DEBUG]   Uploaded file: table_14.pdf
+2026-06-18 18:02:46 [DEBUG]   Uploaded file: table_16.pdf
+2026-06-18 18:02:48 [DEBUG]   Uploaded file: table_3.pdf
+2026-06-18 18:02:50 [DEBUG]   Uploaded file: table_5.pdf
+2026-06-18 18:02:52 [DEBUG]   Uploaded file: table_6.pdf
+2026-06-18 18:02:57 [DEBUG]   Uploaded file: table_8.pdf
+2026-06-18 18:02:57 [INFO]   ✅ Folder uploaded: Learning_Parameterized_Skills_from_Demonstrations
+2026-06-18 18:02:57 [DEBUG] Checkpoint saved for file_id=1s68NIdLNUVRdE2rqhadFm7ogC7wJHG58 (Learning_Parameterized_Skills_from_Demonstrations.tar.gz)
+2026-06-18 18:02:57 [INFO] --- [3/4604] Fair_Cooperation_in_Mixed_Motive_Games_via_Conflic.tar.gz (parent: /)
+2026-06-18 18:02:57 [INFO] Downloading archive: Fair_Cooperation_in_Mixed_Motive_Games_via_Conflic.tar.gz (id=1tLJyZCXxaxYqItlBBte-R87EQB_XrN3m)
+2026-06-18 18:03:00 [DEBUG] Extracting Fair_Cooperation_in_Mixed_Motive_Games_via_Conflic.tar.gz → ./tex_pipeline_work/Fair_Cooperation_in_Mixed_Motive_Games_via_Conflic.tar.gz/Fair_Cooperation_in_Mixed_Motive_Games_via_Conflic.tar.gz_extracted
+2026-06-18 18:03:00 [INFO] [Fair_Cooperation_in_Mixed_Motive_Games_via_Conflic] Found 1 .tex file(s). Running two-pass asset extraction...
+2026-06-18 18:03:00 [INFO] [Fair_Cooperation_in_Mixed_Motive_Games_via_Conflic] Pass 1+2 complete: 4 asset(s) with reference context.
+2026-06-18 18:03:00 [INFO] [Fair_Cooperation_in_Mixed_Motive_Games_via_Conflic] Copied 16 referenced asset file(s) into ref/.
+2026-06-18 18:03:00 [DEBUG] Collected 3 custom command definition(s) for table compilation.
+2026-06-18 18:03:01 [DEBUG] Compiled table PDF → ./structured_tex_output/Fair_Cooperation_in_Mixed-Motive_Games_via_Conflict-Aware_Gradient_Adjustment/ref/table_0.pdf
+2026-06-18 18:03:01 [INFO] [Fair_Cooperation_in_Mixed_Motive_Games_via_Conflic] Compiled 1 table PDF(s) into ref/.
+2026-06-18 18:03:01 [INFO] [Fair_Cooperation_in_Mixed_Motive_Games_via_Conflic] ✅ Output folder → ./structured_tex_output/Fair_Cooperation_in_Mixed-Motive_Games_via_Conflict-Aware_Gradient_Adjustment  (4 asset(s), 16 ref file(s))
+2026-06-18 18:03:01 [INFO]   Uploading folder 'Fair_Cooperation_in_Mixed-Motive_Games_via_Conflict-Aware_Gradient_Adjustment' → Drive folder id=1PqhB3lAWt5j1lilXg0Mg5ldM2U8M_1_-
+2026-06-18 18:03:01 [DEBUG] Created Drive folder 'Fair_Cooperation_in_Mixed-Motive_Games_via_Conflict-Aware_Gradient_Adjustment' (id=1izUQtUx6Q3X3xyKButixTX7DbX9JuL-n)
+2026-06-18 18:03:03 [DEBUG]   Uploaded file: Fair_Cooperation_in_Mixed_Motive_Games_via_Conflic.json
+2026-06-18 18:03:04 [DEBUG] Created Drive folder 'ref' (id=1FOIMd2jFAKkzwrrMF7J04SE0LNq6Vx3k)
+2026-06-18 18:03:06 [DEBUG]   Uploaded file: fcgrad_env_clean.pdf
+2026-06-18 18:03:08 [DEBUG]   Uploaded file: fcgrad_env_coin.pdf
+2026-06-18 18:03:10 [DEBUG]   Uploaded file: fcgrad_env_harvest.pdf
+2026-06-18 18:03:12 [DEBUG]   Uploaded file: fcgrad_overview2.pdf
+2026-06-18 18:03:14 [DEBUG]   Uploaded file: fcgrad_overview3.pdf
+2026-06-18 18:03:16 [DEBUG]   Uploaded file: fcgrad_result_cleanup.pdf
+2026-06-18 18:03:18 [DEBUG]   Uploaded file: fcgrad_result_cleanup_a0.pdf
+2026-06-18 18:03:20 [DEBUG]   Uploaded file: fcgrad_result_cleanup_a1.pdf
+2026-06-18 18:03:22 [DEBUG]   Uploaded file: fcgrad_result_cleanup_a2.pdf
+2026-06-18 18:03:24 [DEBUG]   Uploaded file: fcgrad_result_cleanup_a3.pdf
+2026-06-18 18:03:26 [DEBUG]   Uploaded file: fcgrad_result_harvest.pdf
+2026-06-18 18:03:28 [DEBUG]   Uploaded file: fcgrad_result_harvest_a0.pdf
+2026-06-18 18:03:30 [DEBUG]   Uploaded file: fcgrad_result_harvest_a1.pdf
+2026-06-18 18:03:32 [DEBUG]   Uploaded file: fcgrad_result_harvest_a2.pdf
+2026-06-18 18:03:34 [DEBUG]   Uploaded file: fcgrad_result_harvest_a3.pdf
+2026-06-18 18:03:36 [DEBUG]   Uploaded file: legend_only.pdf
+2026-06-18 18:03:38 [DEBUG]   Uploaded file: table_0.pdf
+2026-06-18 18:03:38 [INFO]   ✅ Folder uploaded: Fair_Cooperation_in_Mixed-Motive_Games_via_Conflict-Aware_Gradient_Adjustment
+2026-06-18 18:03:38 [DEBUG] Checkpoint saved for file_id=1tLJyZCXxaxYqItlBBte-R87EQB_XrN3m (Fair_Cooperation_in_Mixed_Motive_Games_via_Conflic.tar.gz)
+2026-06-18 18:03:38 [INFO] --- [4/4604] Small_Singular_Values_Matter__A_Random_Matrix_Anal.tar.gz (parent: /)
+2026-06-18 18:03:38 [INFO] Downloading archive: Small_Singular_Values_Matter__A_Random_Matrix_Anal.tar.gz (id=1vfSVyPBa2EYdHj6IQFdKLOk5v4Hh7Y-j)
+2026-06-18 18:03:40 [DEBUG] Extracting Small_Singular_Values_Matter__A_Random_Matrix_Anal.tar.gz → ./tex_pipeline_work/Small_Singular_Values_Matter__A_Random_Matrix_Anal.tar.gz/Small_Singular_Values_Matter__A_Random_Matrix_Anal.tar.gz_extracted
+2026-06-18 18:03:40 [INFO] [Small_Singular_Values_Matter__A_Random_Matrix_Anal] Found 1 .tex file(s). Running two-pass asset extraction...
+2026-06-18 18:03:40 [INFO] [Small_Singular_Values_Matter__A_Random_Matrix_Anal] Pass 1+2 complete: 25 asset(s) with reference context.
+2026-06-18 18:03:40 [INFO] [Small_Singular_Values_Matter__A_Random_Matrix_Anal] Copied 15 referenced asset file(s) into ref/.
+2026-06-18 18:03:40 [DEBUG] Collected 1 custom command definition(s) for table compilation.
+2026-06-18 18:03:40 [DEBUG] Compiled table PDF → ./structured_tex_output/Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models/ref/tab_gsm8k.pdf
+2026-06-18 18:03:41 [DEBUG] Compiled table PDF → ./structured_tex_output/Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models/ref/table_1.pdf
+2026-06-18 18:03:42 [DEBUG] Compiled table PDF → ./structured_tex_output/Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models/ref/tab_ruler.pdf
+2026-06-18 18:03:43 [DEBUG] Compiled table PDF → ./structured_tex_output/Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models/ref/table_3.pdf
+2026-06-18 18:03:43 [DEBUG] Compiled table PDF → ./structured_tex_output/Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models/ref/tab_layer-outliers.pdf
+2026-06-18 18:03:44 [DEBUG] Compiled table PDF → ./structured_tex_output/Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models/ref/table_5.pdf
+2026-06-18 18:03:45 [DEBUG] Compiled table PDF → ./structured_tex_output/Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models/ref/tab_impSmallSvalLayer.pdf
+2026-06-18 18:03:45 [DEBUG] Compiled table PDF → ./structured_tex_output/Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models/ref/table_7.pdf
+2026-06-18 18:03:46 [DEBUG] Compiled table PDF → ./structured_tex_output/Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models/ref/tab_humanEval.pdf
+2026-06-18 18:03:46 [DEBUG] Compiled table PDF → ./structured_tex_output/Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models/ref/table_9.pdf
+2026-06-18 18:03:46 [INFO] [Small_Singular_Values_Matter__A_Random_Matrix_Anal] Compiled 10 table PDF(s) into ref/.
+2026-06-18 18:03:46 [INFO] [Small_Singular_Values_Matter__A_Random_Matrix_Anal] ✅ Output folder → ./structured_tex_output/Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models  (25 asset(s), 15 ref file(s))
+2026-06-18 18:03:46 [INFO]   Uploading folder 'Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models' → Drive folder id=1PqhB3lAWt5j1lilXg0Mg5ldM2U8M_1_-
+2026-06-18 18:03:47 [DEBUG] Created Drive folder 'Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models' (id=11bLEtd3k9J9ZglL0wFXOgqDtqJrw3JfP)
+2026-06-18 18:03:49 [DEBUG]   Uploaded file: Small_Singular_Values_Matter__A_Random_Matrix_Anal.json
+2026-06-18 18:03:50 [DEBUG] Created Drive folder 'ref' (id=1OSr996l4QM9dEzkstnVPrdg_ueU60jHa)
+2026-06-18 18:03:52 [DEBUG]   Uploaded file: Neurips_Overlap2D_App8.pdf
+2026-06-18 18:03:54 [DEBUG]   Uploaded file: Neurips_plot1.pdf
+2026-06-18 18:03:56 [DEBUG]   Uploaded file: Neurips_plot2.pdf
+2026-06-18 18:03:58 [DEBUG]   Uploaded file: Neurips_plot3.pdf
+2026-06-18 18:04:00 [DEBUG]   Uploaded file: Neurips_plot4.pdf
+2026-06-18 18:04:02 [DEBUG]   Uploaded file: Neurips_plot5.pdf
+2026-06-18 18:04:04 [DEBUG]   Uploaded file: Neurips_plot6.pdf
+2026-06-18 18:04:06 [DEBUG]   Uploaded file: Neurips_plot7.pdf
+2026-06-18 18:04:08 [DEBUG]   Uploaded file: Neurips_plotApp1.pdf
+2026-06-18 18:04:11 [DEBUG]   Uploaded file: Neurips_plotApp2.pdf
+2026-06-18 18:04:13 [DEBUG]   Uploaded file: Neurips_plotApp3.pdf
+2026-06-18 18:04:15 [DEBUG]   Uploaded file: Neurips_plotApp4.pdf
+2026-06-18 18:04:17 [DEBUG]   Uploaded file: Neurips_plotApp5.pdf
+2026-06-18 18:04:19 [DEBUG]   Uploaded file: Neurips_plotApp6.pdf
+2026-06-18 18:04:21 [DEBUG]   Uploaded file: Neurips_plotApp7.pdf
+2026-06-18 18:04:23 [DEBUG]   Uploaded file: tab_gsm8k.pdf
+2026-06-18 18:04:25 [DEBUG]   Uploaded file: tab_humanEval.pdf
+2026-06-18 18:04:28 [DEBUG]   Uploaded file: tab_impSmallSvalLayer.pdf
+2026-06-18 18:04:33 [DEBUG]   Uploaded file: tab_layer-outliers.pdf
+2026-06-18 18:04:35 [DEBUG]   Uploaded file: tab_ruler.pdf
+2026-06-18 18:04:37 [DEBUG]   Uploaded file: table_1.pdf
+2026-06-18 18:04:39 [DEBUG]   Uploaded file: table_3.pdf
+2026-06-18 18:04:41 [DEBUG]   Uploaded file: table_5.pdf
+2026-06-18 18:04:42 [DEBUG]   Uploaded file: table_7.pdf
+2026-06-18 18:04:44 [DEBUG]   Uploaded file: table_9.pdf
+2026-06-18 18:04:44 [INFO]   ✅ Folder uploaded: Small_Singular_Values_Matter_A_Random_Matrix_Analysis_of_Transformer_Models
+2026-06-18 18:04:44 [DEBUG] Checkpoint saved for file_id=1vfSVyPBa2EYdHj6IQFdKLOk5v4Hh7Y-j (Small_Singular_Values_Matter__A_Random_Matrix_Anal.tar.gz)
+2026-06-18 18:04:44 [INFO] --- [5/4604] Efficient_Speech_Language_Modeling_via_Energy_Dist.tar.gz (parent: /)
+2026-06-18 18:04:44 [INFO] Downloading archive: Efficient_Speech_Language_Modeling_via_Energy_Dist.tar.gz (id=1US_DCU1VMqUx5JPsuiKsaeAGyrHUcNfo)
+2026-06-18 18:04:45 [DEBUG] Extracting Efficient_Speech_Language_Modeling_via_Energy_Dist.tar.gz → ./tex_pipeline_work/Efficient_Speech_Language_Modeling_via_Energy_Dist.tar.gz/Efficient_Speech_Language_Modeling_via_Energy_Dist.tar.gz_extracted
+2026-06-18 18:04:45 [INFO] [Efficient_Speech_Language_Modeling_via_Energy_Dist] Found 1 .tex file(s). Running two-pass asset extraction...
+2026-06-18 18:04:45 [INFO] [Efficient_Speech_Language_Modeling_via_Energy_Dist] Pass 1+2 complete: 15 asset(s) with reference context.
+2026-06-18 18:04:45 [INFO] [Efficient_Speech_Language_Modeling_via_Energy_Dist] Copied 4 referenced asset file(s) into ref/.
+2026-06-18 18:04:46 [DEBUG] Compiled table PDF → ./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space/ref/tab_main_results.pdf
+2026-06-18 18:04:46 [DEBUG] Compiled table PDF → ./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space/ref/table_1.pdf
+2026-06-18 18:04:47 [DEBUG] Compiled table PDF → ./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space/ref/tab_stream.pdf
+2026-06-18 18:04:48 [DEBUG] Compiled table PDF → ./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space/ref/table_3.pdf
+2026-06-18 18:04:48 [DEBUG] Compiled table PDF → ./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space/ref/table_4.pdf
+2026-06-18 18:04:49 [DEBUG] Compiled table PDF → ./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space/ref/tab_rtf-flops.pdf
+2026-06-18 18:04:49 [DEBUG] Compiled table PDF → ./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space/ref/table_6.pdf
+2026-06-18 18:04:50 [DEBUG] Compiled table PDF → ./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space/ref/tab_data_scale.pdf
+2026-06-18 18:04:51 [DEBUG] Compiled table PDF → ./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space/ref/table_8.pdf
+2026-06-18 18:04:51 [DEBUG] Compiled table PDF → ./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space/ref/table_9.pdf
+2026-06-18 18:04:52 [DEBUG] Compiled table PDF → ./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space/ref/table_10.pdf
+2026-06-18 18:04:52 [DEBUG] Compiled table PDF → ./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space/ref/tab_sled_rtf.pdf
+2026-06-18 18:04:53 [DEBUG] Compiled table PDF → ./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space/ref/table_12.pdf
+2026-06-18 18:04:53 [INFO] [Efficient_Speech_Language_Modeling_via_Energy_Dist] Compiled 13 table PDF(s) into ref/.
+2026-06-18 18:04:53 [INFO] [Efficient_Speech_Language_Modeling_via_Energy_Dist] ✅ Output folder → ./structured_tex_output/Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space  (15 asset(s), 4 ref file(s))
+2026-06-18 18:04:53 [INFO]   Uploading folder 'Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space' → Drive folder id=1PqhB3lAWt5j1lilXg0Mg5ldM2U8M_1_-
+2026-06-18 18:04:54 [DEBUG] Created Drive folder 'Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space' (id=1FerzCUYpTBsDFtb-R8bDh4TFQjnOrJjg)
+2026-06-18 18:04:56 [DEBUG]   Uploaded file: Efficient_Speech_Language_Modeling_via_Energy_Dist.json
+2026-06-18 18:04:56 [DEBUG] Created Drive folder 'ref' (id=1Dii3smh4jjlt9MbuDWSzgAXqC_bFbc-H)
+2026-06-18 18:04:58 [DEBUG]   Uploaded file: Ablation-continue.pdf
+2026-06-18 18:05:00 [DEBUG]   Uploaded file: Ablation-ref.pdf
+2026-06-18 18:05:02 [DEBUG]   Uploaded file: Ablation-stream.pdf
+2026-06-18 18:05:05 [DEBUG]   Uploaded file: stream.pdf
+2026-06-18 18:05:07 [DEBUG]   Uploaded file: tab_data_scale.pdf
+2026-06-18 18:05:09 [DEBUG]   Uploaded file: tab_main_results.pdf
+2026-06-18 18:05:12 [DEBUG]   Uploaded file: tab_rtf-flops.pdf
+2026-06-18 18:05:14 [DEBUG]   Uploaded file: tab_sled_rtf.pdf
+2026-06-18 18:05:16 [DEBUG]   Uploaded file: tab_stream.pdf
+2026-06-18 18:05:17 [DEBUG]   Uploaded file: table_1.pdf
+2026-06-18 18:05:19 [DEBUG]   Uploaded file: table_10.pdf
+2026-06-18 18:05:21 [DEBUG]   Uploaded file: table_12.pdf
+2026-06-18 18:05:23 [DEBUG]   Uploaded file: table_3.pdf
+2026-06-18 18:05:25 [DEBUG]   Uploaded file: table_4.pdf
+2026-06-18 18:05:27 [DEBUG]   Uploaded file: table_6.pdf
+2026-06-18 18:05:29 [DEBUG]   Uploaded file: table_8.pdf
+2026-06-18 18:05:31 [DEBUG]   Uploaded file: table_9.pdf
+2026-06-18 18:05:31 [INFO]   ✅ Folder uploaded: Efficient_Speech_Language_Modeling_via_Energy_Distance_in_Continuous_Latent_Space
+2026-06-18 18:05:31 [DEBUG] Checkpoint saved for file_id=1US_DCU1VMqUx5JPsuiKsaeAGyrHUcNfo (Efficient_Speech_Language_Modeling_via_Energy_Dist.tar.gz)
+2026-06-18 18:05:31 [INFO] --- [6/4604] Binary_Quadratic_Quantization__Beyond_First_Order_.tar.gz (parent: /)
+2026-06-18 18:05:31 [INFO] Downloading archive: Binary_Quadratic_Quantization__Beyond_First_Order_.tar.gz (id=1Zc2i0pUlzmh_CnEBVvbq4SakAWvRD2He)
