@@ -10,7 +10,11 @@ import xml.etree.ElementTree as ET
 from urllib.parse import urlencode, quote
 from dotenv import load_dotenv, set_key
 import shutil
+import difflib
 from concurrent.futures import ThreadPoolExecutor
+import socket
+from stem import Signal
+from stem.control import Controller
 
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -21,8 +25,8 @@ from googleapiclient.http import MediaFileUpload
 load_dotenv()
 
 # --- CONFIGURATION ---
-CONFERENCE_ID = ["NeurIPS.cc", "ICLR.cc", "ICML.cc",]
-TARGET_YEARS = [2025]
+CONFERENCE_ID = ["NeurIPS.cc", "ICLR.cc", "ICML.cc", "ACL", "EMNLP", "CVPR", "ECCV", "SIGIR", "KDD", "WSDM", "ICDM"]
+TARGET_YEARS = [2025, 2024, 2023, 2022, 2021]
 DOWNLOAD_DIR = "./downloaded_tex"
 CHECKPOINT_FILE = "download_progress.json"
 GDRIVE_FOLDER_NAME = 'FFT_DataInconsistency/Data'  # Now handles nested creation correctly
@@ -36,6 +40,57 @@ SESSION = requests.Session()
 SESSION.headers.update({
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 })
+
+DIRECT_SESSION = requests.Session()
+DIRECT_SESSION.headers.update({
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+})
+
+# --- TOR CONFIGURATION ---
+TOR_PROXY = "socks5h://127.0.0.1:9050"
+TOR_CONTROL_PORT = 9051
+
+def rotate_ip():
+    """Requests a new IP address from the local Tor daemon."""
+    try:
+        with Controller.from_port(port=TOR_CONTROL_PORT) as controller:
+            controller.authenticate()  # Tries various authentication methods including cookie auth
+            controller.signal(Signal.NEWNYM)
+            print("   🔄 [Tor] Successfully requested new IP identity.")
+            # Wait a few seconds for Tor to establish a new circuit
+            time.sleep(3)
+    except Exception as e:
+        error_msg = str(e)
+        if "Permission denied" in error_msg and "control.authcookie" in error_msg:
+            print(f"   ⚠️ [Tor] Authentication failed due to strict permissions on the Tor cookie.")
+            print("   ⚠️ To fix this, run these commands in your terminal and restart the script:")
+            print("      sudo usermod -aG debian-tor $USER")
+            print("      sudo chmod 644 /run/tor/control.authcookie")
+        else:
+            print(f"   ⚠️ [Tor] Failed to rotate IP: {e}")
+            print("   ⚠️ Ensure Tor is installed (`sudo apt install tor`) and ControlPort 9051 is enabled in /etc/tor/torrc.")
+
+def configure_tor(session):
+    """Checks if Tor is running locally and configures the session to use it."""
+    try:
+        with socket.create_connection(("127.0.0.1", 9050), timeout=1):
+            session.proxies = {
+                'http': TOR_PROXY,
+                'https': TOR_PROXY
+            }
+            print("✅ Tor proxy detected. Routing arXiv requests through Tor to prevent rate limits.")
+            return True
+    except (ConnectionRefusedError, socket.timeout, OSError):
+        print("⚠️ Tor proxy not found at 127.0.0.1:9050.")
+        print("⚠️ To enable IP rotation to bypass arXiv limits, please install Tor:")
+        print("   sudo apt update && sudo apt install tor -y")
+        print("   And append these lines to /etc/tor/torrc:")
+        print("   ControlPort 9051")
+        print("   CookieAuthentication 1")
+        print("   Then restart tor: sudo systemctl restart tor")
+        return False
+
+configure_tor(SESSION)
 
 # --- GOOGLE DRIVE HELPERS ---
 def get_gdrive_service():
@@ -103,6 +158,29 @@ def create_gdrive_folder(service, folder_name, parent_id=None):
     folder = service.files().create(body=file_metadata, fields='id').execute()
     return folder.get('id')
 
+def get_all_gdrive_files(service, folder_id):
+    """Retrieves a set of all file names present in a specific Google Drive folder."""
+    file_names = set()
+    page_token = None
+    query = f"'{folder_id}' in parents and trashed = false"
+    print("   [Google Drive] Fetching list of already uploaded files for dynamic skipping...")
+    
+    while True:
+        try:
+            results = service.files().list(q=query, spaces='drive', fields='nextPageToken, files(name)', pageToken=page_token).execute()
+            items = results.get('files', [])
+            for item in items:
+                file_names.add(item.get('name'))
+            page_token = results.get('nextPageToken', None)
+            if page_token is None:
+                break
+        except Exception as e:
+            print(f"   ⚠️ Error fetching files from Google Drive: {e}")
+            break
+            
+    print(f"   [Google Drive] Found {len(file_names)} files in the destination folder.")
+    return file_names
+
 def get_or_create_gdrive_path(service, path_string):
     """Resolves a nested path string like 'FolderA/FolderB' into a final target folder ID."""
     parts = [p.strip() for p in path_string.split('/') if p.strip()]
@@ -151,18 +229,33 @@ def upload_to_gdrive(service, local_dir, drive_parent_id):
         upload_to_gdrive(service, path, sub_folder_id)
             
 # --- ORIGINAL SCRAPER UTILITIES ---
+def normalize_title(t):
+    return "".join(c for c in t.lower() if c.isalnum())
+
+def is_similar(found, target):
+    norm_f = normalize_title(found)
+    norm_t = normalize_title(target)
+    if norm_f == norm_t or norm_t in norm_f or norm_f in norm_t:
+        return True
+    return difflib.SequenceMatcher(None, norm_f, norm_t).ratio() > 0.90
+
 def load_checkpoint():
     if os.path.exists(CHECKPOINT_FILE):
         try:
             with open(CHECKPOINT_FILE, 'r', encoding='utf-8') as f:
-                return json.load(f)
+                data = json.load(f)
+                return {
+                    "processed_titles": data.get("processed_titles", []),
+                    "not_found_titles": data.get("not_found_titles", []),
+                    "success_count": data.get("success_count", 0)
+                }
         except Exception:
             pass
-    return {"processed_titles": [], "success_count": 0}
+    return {"processed_titles": [], "not_found_titles": [], "success_count": 0}
 
-def save_checkpoint(processed_titles, success_count):
+def save_checkpoint(processed_titles, not_found_titles, success_count):
     with open(CHECKPOINT_FILE, 'w', encoding='utf-8') as f:
-        json.dump({"processed_titles": processed_titles, "success_count": success_count}, f, ensure_ascii=False, indent=4)
+        json.dump({"processed_titles": processed_titles, "not_found_titles": not_found_titles, "success_count": success_count}, f, ensure_ascii=False, indent=4)
 
 def get_openreview_papers_fixed(conference_id, years):
     titles = []
@@ -170,7 +263,7 @@ def get_openreview_papers_fixed(conference_id, years):
         venue_id = f"{conference_id}/{year}/Conference"
         print(f"Đang quét bài được chấp nhận tại {venue_id}...")
         
-        if year <= 2023:
+        if year <= 2022:
             try:
                 client_v1 = openreview.Client(baseurl='https://api.openreview.net')
                 submissions = client_v1.get_all_notes(invitation=f"{venue_id}/-/Blind_Submission")
@@ -214,6 +307,70 @@ def get_openreview_papers_fixed(conference_id, years):
                 print(f"❌ Lỗi lọc bài hệ thống mới năm {year}: {e}")
         time.sleep(1)
     return list(set(titles))
+
+def get_dblp_papers(conference_id, years):
+    """
+    Fetches accepted paper titles from DBLP for conferences not hosted on OpenReview.
+    Uses pagination to bypass DBLP's 1000 items per page limit.
+    """
+    titles = []
+    for year in years:
+        print(f"Đang quét bài từ DBLP cho {conference_id} năm {year}...")
+        f = 0
+        h = 1000 
+        year_titles = 0
+        while True:
+            url = f"https://dblp.org/search/publ/api?q=venue:{conference_id}+year:{year}&format=json&h={h}&f={f}"
+            
+            # Retry loop for DBLP network requests
+            response = None
+            for attempt in range(5):
+                try:
+                    # Use DIRECT_SESSION first to avoid Tor drops, fallback to SESSION if blocked
+                    sess = DIRECT_SESSION if attempt < 2 else SESSION
+                    response = sess.get(url, timeout=30)
+                    if response.status_code == 200:
+                        break
+                    elif response.status_code == 429:
+                        print("   ⚠️ DBLP Rate limit reached. Sleeping 5s...")
+                        time.sleep(5)
+                except Exception as e:
+                    print(f"   ⚠️ DBLP connection glitch (Attempt {attempt+1}/5): {e}")
+                    time.sleep(3)
+            
+            if response is None or response.status_code != 200:
+                print(f"❌ Cannot fetch DBLP page after retries. Stopping for {year}.")
+                break
+                
+            try:
+                data = response.json()
+                hits = data.get('result', {}).get('hits', {})
+                total = int(hits.get('@total', 0))
+                
+                if total == 0:
+                    break
+                    
+                hit_list = hits.get('hit', [])
+                if not hit_list:
+                    break
+                    
+                for hit in hit_list:
+                    title = hit.get('info', {}).get('title', '')
+                    if title:
+                        if title.endswith('.'):
+                            title = title[:-1]
+                        titles.append(title.strip())
+                        year_titles += 1
+                        
+                f += len(hit_list)
+                if f >= total:
+                    break
+                time.sleep(1.5) # Polite delay
+            except Exception as e:
+                print(f"❌ Lỗi khi xử lý dữ liệu DBLP: {e}")
+                break
+        print(f"-> [Thành công] Tìm thấy {year_titles} bài từ DBLP cho năm {year}")
+    return list(set(titles))
 class ArxivRateLimiter:
     def __init__(self, max_requests=4, window=1.0):
         self.max_requests = max_requests
@@ -240,8 +397,10 @@ class ArxivRateLimiter:
 
 arxiv_rate_limiter = ArxivRateLimiter(max_requests=4, window=1.0)
 
-def make_arxiv_request(url, headers=None, stream=False, timeout=30, max_retries=5):
-    """Makes a rate-limited request to arXiv with retry logic for rate limits and server errors."""
+def make_arxiv_request(url, headers=None, stream=False, timeout=45, max_retries=5, use_direct_fallback=False):
+    """Makes a rate-limited request to arXiv with retry logic for rate limits and server errors.
+    If use_direct_fallback is True, it will bypass Tor and use DIRECT_SESSION for the final 2 retries.
+    """
     if headers is None:
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
@@ -250,15 +409,25 @@ def make_arxiv_request(url, headers=None, stream=False, timeout=30, max_retries=
     backoff = 2.0
     for attempt in range(max_retries):
         arxiv_rate_limiter.wait()
+        
+        session_to_use = SESSION
+        if use_direct_fallback and attempt >= max_retries - 2:
+            session_to_use = DIRECT_SESSION
+            if attempt == max_retries - 2:
+                print(f"   ⚠️ Tor failed repeatedly. Falling back to DIRECT connection...")
+                
         try:
-            response = SESSION.get(url, headers=headers, stream=stream, timeout=timeout)
+            response = session_to_use.get(url, headers=headers, stream=stream, timeout=timeout)
             
-            # Handle rate limit (429) or temporary server error (500, 502, 503, 504)
-            if response.status_code in (429, 500, 502, 503, 504):
+            # Handle rate limit (429) or temporary server error (403, 500, 502, 503, 504)
+            if response.status_code in (403, 429, 500, 502, 503, 504):
                 if attempt + 1 < max_retries:
                     print(f"   ⚠️ arXiv returned status code {response.status_code}. Retrying in {backoff}s... (Attempt {attempt+1}/{max_retries})")
-                    time.sleep(backoff)
-                    backoff *= 2.0
+                    if session_to_use == SESSION and 'socks' in SESSION.proxies.get('http', ''):
+                        rotate_ip()
+                    else:
+                        time.sleep(backoff)
+                    backoff *= 1.5
                     continue
                 else:
                     break
@@ -267,8 +436,11 @@ def make_arxiv_request(url, headers=None, stream=False, timeout=30, max_retries=
         except (requests.exceptions.RequestException, ConnectionError) as e:
             if attempt + 1 < max_retries:
                 print(f"   ⚠️ Connection error: {e}. Retrying in {backoff}s... (Attempt {attempt+1}/{max_retries})")
-                time.sleep(backoff)
-                backoff *= 2.0
+                if session_to_use == SESSION and 'socks' in SESSION.proxies.get('http', ''):
+                    rotate_ip()
+                else:
+                    time.sleep(backoff)
+                backoff *= 1.5
             else:
                 break
             
@@ -312,7 +484,7 @@ def query_arxiv_via_oai_pmh_batch(titles):
     
     results = {}
     try:
-        response = make_arxiv_request(search_url, timeout=30)
+        response = make_arxiv_request(search_url, timeout=45, use_direct_fallback=True)
         if response is None or response.status_code != 200:
             print("   ⚠️ arXiv API batch query failed. Setting ARXIV_API_BLOCKED = True to skip API and use HTML fallback.")
             ARXIV_API_BLOCKED = True
@@ -327,9 +499,6 @@ def query_arxiv_via_oai_pmh_batch(titles):
         namespaces = {'atom': 'http://www.w3.org/2005/Atom'}
         entries = root.findall('.//atom:entry', namespaces)
         
-        def normalize_title(t):
-            return "".join(c for c in t.lower() if c.isalnum())
-            
         for entry in entries:
             found_title_elem = entry.find('atom:title', namespaces)
             if found_title_elem is None or not found_title_elem.text:
@@ -377,7 +546,7 @@ def query_arxiv_via_semantic_scholar(title):
     time.sleep(1.0)
     
     try:
-        response = SESSION.get(url, timeout=30)
+        response = DIRECT_SESSION.get(url, timeout=30)
         
         if response.status_code == 200:
             data = response.json()
@@ -385,12 +554,7 @@ def query_arxiv_via_semantic_scholar(title):
                 paper = data["data"][0]
                 found_title = paper.get("title", "")
                 
-                def normalize_title(t):
-                    return "".join(c for c in t.lower() if c.isalnum())
-                    
-                if normalize_title(found_title) == normalize_title(title) or \
-                   normalize_title(title) in normalize_title(found_title) or \
-                   normalize_title(found_title) in normalize_title(title):
+                if is_similar(found_title, title):
                     
                     external_ids = paper.get("externalIds", {})
                     arxiv_id = external_ids.get("ArXiv")
@@ -427,20 +591,15 @@ def query_arxiv_via_html_search(title):
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         }
-        response = SESSION.get(url, headers=headers, timeout=30)
+        response = make_arxiv_request(url, headers=headers, timeout=45, max_retries=4, use_direct_fallback=True)
         
-        if response.status_code == 200:
+        if response and response.status_code == 200:
             html = response.text
             chunks = html.split('<li class="arxiv-result">')[1:]
             
             def clean_html(text):
                 clean = re.sub(r'<[^>]+>', '', text)
                 return " ".join(clean.split())
-                
-            def normalize_title(t):
-                return "".join(c for c in t.lower() if c.isalnum())
-                
-            norm_target_title = normalize_title(title)
             
             for chunk in chunks[:10]: # Check top 10 results
                 id_match = re.search(r'href="https://arxiv\.org/abs/([^"]+)"', chunk)
@@ -450,11 +609,8 @@ def query_arxiv_via_html_search(title):
                     raw_id = id_match.group(1)
                     arxiv_id = re.sub(r'v\d+$', '', raw_id).strip()
                     found_title = clean_html(title_match.group(1))
-                    norm_found_title = normalize_title(found_title)
                     
-                    if norm_found_title == norm_target_title or \
-                       norm_target_title in norm_found_title or \
-                       norm_found_title in norm_target_title:
+                    if is_similar(found_title, title):
                         print(f"   [HTML Search] Found ArXiv ID for '{title[:30]}...': {arxiv_id}")
                         return {"id": arxiv_id}
                         
@@ -487,30 +643,36 @@ def download_source_from_harvester(arxiv_id, title):
     src_url = f"https://arxiv.org/src/{quote(arxiv_id)}"
     
     def try_download(url, max_retries):
-        response = make_arxiv_request(url, stream=True, timeout=30, max_retries=max_retries)
-        if response is None or response.status_code != 200:
-            return None
+        for attempt in range(max_retries):
+            response = make_arxiv_request(url, stream=True, timeout=45, max_retries=3, use_direct_fallback=True)
+            if response is None or response.status_code != 200:
+                if attempt + 1 < max_retries:
+                    continue
+                return None
+                
+            safe_title = "".join([c if c.isalnum() else "_" for c in title[:50]])
+            paper_dir = os.path.join(DOWNLOAD_DIR, safe_title)
+            os.makedirs(paper_dir, exist_ok=True)
+            tar_path = os.path.join(paper_dir, f"{safe_title}.tar.gz")
             
-        safe_title = "".join([c if c.isalnum() else "_" for c in title[:50]])
-        paper_dir = os.path.join(DOWNLOAD_DIR, safe_title)
-        os.makedirs(paper_dir, exist_ok=True)
-        tar_path = os.path.join(paper_dir, f"{safe_title}.tar.gz")
-        
-        try:
-            with open(tar_path, 'wb') as f:
-                for chunk in response.iter_content(chunk_size=8192):
-                    if chunk:
-                        f.write(chunk)
-            return tar_path
-        except Exception as e:
-            print(f"   ⚠️ Stream connection broken during download of {url}: {e}")
-            # Clean up partial/corrupted file
-            if os.path.exists(tar_path):
-                try:
-                    os.remove(tar_path)
-                except Exception:
-                    pass
-            return None
+            try:
+                with open(tar_path, 'wb') as f:
+                    for chunk in response.iter_content(chunk_size=8192):
+                        if chunk:
+                            f.write(chunk)
+                return tar_path
+            except Exception as e:
+                print(f"   ⚠️ Stream connection broken during download of {url}: {e}")
+                # Clean up partial/corrupted file
+                if os.path.exists(tar_path):
+                    try:
+                        os.remove(tar_path)
+                    except Exception:
+                        pass
+                if attempt + 1 < max_retries:
+                    print(f"   🔄 Retrying broken download stream... (Attempt {attempt+1}/{max_retries})")
+                    time.sleep(2)
+        return None
 
     # Try downloading from arxiv.org first (as it supports > 1MB downloads)
     result_path = try_download(src_url, max_retries=3)
@@ -527,6 +689,7 @@ def main():
     # FIXED: Removed duplicate 'flow.run_local_server' lines that forced double authentication.
     checkpoint = load_checkpoint()
     processed_titles = set(checkpoint["processed_titles"])
+    not_found_titles = set(checkpoint["not_found_titles"])
     success_count = checkpoint["success_count"]
     
     print("Connecting to Google Drive API...")
@@ -535,14 +698,39 @@ def main():
         # FIXED: Resolves true folder hierarchy paths instead of making a single folder containing raw slashes
         main_folder_id = get_or_create_gdrive_path(gdrive_service, GDRIVE_FOLDER_NAME)
         print(f"Connected successfully. Target Google Drive Folder ID: {main_folder_id}")
+        
+        # DYNAMIC CHECK: Fetch all files currently on GDrive to avoid relying purely on local checkpoint
+        existing_gdrive_files = get_all_gdrive_files(gdrive_service, main_folder_id)
+        
     except Exception as e:
         print(f"❌ Failed to connect to Google Drive: {e}")
         return
 
     for conf in CONFERENCE_ID:
-        paper_titles = get_openreview_papers_fixed(conf, TARGET_YEARS)
-        # Filter out already processed
-        unprocessed_titles = [t for t in paper_titles if t not in processed_titles]
+        if conf in ["NeurIPS.cc", "ICLR.cc", "ICML.cc"]:
+            paper_titles = get_openreview_papers_fixed(conf, TARGET_YEARS)
+        else:
+            paper_titles = get_dblp_papers(conf, TARGET_YEARS)
+        
+        # Filter out already processed AND files that actually exist on Google Drive
+        unprocessed_titles = []
+        for t in paper_titles:
+            safe_title = "".join([c if c.isalnum() else "_" for c in t[:50]])
+            tar_file_name = f"{safe_title}.tar.gz"
+            
+            if tar_file_name not in existing_gdrive_files:
+                if t not in not_found_titles:
+                    unprocessed_titles.append(t)
+            elif t not in processed_titles:
+                # File is on GDrive but missing from local checkpoint. Heal the local checkpoint.
+                processed_titles.add(t)
+                if t in not_found_titles:
+                    not_found_titles.remove(t)
+                success_count += 1
+                
+        # Sync the checkpoint
+        save_checkpoint(list(processed_titles), list(not_found_titles), success_count)
+        
         total_unprocessed = len(unprocessed_titles)
         print(f"\nTổng số bài báo ACCEPTED chưa xử lý: {total_unprocessed}")
         
@@ -556,9 +744,6 @@ def main():
             api_results = query_arxiv_via_oai_pmh_batch(batch_titles)
             
             # Process each paper in the batch
-            def normalize_title(t):
-                return "".join(c for c in t.lower() if c.isalnum())
-                
             for title in batch_titles:
                 norm_title = normalize_title(title)
                 paper_info = api_results.get(norm_title)
@@ -572,9 +757,10 @@ def main():
                             
                 # If still not found, query our fallbacks (HTML search -> Semantic Scholar)
                 if not paper_info:
-                    print(f"   ⚠️ Title '{title[:30]}...' not found in arXiv batch. Trying fallbacks...")
+                    print(f"   ⚠️ Title '{title[:50]}...' not found in arXiv batch. Trying fallbacks...")
                     paper_info = resolve_arxiv_id(title)
                             
+                is_success = False
                 if paper_info:
                     if download_source_from_harvester(paper_info["id"], title):
                         safe_title = "".join([c if c.isalnum() else "_" for c in title[:50]])
@@ -592,13 +778,19 @@ def main():
                                 
                                 shutil.rmtree(paper_dir) # Clear local temp cache
                                 success_count += 1
+                                processed_titles.add(title)
+                                is_success = True
                             except Exception as e:
                                 print(f"   ❌ Lỗi đồng bộ lên Google Drive cho bài '{title[:30]}...': {e}")
                         else:
                             print(f"   ❌ Thư mục tải xuống không tồn tại: {paper_dir}")
                 
-                processed_titles.add(title)
-                save_checkpoint(list(processed_titles), success_count)
+                if not is_success:
+                    not_found_titles.add(title)
+                    if title in processed_titles:
+                        processed_titles.remove(title)
+                
+                save_checkpoint(list(processed_titles), list(not_found_titles), success_count)
             
     print(f"\nHoàn thành! Đã tải thành công nguồn .tex của {success_count} bài báo lên Google Drive.")
 
