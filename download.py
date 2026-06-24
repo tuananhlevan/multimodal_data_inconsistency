@@ -1,3 +1,4 @@
+import argparse
 import os
 import tarfile
 import gzip
@@ -25,7 +26,7 @@ from googleapiclient.http import MediaFileUpload
 load_dotenv()
 
 # --- CONFIGURATION ---
-CONFERENCE_ID = ["NeurIPS.cc", "ICLR.cc", "ICML.cc", "ACL", "EMNLP", "CVPR", "ECCV", "SIGIR", "KDD", "WSDM", "ICDM"]
+CONFERENCE_ID = ["NeurIPS.cc", "ICLR.cc", "ICML.cc", "ACL", "EMNLP", "CVPR", "ECCV", "SIGIR", "KDD", "WSDM", "ICDM", "SIGMOD", "ICDE"]
 TARGET_YEARS = [2025, 2024, 2023, 2022, 2021]
 DOWNLOAD_DIR = "./downloaded_tex"
 CHECKPOINT_FILE = "download_progress.json"
@@ -56,9 +57,9 @@ def rotate_ip():
         with Controller.from_port(port=TOR_CONTROL_PORT) as controller:
             controller.authenticate()  # Tries various authentication methods including cookie auth
             controller.signal(Signal.NEWNYM)
-            print("   🔄 [Tor] Successfully requested new IP identity.")
-            # Wait a few seconds for Tor to establish a new circuit
-            time.sleep(3)
+            print("   🔄 [Tor] Successfully requested new IP identity. Waiting 10s for circuit...")
+            # Wait for Tor to establish a new stable circuit
+            time.sleep(10)
     except Exception as e:
         error_msg = str(e)
         if "Permission denied" in error_msg and "control.authcookie" in error_msg:
@@ -397,7 +398,7 @@ class ArxivRateLimiter:
 
 arxiv_rate_limiter = ArxivRateLimiter(max_requests=4, window=1.0)
 
-def make_arxiv_request(url, headers=None, stream=False, timeout=45, max_retries=5, use_direct_fallback=False):
+def make_arxiv_request(url, headers=None, stream=False, timeout=45, max_retries=7, use_direct_fallback=False):
     """Makes a rate-limited request to arXiv with retry logic for rate limits and server errors.
     If use_direct_fallback is True, it will bypass Tor and use DIRECT_SESSION for the final 2 retries.
     """
@@ -591,7 +592,7 @@ def query_arxiv_via_html_search(title):
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
         }
-        response = make_arxiv_request(url, headers=headers, timeout=45, max_retries=4, use_direct_fallback=True)
+        response = make_arxiv_request(url, headers=headers, timeout=45, max_retries=7, use_direct_fallback=True)
         
         if response and response.status_code == 200:
             html = response.text
@@ -619,18 +620,62 @@ def query_arxiv_via_html_search(title):
         
     return None
 
+def query_arxiv_via_api_single(title):
+    """Queries export.arxiv.org/api/query for a single title, which often avoids strict HTML firewalls."""
+    clean_t = re.sub(r'\$.*?\$', '', title)
+    clean_t = re.sub(r'[\{\}\[\]\\]', '', clean_t)
+    clean_t = clean_t.replace('"', '').strip()
+    api_query_title = re.sub(r'[^a-zA-Z0-9\s]', ' ', clean_t)
+    api_query_title = re.sub(r'\s+', ' ', api_query_title).strip()
+    
+    if not api_query_title:
+        return None
+        
+    url = f"https://export.arxiv.org/api/query?search_query=ti:%22{quote(api_query_title)}%22&max_results=3"
+    
+    # Respect rate limit
+    time.sleep(1.0)
+    
+    try:
+        response = make_arxiv_request(url, timeout=45, max_retries=7, use_direct_fallback=True)
+        if response and response.status_code == 200:
+            root = ET.fromstring(response.content)
+            namespaces = {'atom': 'http://www.w3.org/2005/Atom'}
+            entries = root.findall('.//atom:entry', namespaces)
+            
+            for entry in entries:
+                found_title_elem = entry.find('atom:title', namespaces)
+                if found_title_elem is not None and found_title_elem.text:
+                    found_title = found_title_elem.text.replace('\n', ' ')
+                    if is_similar(found_title, title):
+                        id_url = entry.find('atom:id', namespaces).text
+                        raw_id = id_url.split('/abs/')[-1]
+                        arxiv_id = re.sub(r'v\d+$', '', raw_id).strip()
+                        print(f"   [API Search] Found ArXiv ID for '{title[:30]}...': {arxiv_id}")
+                        return {"id": arxiv_id}
+    except Exception as e:
+        print(f"   [API Search] Error resolving '{title[:30]}...': {e}")
+        
+    return None
+
 def resolve_arxiv_id(title):
     """
     Tries multiple methods to resolve a paper title to its arXiv ID.
-    Method 1: arXiv HTML search (free, fast, no rate limit).
-    Method 2: Semantic Scholar API (only if not currently blocked by a 429 cooldown).
+    Method 1: export.arxiv API (handles Tor well, fast).
+    Method 2: arXiv HTML search (fallback if API misses).
+    Method 3: Semantic Scholar API (only if not currently blocked by a 429 cooldown).
     """
-    # Method 1: HTML Search Page (highly reliable, no API rate limits)
+    # Method 1: API Single Search
+    result = query_arxiv_via_api_single(title)
+    if result:
+        return result
+
+    # Method 2: HTML Search Page (highly reliable, no API rate limits)
     result = query_arxiv_via_html_search(title)
     if result:
         return result
     
-    # Method 2: Semantic Scholar (only call if not in a cooldown period)
+    # Method 3: Semantic Scholar (only call if not in a cooldown period)
     if time.time() >= SEMANTIC_SCHOLAR_BLOCKED_UNTIL:
         result = query_arxiv_via_semantic_scholar(title)
         if result:
@@ -644,7 +689,7 @@ def download_source_from_harvester(arxiv_id, title):
     
     def try_download(url, max_retries):
         for attempt in range(max_retries):
-            response = make_arxiv_request(url, stream=True, timeout=45, max_retries=3, use_direct_fallback=True)
+            response = make_arxiv_request(url, stream=True, timeout=45, max_retries=7, use_direct_fallback=True)
             if response is None or response.status_code != 200:
                 if attempt + 1 < max_retries:
                     continue
@@ -675,7 +720,7 @@ def download_source_from_harvester(arxiv_id, title):
         return None
 
     # Try downloading from arxiv.org first (as it supports > 1MB downloads)
-    result_path = try_download(src_url, max_retries=3)
+    result_path = try_download(src_url, max_retries=7)
     
     # If it fails, fallback to export.arxiv.org
     if not result_path:
@@ -686,6 +731,10 @@ def download_source_from_harvester(arxiv_id, title):
     return result_path is not None
 
 def main():
+    parser = argparse.ArgumentParser(description="Download LaTeX sources from arXiv.")
+    parser.add_argument("--use_ckpt", action="store_true", help="Skip Google Drive file checking and use local checkpoint.")
+    args = parser.parse_args()
+
     # FIXED: Removed duplicate 'flow.run_local_server' lines that forced double authentication.
     checkpoint = load_checkpoint()
     processed_titles = set(checkpoint["processed_titles"])
@@ -699,8 +748,12 @@ def main():
         main_folder_id = get_or_create_gdrive_path(gdrive_service, GDRIVE_FOLDER_NAME)
         print(f"Connected successfully. Target Google Drive Folder ID: {main_folder_id}")
         
-        # DYNAMIC CHECK: Fetch all files currently on GDrive to avoid relying purely on local checkpoint
-        existing_gdrive_files = get_all_gdrive_files(gdrive_service, main_folder_id)
+        if args.use_ckpt:
+            print("   [Checkpoint] --use_ckpt flag enabled. Skipping Google Drive file check.")
+            existing_gdrive_files = set()
+        else:
+            # DYNAMIC CHECK: Fetch all files currently on GDrive to avoid relying purely on local checkpoint
+            existing_gdrive_files = get_all_gdrive_files(gdrive_service, main_folder_id)
         
     except Exception as e:
         print(f"❌ Failed to connect to Google Drive: {e}")
@@ -718,15 +771,19 @@ def main():
             safe_title = "".join([c if c.isalnum() else "_" for c in t[:50]])
             tar_file_name = f"{safe_title}.tar.gz"
             
-            if tar_file_name not in existing_gdrive_files:
-                if t not in not_found_titles:
+            if args.use_ckpt:
+                if t not in processed_titles and t not in not_found_titles:
                     unprocessed_titles.append(t)
-            elif t not in processed_titles:
-                # File is on GDrive but missing from local checkpoint. Heal the local checkpoint.
-                processed_titles.add(t)
-                if t in not_found_titles:
-                    not_found_titles.remove(t)
-                success_count += 1
+            else:
+                if tar_file_name not in existing_gdrive_files:
+                    if t not in not_found_titles:
+                        unprocessed_titles.append(t)
+                elif t not in processed_titles:
+                    # File is on GDrive but missing from local checkpoint. Heal the local checkpoint.
+                    processed_titles.add(t)
+                    if t in not_found_titles:
+                        not_found_titles.remove(t)
+                    success_count += 1
                 
         # Sync the checkpoint
         save_checkpoint(list(processed_titles), list(not_found_titles), success_count)
@@ -738,27 +795,12 @@ def main():
         batch_size = 30
         for start_idx in range(0, total_unprocessed, batch_size):
             batch_titles = unprocessed_titles[start_idx:start_idx + batch_size]
-            print(f"\n[{start_idx + 1}-{start_idx + len(batch_titles)}/{total_unprocessed}] Đang truy vấn metadata arXiv theo lô...")
-            
-            # Query batch
-            api_results = query_arxiv_via_oai_pmh_batch(batch_titles)
+            print(f"\n[{start_idx + 1}-{start_idx + len(batch_titles)}/{total_unprocessed}] Đang tìm kiếm mã arXiv qua HTML search...")
             
             # Process each paper in the batch
             for title in batch_titles:
-                norm_title = normalize_title(title)
-                paper_info = api_results.get(norm_title)
-                
-                # Substring match fallback for slight difference in symbols/colons
-                if not paper_info:
-                    for k, v in api_results.items():
-                        if norm_title in k or k in norm_title:
-                            paper_info = v
-                            break
-                            
-                # If still not found, query our fallbacks (HTML search -> Semantic Scholar)
-                if not paper_info:
-                    print(f"   ⚠️ Title '{title[:50]}...' not found in arXiv batch. Trying fallbacks...")
-                    paper_info = resolve_arxiv_id(title)
+                print(f"   => Đang tìm kiếm: '{title[:50]}...'")
+                paper_info = resolve_arxiv_id(title)
                             
                 is_success = False
                 if paper_info:
@@ -773,8 +815,19 @@ def main():
                                 local_tar_path = os.path.join(paper_dir, tar_file_name)
                                 
                                 file_metadata = {'name': tar_file_name, 'parents': [main_folder_id]}
-                                media = MediaFileUpload(local_tar_path, resumable=False)
-                                gdrive_service.files().create(body=file_metadata, media_body=media, fields='id').execute()
+                                media = MediaFileUpload(local_tar_path, resumable=True)
+                                
+                                max_retries = 3
+                                for attempt in range(max_retries):
+                                    try:
+                                        gdrive_service.files().create(body=file_metadata, media_body=media, fields='id').execute()
+                                        break
+                                    except Exception as e:
+                                        if attempt + 1 < max_retries:
+                                            print(f"   ⚠️ Lỗi mạng khi tải lên (Attempt {attempt+1}/{max_retries}): {e}. Đang thử lại...")
+                                            time.sleep(3)
+                                        else:
+                                            raise e
                                 
                                 shutil.rmtree(paper_dir) # Clear local temp cache
                                 success_count += 1

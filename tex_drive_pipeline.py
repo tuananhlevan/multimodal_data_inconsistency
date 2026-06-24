@@ -9,6 +9,7 @@ import shutil
 import sys
 import subprocess
 import tarfile
+import time
 import zipfile
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Sequence, Tuple
@@ -55,8 +56,11 @@ log = _setup_logger()
 CHECKPOINT_FILE = "tex_pipeline_checkpoint.json"
 
 
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
 class Checkpoint:
-    """Thread-unsafe but simple checkpoint backed by a JSON file.
+    """Thread-safe checkpoint backed by a JSON file.
 
     Schema::
 
@@ -75,6 +79,7 @@ class Checkpoint:
 
     def __init__(self, path: str = CHECKPOINT_FILE) -> None:
         self.path = path
+        self._lock = threading.Lock()
         self._data: dict = self._load()
 
     def _load(self) -> dict:
@@ -93,21 +98,24 @@ class Checkpoint:
         os.replace(tmp, self.path)
 
     def is_done(self, file_id: str) -> bool:
-        return file_id in self._data["processed"] or file_id in self._data["skipped"]
+        with self._lock:
+            return file_id in self._data["processed"] or file_id in self._data["skipped"]
 
     def mark_done(self, file_id: str, name: str, output_paths: List[str]) -> None:
-        self._data["processed"][file_id] = {
-            "name": name,
-            "processed_at": dt.datetime.utcnow().isoformat() + "Z",
-            "output_paths": output_paths,
-        }
-        self._save()
+        with self._lock:
+            self._data["processed"][file_id] = {
+                "name": name,
+                "processed_at": dt.datetime.utcnow().isoformat() + "Z",
+                "output_paths": output_paths,
+            }
+            self._save()
         log.debug("Checkpoint saved for file_id=%s (%s)", file_id, name)
 
     def mark_skipped(self, file_id: str, name: str) -> None:
-        if file_id not in self._data["skipped"]:
-            self._data["skipped"].append(file_id)
-            self._save()
+        with self._lock:
+            if file_id not in self._data["skipped"]:
+                self._data["skipped"].append(file_id)
+                self._save()
         log.debug("Checkpoint: marked unsupported file as skipped — %s", name)
 
     @property
@@ -683,6 +691,12 @@ def extract_archive(archive_path: str, destination_dir: str) -> None:
     raise ValueError(f"Unsupported archive format: {archive_path}")
 
 
+def archive_directory_to_tar_gz(source_dir: str, output_path: str) -> None:
+    """Compresses a directory into a .tar.gz archive."""
+    with tarfile.open(output_path, "w:gz") as tar:
+        tar.add(source_dir, arcname=os.path.basename(source_dir))
+
+
 def get_drive_service(client_secrets_path: Optional[str] = None, token_json_path: Optional[str] = None):
     creds = None
     if token_json_path and os.path.exists(token_json_path):
@@ -748,7 +762,18 @@ def download_drive_file(service, file_id: str, destination_path: str) -> None:
 def upload_drive_file(service, local_path: str, folder_id: str) -> None:
     metadata = {"name": os.path.basename(local_path), "parents": [folder_id]}
     media = MediaFileUpload(local_path, resumable=True)
-    service.files().create(body=metadata, media_body=media, fields="id").execute()
+    
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            service.files().create(body=metadata, media_body=media, fields="id").execute()
+            break
+        except Exception as e:
+            if attempt + 1 < max_retries:
+                log.warning("Upload failed for %s: %s. Retrying in 5s...", os.path.basename(local_path), e)
+                time.sleep(5)
+            else:
+                raise e
 
 
 def upload_drive_folder_recursive(service, local_dir: str, parent_folder_id: str) -> str:
@@ -762,7 +787,20 @@ def upload_drive_folder_recursive(service, local_dir: str, parent_folder_id: str
         "mimeType": "application/vnd.google-apps.folder",
         "parents": [parent_folder_id],
     }
-    drive_folder = service.files().create(body=folder_meta, fields="id").execute()
+    
+    max_retries = 3
+    drive_folder = None
+    for attempt in range(max_retries):
+        try:
+            drive_folder = service.files().create(body=folder_meta, fields="id").execute()
+            break
+        except Exception as e:
+            if attempt + 1 < max_retries:
+                log.warning("Folder creation failed for %s: %s. Retrying in 5s...", folder_name, e)
+                time.sleep(5)
+            else:
+                raise e
+                
     drive_folder_id = drive_folder["id"]
     log.debug("Created Drive folder '%s' (id=%s)", folder_name, drive_folder_id)
 
@@ -1295,6 +1333,13 @@ def process_drive_item(service, item: SourceItem, work_dir: str, output_dir: str
                 log.warning("Cleanup failed for %s: %s", path, cleanup_exc)
 
 
+_thread_local = threading.local()
+
+def get_worker_service(client_secrets_path: Optional[str], token_json_path: Optional[str]):
+    if not hasattr(_thread_local, "service"):
+        _thread_local.service = get_drive_service(client_secrets_path, token_json_path)
+    return _thread_local.service
+
 def process_drive_folder(
     service,
     source_folder_id: str,
@@ -1302,6 +1347,9 @@ def process_drive_folder(
     work_dir: str,
     output_dir: Optional[str] = None,
     checkpoint: Optional["Checkpoint"] = None,
+    client_secrets_path: Optional[str] = None,
+    token_json_path: Optional[str] = None,
+    max_workers: int = 4
 ) -> List[str]:
     ensure_dir(work_dir)
     local_output_dir = output_dir or os.path.join(work_dir, "structured_output")
@@ -1325,40 +1373,69 @@ def process_drive_folder(
         log.info("Skipping %d already-processed file(s). %d remaining.", already_done, len(todo))
 
     output_paths = []
-    for idx, item in enumerate(todo, start=1):
-        log.info("--- [%d/%d] %s (parent: %s)", idx, len(todo), item.name, item.parent_path or "/")
+    
+    def worker_task(item):
+        worker_service = get_worker_service(client_secrets_path, token_json_path)
+        try:
+            produced_paths = process_drive_item(worker_service, item, work_dir, local_output_dir)
+            if not produced_paths:
+                checkpoint.mark_skipped(item.file_id, item.name)
+                return []
+            
+            upload_ok = True
+            for produced_path in produced_paths:
+                if os.path.isdir(produced_path):
+                    tar_path = produced_path + ".tar.gz"
+                    try:
+                        log.info("  Compressing folder '%s' to '%s' before upload...", os.path.basename(produced_path), os.path.basename(tar_path))
+                        archive_directory_to_tar_gz(produced_path, tar_path)
+                        
+                        log.info("  Uploading archive '%s' → Drive folder id=%s", os.path.basename(tar_path), output_folder_id)
+                        upload_drive_file(worker_service, tar_path, output_folder_id)
+                        log.info("  ✅ Archive uploaded: %s", os.path.basename(tar_path))
+                    except Exception as exc:
+                        log.error("  ❌ Archive upload failed for %s: %s", produced_path, exc, exc_info=True)
+                        upload_ok = False
+                    finally:
+                        if os.path.exists(tar_path):
+                            os.remove(tar_path)
+                else:
+                    log.info("  Uploading file '%s' → Drive folder id=%s",
+                             os.path.basename(produced_path), output_folder_id)
+                    try:
+                        upload_drive_file(worker_service, produced_path, output_folder_id)
+                        log.info("  ✅ Uploaded: %s", os.path.basename(produced_path))
+                    except Exception as exc:
+                        log.error("  ❌ Upload failed for %s: %s", produced_path, exc, exc_info=True)
+                        upload_ok = False
+            
+            if upload_ok:
+                checkpoint.mark_done(item.file_id, item.name, produced_paths)
+                for produced_path in produced_paths:
+                    try:
+                        if os.path.isdir(produced_path):
+                            shutil.rmtree(produced_path)
+                        else:
+                            os.remove(produced_path)
+                        log.debug("  Cleaned up local output: %s", produced_path)
+                    except Exception as e:
+                        log.warning("  Failed to clean up local output %s: %s", produced_path, e)
+            return produced_paths
+        except Exception as e:
+            log.error("Worker exception on item %s: %s", item.name, e)
+            return []
 
-        produced_paths = process_drive_item(service, item, work_dir, local_output_dir)
-
-        if not produced_paths:
-            # Unsupported type or failed — mark skipped so we don't retry forever.
-            checkpoint.mark_skipped(item.file_id, item.name)
-            continue
-
-        upload_ok = True
-        for produced_path in produced_paths:
-            if os.path.isdir(produced_path):
-                log.info("  Uploading folder '%s' → Drive folder id=%s",
-                         os.path.basename(produced_path), output_folder_id)
-                try:
-                    upload_drive_folder_recursive(service, produced_path, output_folder_id)
-                    log.info("  ✅ Folder uploaded: %s", os.path.basename(produced_path))
-                except Exception as exc:
-                    log.error("  ❌ Folder upload failed for %s: %s", produced_path, exc, exc_info=True)
-                    upload_ok = False
-            else:
-                log.info("  Uploading file '%s' → Drive folder id=%s",
-                         os.path.basename(produced_path), output_folder_id)
-                try:
-                    upload_drive_file(service, produced_path, output_folder_id)
-                    log.info("  ✅ Uploaded: %s", os.path.basename(produced_path))
-                except Exception as exc:
-                    log.error("  ❌ Upload failed for %s: %s", produced_path, exc, exc_info=True)
-                    upload_ok = False
-            output_paths.append(produced_path)
-
-        if upload_ok:
-            checkpoint.mark_done(item.file_id, item.name, produced_paths)
+    log.info("Starting processing with %d max workers...", max_workers)
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_item = {executor.submit(worker_task, item): item for item in todo}
+        for idx, future in enumerate(as_completed(future_to_item), start=1):
+            item = future_to_item[future]
+            try:
+                paths = future.result()
+                output_paths.extend(paths)
+                log.info("--- Completed [%d/%d] %s", idx, len(todo), item.name)
+            except Exception as exc:
+                log.error("Item %s generated an exception: %s", item.name, exc)
 
     log.info("All done. %d new output file(s) produced. Total checkpoint: %d processed, %d skipped.",
              len(output_paths), checkpoint.n_processed, checkpoint.n_skipped)
@@ -1377,6 +1454,7 @@ def build_argument_parser() -> argparse.ArgumentParser:
     parser.add_argument("--delete-source", action="store_true", help="Delete the local input after successful processing.")
     parser.add_argument("--checkpoint-file", type=str, default=CHECKPOINT_FILE,
                         help=f"Path to the JSON checkpoint file (default: {CHECKPOINT_FILE}).")
+    parser.add_argument("--workers", type=int, default=4, help="Number of concurrent worker threads.")
     return parser
 
 
@@ -1421,6 +1499,9 @@ def main() -> None:
         work_dir=args.work_dir,
         output_dir=args.output_dir,
         checkpoint=Checkpoint(args.checkpoint_file),
+        client_secrets_path=args.client_secrets,
+        token_json_path=args.token_json,
+        max_workers=args.workers
     )
     log.info("Finished. %d output file(s) produced.", len(outputs))
 

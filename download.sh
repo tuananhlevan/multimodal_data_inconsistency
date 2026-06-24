@@ -1,0 +1,1 @@
+python download.py --use_ckpt
