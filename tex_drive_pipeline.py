@@ -24,9 +24,8 @@ from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
 
 # ---------------------------------------------------------------------------
-# Logging — writes to both terminal and tex_pipeline.log simultaneously.
+# Logging — writes to terminal.
 # ---------------------------------------------------------------------------
-LOG_FILE = "tex_pipeline.log"
 
 def _setup_logger() -> logging.Logger:
     logger = logging.getLogger("tex_pipeline")
@@ -39,12 +38,7 @@ def _setup_logger() -> logging.Logger:
     ch = logging.StreamHandler(sys.stdout)
     ch.setLevel(logging.INFO)
     ch.setFormatter(fmt)
-    # File handler (always DEBUG level — captures everything)
-    fh = logging.FileHandler(LOG_FILE, encoding="utf-8")
-    fh.setLevel(logging.DEBUG)
-    fh.setFormatter(fmt)
     logger.addHandler(ch)
-    logger.addHandler(fh)
     return logger
 
 log = _setup_logger()
@@ -1464,7 +1458,6 @@ def main() -> None:
 
     log.info("=" * 60)
     log.info("tex_drive_pipeline starting")
-    log.info("Log file: %s", os.path.abspath(LOG_FILE))
     log.info("=" * 60)
 
     ensure_dir(args.output_dir)

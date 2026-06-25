@@ -685,49 +685,72 @@ def resolve_arxiv_id(title):
 
 def download_source_from_harvester(arxiv_id, title):
     """Downloads the source package and keeps it safely compressed."""
+    # arxiv.org/src/ is primary because export.arxiv.org forces 1MB stream drops.
     src_url = f"https://arxiv.org/src/{quote(arxiv_id)}"
     
     def try_download(url, max_retries):
+        safe_title = "".join([c if c.isalnum() else "_" for c in title[:50]])
+        paper_dir = os.path.join(DOWNLOAD_DIR, safe_title)
+        os.makedirs(paper_dir, exist_ok=True)
+        tar_path = os.path.join(paper_dir, f"{safe_title}.tar.gz")
+
         for attempt in range(max_retries):
-            response = make_arxiv_request(url, stream=True, timeout=45, max_retries=7, use_direct_fallback=True)
-            if response is None or response.status_code != 200:
+            headers = {}
+            mode = 'wb'
+            initial_size = 0
+            
+            if os.path.exists(tar_path):
+                initial_size = os.path.getsize(tar_path)
+                if initial_size > 0:
+                    headers['Range'] = f'bytes={initial_size}-'
+                    mode = 'ab'
+                    
+            response = make_arxiv_request(url, headers=headers, stream=True, timeout=45, max_retries=7, use_direct_fallback=True)
+            if response is None:
+                continue
+                
+            if response.status_code == 416:
+                # Requested Range Not Satisfiable typically means we already have the full file
+                return tar_path
+                
+            if response.status_code not in (200, 206): # 206 Partial Content
                 if attempt + 1 < max_retries:
                     continue
                 return None
-                
-            safe_title = "".join([c if c.isalnum() else "_" for c in title[:50]])
-            paper_dir = os.path.join(DOWNLOAD_DIR, safe_title)
-            os.makedirs(paper_dir, exist_ok=True)
-            tar_path = os.path.join(paper_dir, f"{safe_title}.tar.gz")
             
             try:
-                with open(tar_path, 'wb') as f:
+                with open(tar_path, mode) as f:
                     for chunk in response.iter_content(chunk_size=8192):
                         if chunk:
                             f.write(chunk)
+                
+                # Check if we got the full file
+                expected_length = response.headers.get('content-length')
+                if expected_length:
+                    total_size = os.path.getsize(tar_path)
+                    expected_total = initial_size + int(expected_length)
+                    if total_size < expected_total:
+                        raise Exception(f"Incomplete download: {total_size}/{expected_total}")
+                
                 return tar_path
             except Exception as e:
                 print(f"   ⚠️ Stream connection broken during download of {url}: {e}")
-                # Clean up partial/corrupted file
-                if os.path.exists(tar_path):
-                    try:
-                        os.remove(tar_path)
-                    except Exception:
-                        pass
                 if attempt + 1 < max_retries:
-                    print(f"   🔄 Retrying broken download stream... (Attempt {attempt+1}/{max_retries})")
+                    current_size = os.path.getsize(tar_path) if os.path.exists(tar_path) else 0
+                    print(f"   🔄 Resuming broken download stream from {current_size} bytes... (Attempt {attempt+1}/{max_retries})")
                     time.sleep(2)
         return None
 
-    # Try downloading from arxiv.org first (as it supports > 1MB downloads)
-    result_path = try_download(src_url, max_retries=7)
+    # Try downloading from arxiv.org first
+    # We use a high max_retries (20) so the resumable downloader can stitch 
+    # together large files even if the stream drops every 1MB or 3MB.
+    result_path = try_download(src_url, max_retries=20)
     
     # If it fails, fallback to export.arxiv.org
     if not result_path:
-        fallback_url = f"https://export.arxiv.org/src/{quote(arxiv_id)}"
-        print(f"   ⚠️ arxiv.org failed. Falling back to export.arxiv.org (Note: limited to <1MB)...")
-        result_path = try_download(fallback_url, max_retries=1)
-        
+        fallback_url = f"https://export.arxiv.org/e-print/{quote(arxiv_id)}"
+        print(f"   ⚠️ arxiv.org failed. Falling back to export.arxiv.org...")
+        result_path = try_download(fallback_url, max_retries=20)
     return result_path is not None
 
 def main():
