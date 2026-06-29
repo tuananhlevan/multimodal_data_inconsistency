@@ -5,3 +5,6 @@ downloaded_tex
 __pycache__
 .env
 credentials.json
+dblp.xml.gz
+dblp.xml
+.codegraph

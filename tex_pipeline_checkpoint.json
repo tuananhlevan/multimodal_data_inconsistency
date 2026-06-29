@@ -96396,6 +96396,1854 @@
       "output_paths": [
         "./structured_tex_output/FedCompass_Efficient_Cross-Silo_Federated_Learning_on_Heterogeneous_Client_Devices_Using_a_Computing_Power-Aware_Schedu"
       ]
+    },
+    "1FoPpPIzjSMeIwJOCbfE7WjgMDA1LeyXq": {
+      "name": "VisKoP__Visual_Knowledge_oriented_Programming_for_.tar.gz",
+      "processed_at": "2026-06-29T04:42:14.817326Z",
+      "output_paths": [
+        "./structured_tex_output/includegraphics_scale_0.4_figures_logo_VisKoP-03.png_VisKoP_Visual_Knowledge_oriented_Programming_for_Interactive"
+      ]
+    },
+    "1UmQeHcQvcCRsK0pNnPuIJUylyk9U7iVE": {
+      "name": "Pretraining_with_Artificial_Language__Studying_Tra.tar.gz",
+      "processed_at": "2026-06-29T04:42:15.370615Z",
+      "output_paths": [
+        "./structured_tex_output/Pretraining_with_Artificial_Language_Studying_Transferable_Knowledge_in_Language_Models"
+      ]
+    },
+    "1DD9eBI1lx3avJaBPEUlYta4N6UuSe6gQ": {
+      "name": "Instruction_tuned_Language_Models_are_Better_Knowl.tar.gz",
+      "processed_at": "2026-06-29T04:42:28.156950Z",
+      "output_paths": [
+        "./structured_tex_output/Instruction-tuned_Language_Models_are_Better_Knowledge_Learners"
+      ]
+    },
+    "1Wu27JY9BPZf2QRwUtkdmmeGtFJ0B386F": {
+      "name": "Parallel_Structures_in_Pre_training_Data_Yield_In_.tar.gz",
+      "processed_at": "2026-06-29T04:42:29.324541Z",
+      "output_paths": [
+        "./structured_tex_output/Parallel_Structures_in_Pre_training_Data_Yield_In"
+      ]
+    },
+    "1aaFsFBFIiBQ4ISBPe_np1NBAS1qpQc3F": {
+      "name": "WebCPM__Interactive_Web_Search_for_Chinese_Long_fo.tar.gz",
+      "processed_at": "2026-06-29T04:42:45.588786Z",
+      "output_paths": [
+        "./structured_tex_output/textsc_ourmodel_Interactive_Web_Search_for_Chinese_Long-form_Question_Answering"
+      ]
+    },
+    "1CkfwDJkqfLXx5t1eTXzTSWykGT6ahC0p": {
+      "name": "Speculative_Decoding_via_Early_exiting_for_Faster_.tar.gz",
+      "processed_at": "2026-06-29T04:42:52.561641Z",
+      "output_paths": [
+        "./structured_tex_output/Speculative_Decoding_via_Early_exiting_for_Faster"
+      ]
+    },
+    "1R_W6QUtOOxzsUR3MNElTQ22lLxCFQ4Qb": {
+      "name": "PIG__Privacy_Jailbreak_Attack_on_LLMs_via_Gradient.tar.gz",
+      "processed_at": "2026-06-29T04:42:55.304148Z",
+      "output_paths": [
+        "./structured_tex_output/PIG__Privacy_Jailbreak_Attack_on_LLMs_via_Gradient"
+      ]
+    },
+    "13laWYsjVQIBzDVT0pasxFjNab0TWCNi4": {
+      "name": "HateCheck__Functional_Tests_for_Hate_Speech_Detect.tar.gz",
+      "processed_at": "2026-06-29T04:43:03.232547Z",
+      "output_paths": [
+        "./structured_tex_output/textsc_HateCheck_Functional_Tests_for_Hate_Speech_Detection_Models"
+      ]
+    },
+    "13tJg2_wmJbz6NLw0gkpIsY4h47QmDGrd": {
+      "name": "Evaluating_Paraphrastic_Robustness_in_Textual_Enta.tar.gz",
+      "processed_at": "2026-06-29T04:43:12.836234Z",
+      "output_paths": [
+        "./structured_tex_output/Evaluating_Paraphrastic_Robustness_in_Textual_Entailment_Models"
+      ]
+    },
+    "1-DNonkVuztMd6FqGdnYTCQqiXXeo0nGv": {
+      "name": "Bilingual_alignment_transfers_to_multilingual_alig.tar.gz",
+      "processed_at": "2026-06-29T04:43:27.204947Z",
+      "output_paths": [
+        "./structured_tex_output/Bilingual_alignment_transfers_to_multilingual_alignment_for_unsupervised_parallel_text_mining"
+      ]
+    },
+    "1oSD82KSdsp52VggPqipWe-V9LLXaPaLJ": {
+      "name": "Zemi__Learning_Zero_Shot_Semi_Parametric_Language_.tar.gz",
+      "processed_at": "2026-06-29T04:43:27.894654Z",
+      "output_paths": [
+        "./structured_tex_output/ours_Learning_Zero-Shot_Semi-Parametric_Language_Models_from_Multiple_Tasks"
+      ]
+    },
+    "1gJsbwwKPJeJ51SqeICZ1Ylsi4-jVy0T0": {
+      "name": "HiRoPE__Length_Extrapolation_for_Code_Models_Using.tar.gz",
+      "processed_at": "2026-06-29T04:43:51.432512Z",
+      "output_paths": [
+        "./structured_tex_output/HiRoPE__Length_Extrapolation_for_Code_Models_Using"
+      ]
+    },
+    "1bNyB8v11hmP-A0ZNEXTxT4fR7EcK7ReK": {
+      "name": "PTQ1_61__Push_the_Real_Limit_of_Extremely_Low_Bit_.tar.gz",
+      "processed_at": "2026-06-29T04:43:55.417571Z",
+      "output_paths": [
+        "./structured_tex_output/textbf_PTQ_textit_1.61_Push_the_Real_Limit_of_Extremely_Low-Bit_Post-Training_Quantization_Methods_for_Large_Languag"
+      ]
+    },
+    "1krMwIfqNY3mZABAR-SgbHrLQ09xbO7xF": {
+      "name": "Dependency_Parsing_as_MRC_based_Span_Span_Predicti.tar.gz",
+      "processed_at": "2026-06-29T04:44:10.467844Z",
+      "output_paths": [
+        "./structured_tex_output/Dependency_Parsing_as_MRC_based_Span_Span_Predicti"
+      ]
+    },
+    "1Ho8ClEQD1nnw0-fo0XnbXXRqBhqjHG7y": {
+      "name": "DioR__Adaptive_Cognitive_Detection_and_Contextual_.tar.gz",
+      "processed_at": "2026-06-29T04:44:11.728657Z",
+      "output_paths": [
+        "./structured_tex_output/DioR_Adaptive_Cognitive_Detection_and_Contextual_Retrieval_Optimization_for_Dynamic_Retrieval-Augmented_Generation"
+      ]
+    },
+    "1kJE3sT7K9AbtUun2eepp17-y9ueNZkfP": {
+      "name": "Metaphor_Generation_with_Conceptual_Mappings.tar.gz",
+      "processed_at": "2026-06-29T04:44:33.843047Z",
+      "output_paths": [
+        "./structured_tex_output/Metaphor_Generation_with_Conceptual_Mappings"
+      ]
+    },
+    "1IWISh-J0VZbrkpISX_bm3ZjY4EIWGSxf": {
+      "name": "SHIELD__Defending_Textual_Neural_Networks_against_.tar.gz",
+      "processed_at": "2026-06-29T04:44:34.311957Z",
+      "output_paths": [
+        "./structured_tex_output/SHIELD_Defending_Textual_Neural_Networks_against_Multiple_Black-Box_Adversarial_Attacks_with_Stochastic_Multi-Expert_Pa"
+      ]
+    },
+    "1m6n_7hKuvgURJ0bHAmLaKx61iey5buGk": {
+      "name": "DiffChat__Learning_to_Chat_with_Text_to_Image_Synt.tar.gz",
+      "processed_at": "2026-06-29T04:44:54.993476Z",
+      "output_paths": [
+        "./structured_tex_output/textit_DiffChat_Learning_to_Chat_with_Text-to-Image_Synthesis_Models_for_Interactive_Image_Creation"
+      ]
+    },
+    "1gCqRF8-TFJhuu_C7UVBX9X3V61dgO0JN": {
+      "name": "CFL__Causally_Fair_Language_Models_Through_Token_l.tar.gz",
+      "processed_at": "2026-06-29T04:44:56.307001Z",
+      "output_paths": [
+        "./structured_tex_output/CFL__Causally_Fair_Language_Models_Through_Token_l"
+      ]
+    },
+    "1XCI7EQUu6te2wqxGLnG6EGTdrieNEDbF": {
+      "name": "An_Isotropy_Analysis_in_the_Multilingual_BERT_Embe.tar.gz",
+      "processed_at": "2026-06-29T04:45:07.828872Z",
+      "output_paths": [
+        "./structured_tex_output/An_Isotropy_Analysis_in_the_Multilingual_BERT_Embedding_Space"
+      ]
+    },
+    "1Tij8yn6lD63eIsvotLaqlXcxFNGjgFX7": {
+      "name": "On_Degrees_of_Freedom_in_Defining_and_Testing_Natu.tar.gz",
+      "processed_at": "2026-06-29T04:45:15.671908Z",
+      "output_paths": [
+        "./structured_tex_output/On_Degrees_of_Freedom_in_Defining_and_Testing_Natural_Language_Understanding"
+      ]
+    },
+    "16vhV_XoaTXGQQ0Gd7JdPZJK8l3HqseWL": {
+      "name": "CiteWorth__Cite_Worthiness_Detection_for_Improved_.tar.gz",
+      "processed_at": "2026-06-29T04:45:17.881788Z",
+      "output_paths": [
+        "./structured_tex_output/dataset_Cite-Worthiness_Detection_for_Improved_Scientific_Document_Understanding"
+      ]
+    },
+    "1NHe5NxggjJ-gE4HewxvRiPj3ET9Mt2IQ": {
+      "name": "Your_spouse_needs_professional_help__Determining_t.tar.gz",
+      "processed_at": "2026-06-29T04:45:38.815095Z",
+      "output_paths": [
+        "./structured_tex_output/Your_spouse_needs_professional_help_Determining_the_Contextual_Appropriateness_of_Messages_through_Modeling_Social_Rela"
+      ]
+    },
+    "1s7mDGu558b3BLlto_M5nKIx_lRHyHQoM": {
+      "name": "Rank__Chunk_and_Expand__Lineage_Oriented_Reasoning.tar.gz",
+      "processed_at": "2026-06-29T04:45:42.103497Z",
+      "output_paths": [
+        "./structured_tex_output/textit_Rank_Chunk_and_Expand_Lineage-Oriented_Reasoning_for_Taxonomy_Expansion"
+      ]
+    },
+    "1qaGsDl3bfkreBM7RSopJd89I8CJkmGyF": {
+      "name": "Enhance_Multimodal_Consistency_and_Coherence_for_T.tar.gz",
+      "processed_at": "2026-06-29T04:45:55.443413Z",
+      "output_paths": [
+        "./structured_tex_output/Enhance_Multimodal_Consistency_and_Coherence_for_Text-Image_Plan_Generation"
+      ]
+    },
+    "1MtYT2SgdIVfGtXtMy6YynpDqgzkTtya3": {
+      "name": "Contextual_Fine_to_Coarse_Distillation_for_Coarse_.tar.gz",
+      "processed_at": "2026-06-29T04:46:04.445353Z",
+      "output_paths": [
+        "./structured_tex_output/Contextual_Fine-to-Coarse_Distillation_for_Coarse-grained_Response_Selection_in_Open-Domain_Conversations"
+      ]
+    },
+    "1unrV5GujDRNIUkucTBjApzDTPkVbkcPk": {
+      "name": "Data_Laundering__Artificially_Boosting_Benchmark_R.tar.gz",
+      "processed_at": "2026-06-29T04:46:08.589479Z",
+      "output_paths": [
+        "./structured_tex_output/Data_Laundering_Artificially_Boosting_Benchmark_Results_through_Knowledge_Distillation"
+      ]
+    },
+    "1rmH6OPFc-aCRx5gMebTDLvUaMSQkKdK9": {
+      "name": "Response_conditioned_Turn_taking_Prediction.tar.gz",
+      "processed_at": "2026-06-29T04:46:09.383998Z",
+      "output_paths": [
+        "./structured_tex_output/Response-conditioned_Turn-taking_Prediction"
+      ]
+    },
+    "1VdFK3N2WIKZcpp0A5Mg1dQt7GnKEOiH2": {
+      "name": "Investigating_the_Impact_of_Model_Instability_on_E.tar.gz",
+      "processed_at": "2026-06-29T04:46:16.013047Z",
+      "output_paths": [
+        "./structured_tex_output/Investigating_the_Impact_of_Model_Instability_on_Explanations_and_Uncertainty"
+      ]
+    },
+    "1Xu316Xd39QM5FRApPKvt8vEAUzIXchfn": {
+      "name": "RemoteRAG__A_Privacy_Preserving_LLM_Cloud_RAG_Serv.tar.gz",
+      "processed_at": "2026-06-29T04:46:28.835763Z",
+      "output_paths": [
+        "./structured_tex_output/RemoteRAG__A_Privacy_Preserving_LLM_Cloud_RAG_Serv"
+      ]
+    },
+    "1KAk4BGY9_6KW9q3PKgWKdk4_6RDBugAg": {
+      "name": "EnSToM__Enhancing_Dialogue_Systems_with_Entropy_Sc.tar.gz",
+      "processed_at": "2026-06-29T04:46:47.687216Z",
+      "output_paths": [
+        "./structured_tex_output/EnSToM_Enhancing_Dialogue_Systems_with_Entropy-Scaled_Steering_Vectors_for_Topic_Maintenance"
+      ]
+    },
+    "1VI_IA94FIsdGoXeS6nguwnAYxhD9b33c": {
+      "name": "BotEval__Facilitating_Interactive_Human_Evaluation.tar.gz",
+      "processed_at": "2026-06-29T04:46:57.541780Z",
+      "output_paths": [
+        "./structured_tex_output/ours_Facilitating_Interactive_Human_Evaluation"
+      ]
+    },
+    "1yd8ftsO4r2VmVBCrweAyfQaNgxJSsrFK": {
+      "name": "InCharacter__Evaluating_Personality_Fidelity_in_Ro.tar.gz",
+      "processed_at": "2026-06-29T04:47:04.978703Z",
+      "output_paths": [
+        "./structured_tex_output/InCharacter__Evaluating_Personality_Fidelity_in_Ro"
+      ]
+    },
+    "1e8qaKYU0j8-OsMg4-qJw-5SmRUMiXpFk": {
+      "name": "MirrorAlign__A_Super_Lightweight_Unsupervised_Word.tar.gz",
+      "processed_at": "2026-06-29T04:47:16.365482Z",
+      "output_paths": [
+        "./structured_tex_output/MirrorAlign_A_Super_Lightweight_Unsupervised_Word_Alignment_Model_via_Cross-Lingual_Contrastive_Learning"
+      ]
+    },
+    "1FgF9InRHLK8Tlg4D1xNIVwq0aaYVGmCf": {
+      "name": "Thinking_Before_Running__Efficient_Code_Generation.tar.gz",
+      "processed_at": "2026-06-29T04:47:18.974381Z",
+      "output_paths": [
+        "./structured_tex_output/textit_Thinking_Before_Running_Efficient_Code_Generation_with_Thorough_Exploration_and_Optimal_Refinement"
+      ]
+    },
+    "1gFHq4gMJdWCVThh83GZfVwJ9yyLB4-Ib": {
+      "name": "Abductive_Commonsense_Reasoning_Exploiting_Mutuall.tar.gz",
+      "processed_at": "2026-06-29T04:47:34.420157Z",
+      "output_paths": [
+        "./structured_tex_output/Abductive_Commonsense_Reasoning_Exploiting_Mutuall"
+      ]
+    },
+    "14Ill_RYO_u6PVXmDXsMFo27CkkcE0CeT": {
+      "name": "Align\u00b2LLaVA__Cascaded_Human_and_Large_Language_Mod.tar.gz",
+      "processed_at": "2026-06-29T04:47:45.437031Z",
+      "output_paths": [
+        "./structured_tex_output/includegraphics_height_0.25in_width_0.25in_pics_strategic.png_Align_2_LLaVA_Cascaded_Human_and_Large_Language_Mode"
+      ]
+    },
+    "1JUdHrn7-7AWq5pNz5oLU-o_QEuIsKzNE": {
+      "name": "Empirical_Error_Modeling_Improves_Robustness_of_No.tar.gz",
+      "processed_at": "2026-06-29T04:48:01.048513Z",
+      "output_paths": [
+        "./structured_tex_output/Empirical_Error_Modeling_Improves_Robustness_of_Noisy_Neural_Sequence_Labeling"
+      ]
+    },
+    "1xj1GKfEfpuJ_QoOdiw7oqbvQeR3g3mUt": {
+      "name": "EVIT__Event_Oriented_Instruction_Tuning_for_Event_.tar.gz",
+      "processed_at": "2026-06-29T04:48:04.067508Z",
+      "output_paths": [
+        "./structured_tex_output/EVIT__Event_Oriented_Instruction_Tuning_for_Event"
+      ]
+    },
+    "1J3py3ckdRgBY2CwZ3EF8YYWrpukn8b1Q": {
+      "name": "CoCo_Agent__A_Comprehensive_Cognitive_MLLM_Agent_f.tar.gz",
+      "processed_at": "2026-06-29T04:48:30.977254Z",
+      "output_paths": [
+        "./structured_tex_output/CoCo-Agent_A_Comprehensive_Cognitive_MLLM_Agent_for_Smartphone_GUI_Automation"
+      ]
+    },
+    "16-wp4L38WxUaPuHK6H94yfkzMSQHRin8": {
+      "name": "How_Vocabulary_Sharing_Facilitates_Multilingualism.tar.gz",
+      "processed_at": "2026-06-29T04:48:37.640872Z",
+      "output_paths": [
+        "./structured_tex_output/How_Vocabulary_Sharing_Facilitates_Multilingualism"
+      ]
+    },
+    "1DRtqfs0deAOgQAjimXKM7HGUDptip1ly": {
+      "name": "A_Unified_Temporal_Knowledge_Graph_Reasoning_Model.tar.gz",
+      "processed_at": "2026-06-29T04:48:43.106973Z",
+      "output_paths": [
+        "./structured_tex_output/A_Unified_Temporal_Knowledge_Graph_Reasoning_Model_Towards_Interpolation_and_Extrapolation"
+      ]
+    },
+    "1QrszgS2TkmzBEXA14OTZC4OGa0IMsYY3": {
+      "name": "Progressive_Multi_Granularity_Training_for_Non_Aut.tar.gz",
+      "processed_at": "2026-06-29T04:48:49.346095Z",
+      "output_paths": [
+        "./structured_tex_output/Progressive_Multi-Granularity_Training_for_Non-Autoregressive_Translation"
+      ]
+    },
+    "1--KNsMjtK6cRdpa552jE1wMGQtng_Hyl": {
+      "name": "PESCO__Prompt_enhanced_Self_Contrastive_Learning_f.tar.gz",
+      "processed_at": "2026-06-29T04:49:08.794877Z",
+      "output_paths": [
+        "./structured_tex_output/PESCO_Prompt-enhanced_Self_Contrastive_Learning_for_Zero-shot_Text_Classification"
+      ]
+    },
+    "1asIvBOFwjNugo8EBQ-RQN_O2ZDqMV_6o": {
+      "name": "Multi_target_Backdoor_Attacks_for_Code_Pre_trained.tar.gz",
+      "processed_at": "2026-06-29T04:49:12.063521Z",
+      "output_paths": [
+        "./structured_tex_output/Multi_target_Backdoor_Attacks_for_Code_Pre_trained"
+      ]
+    },
+    "1582ZUCHAS7JsrP-46x_fasTLm6gPFR4B": {
+      "name": "Utilizing_Semantic_Textual_Similarity_for_Clinical.tar.gz",
+      "processed_at": "2026-06-29T04:49:31.879632Z",
+      "output_paths": [
+        "./structured_tex_output/Utilizing_Semantic_Textual_Similarity_for_Clinical_Survey_Data_Feature_Selection_Supplementary_Material"
+      ]
+    },
+    "1OYluE_ULyP7N5bP-vuPDnfwwzAdem7Yi": {
+      "name": "Beyond_Text__Leveraging_Multi_Task_Learning_and_Co.tar.gz",
+      "processed_at": "2026-06-29T04:49:46.280777Z",
+      "output_paths": [
+        "./structured_tex_output/Modeling_behavioral_intentions_in_reviews_using_cognitive_appraisals_and_emotions"
+      ]
+    },
+    "1NTIR-9ARdc-bptLxRO6_WYA9ZMuzVV8U": {
+      "name": "RoleLLM__Benchmarking__Eliciting__and_Enhancing_Ro.tar.gz",
+      "processed_at": "2026-06-29T04:50:02.178832Z",
+      "output_paths": [
+        "./structured_tex_output/includegraphics_scale_0.06_figs_rolellm-logo.png_RoleLLM_Benchmarking_Eliciting_and_Enhancing_Role-Playing_Abilitie"
+      ]
+    },
+    "1-mEEjh-Qn9UfZeI0sdGW_FPktt2Gqwg2": {
+      "name": "Speaking_the_Language_of_Your_Listener__Audience_A.tar.gz",
+      "processed_at": "2026-06-29T04:50:34.007284Z",
+      "output_paths": [
+        "./structured_tex_output/Speaking_the_Language_of_Your_Listener_Audience-Aware_Adaptation_via_Plug-and-Play_Theory_of_Mind"
+      ]
+    },
+    "10AEVDyuK0uHglAZbCTfEBfAGxjkGpgID": {
+      "name": "LU_BZU_at_SemEval_2021_Task_2__Word2Vec_and_Lemma2.tar.gz",
+      "processed_at": "2026-06-29T04:50:34.766781Z",
+      "output_paths": [
+        "./structured_tex_output/LU-BZU_at_SemEval-2021_Task_2_Word2Vec_and_Lemma2Vec_performance_in_Arabic_Word-in-Context_disambiguation"
+      ]
+    },
+    "1Liish4xcEclPuLEHFzjr9FbF4avJi9HL": {
+      "name": "Using_Counterexample_Generation_and_Theory_Explora.tar.gz",
+      "processed_at": "2026-06-29T04:50:37.429938Z",
+      "output_paths": [
+        "./structured_tex_output/Using_Counterexample_Generation_and_Theory_Exploration_to_Suggest_Missing_Hypotheses"
+      ]
+    },
+    "1syiEHopeDEJIqgFTIgDSbiGp-nRHKmx0": {
+      "name": "gMBA__Expression_Semantic_Guided_Mixed_Boolean_Ari.tar.gz",
+      "processed_at": "2026-06-29T04:50:45.677467Z",
+      "output_paths": [
+        "./structured_tex_output/gMBA_Expression_Semantic_Guided_Mixed_Boolean-Arithmetic_Deobfuscation_Using_Transformer_Architectures"
+      ]
+    },
+    "1cGoOQX5HJmy-GshqvTquXj7nwB67nr-i": {
+      "name": "Predicting_Depression_in_Screening_Interviews_from.tar.gz",
+      "processed_at": "2026-06-29T04:50:48.435892Z",
+      "output_paths": [
+        "./structured_tex_output/Predicting_Depression_in_Screening_Interviews_from_Interactive_Multi-Theme_Collaboration"
+      ]
+    },
+    "1B2CeQmykMRiFjBzXwNGvtQLyF3ynF6VI": {
+      "name": "Understanding_Programs_by_Exploiting__Fuzzing__Tes.tar.gz",
+      "processed_at": "2026-06-29T04:51:05.557170Z",
+      "output_paths": [
+        "./structured_tex_output/Understanding_Programs_by_Exploiting_Fuzzing_Test_Cases"
+      ]
+    },
+    "1hdaDiEFF_U6wr23RvVs0feXKEc-icB7j": {
+      "name": "M2RC_EVAL__Massively_Multilingual_Repository_level.tar.gz",
+      "processed_at": "2026-06-29T04:51:05.741887Z",
+      "output_paths": [
+        "./structured_tex_output/benchmark_Massively_Multilingual_Repository-level_Code_Completion_Evaluation"
+      ]
+    },
+    "1FclzV82PtlU8ePzasdOPBZgXjh8Qd497": {
+      "name": "AdaTag__Multi_Attribute_Value_Extraction_from_Prod.tar.gz",
+      "processed_at": "2026-06-29T04:51:25.404558Z",
+      "output_paths": [
+        "./structured_tex_output/AdaTag_Multi-Attribute_Value_Extraction_from_Product_Profiles_with_Adaptive_Decoding"
+      ]
+    },
+    "1E0J6k-QpmmvgMTPyIz6vDovknBDEqm3E": {
+      "name": "Language_Mediated__Object_Centric_Representation_L.tar.gz",
+      "processed_at": "2026-06-29T04:51:25.485019Z",
+      "output_paths": [
+        "./structured_tex_output/Language-Mediated_Object-Centric_Representation_Learning"
+      ]
+    },
+    "1iAME8QX08QLyfyma7NHUKe2Bp_1MDVTI": {
+      "name": "Implicit_Memory_Transformer_for_Computationally_Ef.tar.gz",
+      "processed_at": "2026-06-29T04:51:32.471911Z",
+      "output_paths": [
+        "./structured_tex_output/Implicit_Memory_Transformer_for_Computationally_Efficient_Simultaneous_Speech_Translation"
+      ]
+    },
+    "158S3jX9pRBT9dPawenUuxdP3QAPigAuG": {
+      "name": "MMSciBench__Benchmarking_Language_Models_on_Chines.tar.gz",
+      "processed_at": "2026-06-29T04:51:59.255468Z",
+      "output_paths": [
+        "./structured_tex_output/MMSciBench_Benchmarking_Language_Models_on_Chinese_Multimodal_Scientific_Problems"
+      ]
+    },
+    "1jPaJ4UKelZhAJHCqPfhpJ0e-gBHsRIgK": {
+      "name": "SciVerse__Unveiling_the_Knowledge_Comprehension_an.tar.gz",
+      "processed_at": "2026-06-29T04:52:07.382809Z",
+      "output_paths": [
+        "./structured_tex_output/textsc_SciVerse_vspace_0.1cm_Unveiling_the_Knowledge_Comprehension_and_Visual_Reasoning_of_LMMs_on_Multi-modal_Sci"
+      ]
+    },
+    "1HURVZoDLTv1xqEv9fZQjIUYAScByfT7t": {
+      "name": "Plan_and_Solve_Prompting__Improving_Zero_Shot_Chai.tar.gz",
+      "processed_at": "2026-06-29T04:52:19.310780Z",
+      "output_paths": [
+        "./structured_tex_output/Plan-and-Solve_Prompting_Improving_Zero-Shot_Chain-of-Thought_Reasoning_by_Large_Language_Models"
+      ]
+    },
+    "1qUq6X-ujNkHG_yURnYN1l6iAJ3aNGbcA": {
+      "name": "Grounding_Task_Assistance_with_Multimodal_Cues_fro.tar.gz",
+      "processed_at": "2026-06-29T04:52:23.897249Z",
+      "output_paths": [
+        "./structured_tex_output/Multimodal_Interactive_Contextualized_Real_World_Task_Assistance_from_a_Single_Demonstration"
+      ]
+    },
+    "1h7U4jFONCXEAxkbrVjF3MeiTj7vPLyc8": {
+      "name": "LogicGame__Benchmarking_Rule_Based_Reasoning_Abili.tar.gz",
+      "processed_at": "2026-06-29T04:52:24.600568Z",
+      "output_paths": [
+        "./structured_tex_output/textsc_LogicGame_Benchmarking_Rule-Based_Reasoning_Abilities_of_Large_Language_Models"
+      ]
+    },
+    "1EZFsWF5NH8rOWY7Wz9b84_JppDESVMHj": {
+      "name": "Single_Model_Ensemble_for_Subword_Regularized_Mode.tar.gz",
+      "processed_at": "2026-06-29T04:52:29.785106Z",
+      "output_paths": [
+        "./structured_tex_output/Single_Model_Ensemble_for_Subword_Regularized_Models_in_Low-Resource_Machine_Translation"
+      ]
+    },
+    "1xNVRyXFeSFwUarxazNwTOB36poUdpvpy": {
+      "name": "Exploring_Multi_Modal_Data_with_Tool_Augmented_LLM.tar.gz",
+      "processed_at": "2026-06-29T04:52:42.337790Z",
+      "output_paths": [
+        "./structured_tex_output/Exploring_Multi_Modal_Data_with_Tool_Augmented_LLM"
+      ]
+    },
+    "1RTeqRZ62B83U9u6zNowRndkqHsGAVvKG": {
+      "name": "SafeChain__Safety_of_Language_Models_with_Long_Cha.tar.gz",
+      "processed_at": "2026-06-29T04:52:45.205708Z",
+      "output_paths": [
+        "./structured_tex_output/textsc_SafeChain_Safety_of_Language_Models_with_Long_Chain-of-Thought_Reasoning_Capabilities_vspace_-0.5em"
+      ]
+    },
+    "1oSrkpEkZzzVcRXFdzPlsbw46CrU4rQt_": {
+      "name": "ReACC__A_Retrieval_Augmented_Code_Completion_Frame.tar.gz",
+      "processed_at": "2026-06-29T04:52:57.005463Z",
+      "output_paths": [
+        "./structured_tex_output/ReACC_A_Retrieval-Augmented_Code_Completion_Framework"
+      ]
+    },
+    "1vwnlUkPkm-lc2lWTStWYxKJnRlEihzvc": {
+      "name": "Non_neural_Models_Matter__a_Re_evaluation_of_Neura.tar.gz",
+      "processed_at": "2026-06-29T04:53:20.623592Z",
+      "output_paths": [
+        "./structured_tex_output/Non-neural_Models_Matter_A_Re-evaluation_of_Neural_Referring_Expression_Generation_Systems"
+      ]
+    },
+    "1j_he20sVjruTQkiD4PANDSxLcXfgJLUL": {
+      "name": "OntoEA__Ontology_guided_Entity_Alignment_via_Joint.tar.gz",
+      "processed_at": "2026-06-29T04:53:22.515538Z",
+      "output_paths": [
+        "./structured_tex_output/OntoEA_Ontology-guided_Entity_Alignment_via_Joint_Knowledge_Graph_Embedding"
+      ]
+    },
+    "1GXCPuyU4zdNNT9OyrbdA9tDMWq2zwBXP": {
+      "name": "Augmentation_Invariant_Discrete_Representation_for.tar.gz",
+      "processed_at": "2026-06-29T04:53:39.176545Z",
+      "output_paths": [
+        "./structured_tex_output/Augmentation_Invariant_Discrete_Representation_for_Generative_Spoken_Language_Modeling"
+      ]
+    },
+    "1cHTw1mphIk3s77wx0fDr25GwosKFaywP": {
+      "name": "Many_to_English_Machine_Translation_Tools__Data__a.tar.gz",
+      "processed_at": "2026-06-29T04:53:50.091480Z",
+      "output_paths": [
+        "./structured_tex_output/Many_to_English_Machine_Translation_Tools__Data__a"
+      ]
+    },
+    "1LRd8W2vtBKnnno5Ae9wciaWNRgwOQ5Gw": {
+      "name": "Synergistic_Weak_Strong_Collaboration_by_Aligning_.tar.gz",
+      "processed_at": "2026-06-29T04:54:00.335687Z",
+      "output_paths": [
+        "./structured_tex_output/Synergistic_Weak-Strong_Collaboration_by_Aligning_Preferences"
+      ]
+    },
+    "1BPdPX-pOSInT6XrOJYfOQIDrE4X4xQiy": {
+      "name": "CorNav__Autonomous_Agent_with_Self_Corrected_Plann.tar.gz",
+      "processed_at": "2026-06-29T04:54:29.139052Z",
+      "output_paths": [
+        "./structured_tex_output/CorNav_Autonomous_Agent_with_Self-Corrected_Planning_for_Zero-Shot_Vision-and-Language_Navigation"
+      ]
+    },
+    "1b4asMbF9HjRN96M2UTxGpqkp9KvnSHJn": {
+      "name": "A_Unified_One_Step_Solution_for_Aspect_Sentiment_Q.tar.gz",
+      "processed_at": "2026-06-29T04:54:40.357488Z",
+      "output_paths": [
+        "./structured_tex_output/A_Unified_One_Step_Solution_for_Aspect_Sentiment_Q"
+      ]
+    },
+    "1f8y1ryV3MgWK_vlU6gI3Zw6ngnS4GiGk": {
+      "name": "Are_Machines_Better_at_Complex_Reasoning__Unveilin.tar.gz",
+      "processed_at": "2026-06-29T04:54:59.409460Z",
+      "output_paths": [
+        "./structured_tex_output/Are_Machines_Better_at_Complex_Reasoning_Unveiling_Human-Machine_Inference_Gaps_in_Entailment_Verification"
+      ]
+    },
+    "1r9bc60cFv9sePSF591CIIDny5nh48Fwc": {
+      "name": "Meta_Task_Prompting_Elicits_Embeddings_from_Large_.tar.gz",
+      "processed_at": "2026-06-29T04:55:01.912171Z",
+      "output_paths": [
+        "./structured_tex_output/Meta-Task_Prompting_Elicits_Embeddings_from_Large_Language_Models"
+      ]
+    },
+    "1_6gvivpee6tJm5En9VU_3Z6aYHko5Yh8": {
+      "name": "METAL__A_Multi_Agent_Framework_for_Chart_Generatio.tar.gz",
+      "processed_at": "2026-06-29T04:55:10.009315Z",
+      "output_paths": [
+        "./structured_tex_output/METAL__A_Multi_Agent_Framework_for_Chart_Generatio"
+      ]
+    },
+    "1_riQrlTDMxaJHmjxt1iJihmSrqj52XKD": {
+      "name": "ValueBench__Towards_Comprehensively_Evaluating_Val.tar.gz",
+      "processed_at": "2026-06-29T04:55:15.752003Z",
+      "output_paths": [
+        "./structured_tex_output/ValueBench__Towards_Comprehensively_Evaluating_Val"
+      ]
+    },
+    "1XBMGq3_kvf0O6KJN_Ep5JJxzBt8gpwco": {
+      "name": "LICHEE__Improving_Language_Model_Pre_training_with.tar.gz",
+      "processed_at": "2026-06-29T04:55:22.135290Z",
+      "output_paths": [
+        "./structured_tex_output/LICHEE_Improving_Language_Model_Pre-training_with_Multi-grained_Tokenization"
+      ]
+    },
+    "1cJxLZXh7ycr_7Z-eZpVioAt2EvYAY3gf": {
+      "name": "ReflectionCoder__Learning_from_Reflection_Sequence.tar.gz",
+      "processed_at": "2026-06-29T04:55:43.229636Z",
+      "output_paths": [
+        "./structured_tex_output/ReflectionCoder_Learning_from_Reflection_Sequence_for_Enhanced_One-off_Code_Generation"
+      ]
+    },
+    "1mQi8JHWWiULngGkBuTqW1eTkQda1kBh3": {
+      "name": "Automatic_Engineering_of_Long_Prompts.tar.gz",
+      "processed_at": "2026-06-29T04:55:45.836814Z",
+      "output_paths": [
+        "./structured_tex_output/Automatic_Engineering_of_Long_Prompts"
+      ]
+    },
+    "1sp9_C_SbXpPjQ2Mrr3xNpN5m2AMRvd9N": {
+      "name": "TWAG__A_Topic_Guided_Wikipedia_Abstract_Generator.tar.gz",
+      "processed_at": "2026-06-29T04:56:06.467675Z",
+      "output_paths": [
+        "./structured_tex_output/TWAG_A_Topic-guided_Wikipedia_Abstract_Generator"
+      ]
+    },
+    "1JRvcLtMr_CpldiAbvyDdKwNf5LjoHBVS": {
+      "name": "Logic_Regularized_Verifier_Elicits_Reasoning_from_.tar.gz",
+      "processed_at": "2026-06-29T04:56:16.133868Z",
+      "output_paths": [
+        "./structured_tex_output/Logic_Regularized_Verifier_Elicits_Reasoning_from"
+      ]
+    },
+    "1BAL50XXF6gPJyJbn_HChzljhLrYi-kes": {
+      "name": "Scene_Graph_as_Pivoting__Inference_time_Image_free.tar.gz",
+      "processed_at": "2026-06-29T04:56:22.977661Z",
+      "output_paths": [
+        "./structured_tex_output/emph_Scene_Graph_as_Pivoting_Inference-time_Image-free_Unsupervised_Multimodal_Machine_Translation_with_Visual_Scene"
+      ]
+    },
+    "1am_189GD1W3BUDYei5gY-v7g5vsTMlGY": {
+      "name": "Maria__A_Visual_Experience_Powered_Conversational_.tar.gz",
+      "processed_at": "2026-06-29T04:56:34.697915Z",
+      "output_paths": [
+        "./structured_tex_output/Maria__A_Visual_Experience_Powered_Conversational"
+      ]
+    },
+    "1yDXM3BzIbzmhQR0dN8jL5ao_lG0rvjhW": {
+      "name": "Synergetic_Event_Understanding__A_Collaborative_Ap.tar.gz",
+      "processed_at": "2026-06-29T04:56:58.957172Z",
+      "output_paths": [
+        "./structured_tex_output/Synergetic_Event_Understanding_A_Collaborative_Approach_to_Cross-Document_Event_Coreference_Resolution_with_Large_Langu"
+      ]
+    },
+    "1eklFK9ZxGQUtcop5E8vr8g2eRAIyNMqE": {
+      "name": "MindRef__Mimicking_Human_Memory_for_Hierarchical_R.tar.gz",
+      "processed_at": "2026-06-29T04:57:00.491948Z",
+      "output_paths": [
+        "./structured_tex_output/MindRef_Mimicking_Human_Memory_for_Hierarchical_Reference_Retrieval_with_Fine-Grained_Location_Awareness"
+      ]
+    },
+    "14hbZjz5_AG4II-yEO23E4lKbyR_Z-I2L": {
+      "name": "PromptCoT__Synthesizing_Olympiad_level_Problems_fo.tar.gz",
+      "processed_at": "2026-06-29T04:57:11.100561Z",
+      "output_paths": [
+        "./structured_tex_output/PromptCoT__Synthesizing_Olympiad_level_Problems_fo"
+      ]
+    },
+    "1Vu9nXmfa1gkqFJl6FOQiU-nwrscRb87z": {
+      "name": "Direct_Preference_Optimization_with_an_Offset.tar.gz",
+      "processed_at": "2026-06-29T04:57:15.694585Z",
+      "output_paths": [
+        "./structured_tex_output/Direct_Preference_Optimization_with_an_Offset"
+      ]
+    },
+    "1T6ZrfbgRVkg-uLFcwv29ckpWrP3tR_3l": {
+      "name": "Deep_Reinforcement_Learning_for_Entity_Alignment.tar.gz",
+      "processed_at": "2026-06-29T04:57:32.385466Z",
+      "output_paths": [
+        "./structured_tex_output/Deep_Reinforcement_Learning_for_Entity_Alignment"
+      ]
+    },
+    "14s_MYVCBWrsCjiRMdZAsjWDC6HC-AjfN": {
+      "name": "From_Zero_to_Hero__Cold_Start_Anomaly_Detection.tar.gz",
+      "processed_at": "2026-06-29T04:57:33.014101Z",
+      "output_paths": [
+        "./structured_tex_output/From_Zero_to_Hero_Cold-Start_Anomaly_Detection"
+      ]
+    },
+    "1Tc1ygo-73FjzVYaYcWiATO1VA3H7nR42": {
+      "name": "REVISE__A_Framework_for_Revising_OCRed_text_in_Pra.tar.gz",
+      "processed_at": "2026-06-29T04:57:52.699328Z",
+      "output_paths": [
+        "./structured_tex_output/textsc_Revise_A_Framework_for_Revising_OCRed_text_in_Practical_Information_Systems_with_Data_Contamination_Strategy"
+      ]
+    },
+    "1KtQpc7hezycEU6Q-gD4gfATySmTfS0Rd": {
+      "name": "Aerial_Vision_and_Dialog_Navigation.tar.gz",
+      "processed_at": "2026-06-29T04:58:02.170747Z",
+      "output_paths": [
+        "./structured_tex_output/Aerial_Vision-and-Dialog_Navigation"
+      ]
+    },
+    "1kYdHjrNxJTwm4sg33WhLDqgvz2cq-rZ3": {
+      "name": "The_KITMUS_Test__Evaluating_Knowledge_Integration_.tar.gz",
+      "processed_at": "2026-06-29T04:58:23.430283Z",
+      "output_paths": [
+        "./structured_tex_output/The_textsc_KITMUS_Test_Evaluating_Knowledge_Integration_from_Multiple_Sources"
+      ]
+    },
+    "1g_myiH8H-hFafmfKfXRLEQ2YzJXgIjD3": {
+      "name": "Cultural_Bias_Matters__A_Cross_Cultural_Benchmark_.tar.gz",
+      "processed_at": "2026-06-29T04:58:28.653283Z",
+      "output_paths": [
+        "./structured_tex_output/Cultural_Bias_Matters_A_Cross-Cultural_Benchmark_Dataset_and_Sentiment-Enriched_Model_for_Understanding_Multimodal_Meta"
+      ]
+    },
+    "1YvH1cBy5O6pPv4RF-cKm0Lu6z9_pSoBd": {
+      "name": "CiteFix__Enhancing_RAG_Accuracy_Through_Post_Proce.tar.gz",
+      "processed_at": "2026-06-29T04:58:40.430489Z",
+      "output_paths": [
+        "./structured_tex_output/CiteFix_Enhancing_RAG_Accuracy_Through_Post-Processing_Citation_Correction"
+      ]
+    },
+    "1hQUx8Nvo5DoqkltcatFF6j2BG8TSsivs": {
+      "name": "CoT_Valve__Length_Compressible_Chain_of_Thought_Tu.tar.gz",
+      "processed_at": "2026-06-29T04:58:56.536456Z",
+      "output_paths": [
+        "./structured_tex_output/CoT-Valve_Length-Compressible_Chain-of-Thought_Tuning"
+      ]
+    },
+    "1q8_BC7EwsZT7356xgeZNf8HUTbK89A1M": {
+      "name": "Second_Language__Arabic__Acquisition_of_LLMs_via_P.tar.gz",
+      "processed_at": "2026-06-29T04:59:27.546411Z",
+      "output_paths": [
+        "./structured_tex_output/Second_Language_Arabic_Acquisition_of_LLMs_via_Progressive_Vocabulary_Expansion"
+      ]
+    },
+    "1x9Ec8ISllYcB79wc8ZAUpJB5rSELz_Sk": {
+      "name": "AraT5__Text_to_Text_Transformers_for_Arabic_Langua.tar.gz",
+      "processed_at": "2026-06-29T04:59:55.196152Z",
+      "output_paths": [
+        "./structured_tex_output/AraT5__Text_to_Text_Transformers_for_Arabic_Langua"
+      ]
+    },
+    "18vRMaTaokHfGqFFlNNhAw1bGSMHSHjIX": {
+      "name": "Chat_Vector__A_Simple_Approach_to_Equip_LLMs_with_.tar.gz",
+      "processed_at": "2026-06-29T04:59:56.790677Z",
+      "output_paths": [
+        "./structured_tex_output/Chat_Vector_A_Simple_Approach_to_Equip_LLMs_with_Instruction_Following_and_Model_Alignment_in_New_Languages"
+      ]
+    },
+    "1ifYZuXOrjnRjH8X7hlcwIsSYYGdAEVOl": {
+      "name": "Advancing_Parameter_Efficiency_in_Fine_tuning_via_.tar.gz",
+      "processed_at": "2026-06-29T05:00:42.405682Z",
+      "output_paths": [
+        "./structured_tex_output/Advancing_Parameter_Efficiency_in_Fine-tuning_via_Representation_Editing"
+      ]
+    },
+    "198SoFCwOB_1jmNzDZPw1o07TIiEzsJ0G": {
+      "name": "Do_I_have_the_Knowledge_to_Answer__Investigating_A.tar.gz",
+      "processed_at": "2026-06-29T05:00:55.673784Z",
+      "output_paths": [
+        "./structured_tex_output/Do_I_have_the_Knowledge_to_Answer__Investigating_A"
+      ]
+    },
+    "12lA5n8YWsZEQaFYdOIjbhI4JXwWud7xa": {
+      "name": "Semantic_Structure_Enhanced_Event_Causality_Identi.tar.gz",
+      "processed_at": "2026-06-29T05:01:08.359649Z",
+      "output_paths": [
+        "./structured_tex_output/Semantic_Structure_Enhanced_Event_Causality_Identification"
+      ]
+    },
+    "10Vg_XWVpO30DvH61yvMyBxhI8L_Wmp7M": {
+      "name": "Overlap_based_Vocabulary_Generation_Improves_Cross.tar.gz",
+      "processed_at": "2026-06-29T05:01:09.674811Z",
+      "output_paths": [
+        "./structured_tex_output/Overlap_based_Vocabulary_Generation_Improves_Cross"
+      ]
+    },
+    "1GLdaiBAZbaFaDgefkuOe4NuvV97rbTZY": {
+      "name": "ControlSpeech__Towards_Simultaneous_and_Independen.tar.gz",
+      "processed_at": "2026-06-29T05:01:23.992769Z",
+      "output_paths": [
+        "./structured_tex_output/ControlSpeech_Towards_Simultaneous_and_Independent_Zero-shot_Speaker_Cloning_and_Zero-shot_Language_Style_Control"
+      ]
+    },
+    "1SXdRdF1fUI5FX42tFcX-G1AIuXN1lVF6": {
+      "name": "LongSafety__Evaluating_Long_Context_Safety_of_Larg.tar.gz",
+      "processed_at": "2026-06-29T05:01:29.603000Z",
+      "output_paths": [
+        "./structured_tex_output/LongSafety_Evaluating_Long-Context_Safety_of_Large_Language_Models"
+      ]
+    },
+    "1fGY94l4b5eHlJ-7Agq3BLqJtf-WmIKXJ": {
+      "name": "A_Shocking_Amount_of_the_Web_is_Machine_Translated.tar.gz",
+      "processed_at": "2026-06-29T05:01:36.008264Z",
+      "output_paths": [
+        "./structured_tex_output/A_Shocking_Amount_of_the_Web_is_Machine_Translated"
+      ]
+    },
+    "16_pmHycOc-TR2-uk5J0kHfmDDTm_tLH8": {
+      "name": "Revisiting_Compositional_Generalization_Capability.tar.gz",
+      "processed_at": "2026-06-29T05:01:53.541775Z",
+      "output_paths": [
+        "./structured_tex_output/Revisiting_Compositional_Generalization_Capability"
+      ]
+    },
+    "1rN-qXnnz4i54MR3tCs9o3cFcJfOkwkGu": {
+      "name": "How_Reliable_are_Model_Diagnostics_.tar.gz",
+      "processed_at": "2026-06-29T05:02:02.013803Z",
+      "output_paths": [
+        "./structured_tex_output/How_Reliable_are_Model_Diagnostics"
+      ]
+    },
+    "1oq6lYZ5va-_AzIhhP53uiIEU9SKaH_4V": {
+      "name": "KACC__A_Multi_task_Benchmark_for_Knowledge_Abstrac.tar.gz",
+      "processed_at": "2026-06-29T05:02:02.488274Z",
+      "output_paths": [
+        "./structured_tex_output/KACC_A_Multi-task_Benchmark_for_Knowledge_Abstraction_Concretization_and_Completion"
+      ]
+    },
+    "1qdPSp54iE4V4651W7vZkLlqE6DZsm9zK": {
+      "name": "What_do_Models_Learn_From_Training_on_More_Than_Te.tar.gz",
+      "processed_at": "2026-06-29T05:02:15.381406Z",
+      "output_paths": [
+        "./structured_tex_output/What_do_Models_Learn_From_Training_on_More_Than_Te"
+      ]
+    },
+    "1pLq3zmUMxmr0PKBLcxR4nFjFy-9rceOB": {
+      "name": "ED2LM__Encoder_Decoder_to_Language_Model_for_Faste.tar.gz",
+      "processed_at": "2026-06-29T05:02:28.794516Z",
+      "output_paths": [
+        "./structured_tex_output/ED2LM__Encoder_Decoder_to_Language_Model_for_Faste"
+      ]
+    },
+    "15MuUD_USW9o3Jka_kduh88nFQXE23KpB": {
+      "name": "Code_Summarization_with_Structure_induced_Transfor.tar.gz",
+      "processed_at": "2026-06-29T05:02:38.099838Z",
+      "output_paths": [
+        "./structured_tex_output/Code_Summarization_with_Structure-induced_Transformer"
+      ]
+    },
+    "1Xehy9hCX5tztN2c476S3CSTps9buYNZR": {
+      "name": "Exploiting_Pseudo_Image_Captions_for_Multimodal_Su.tar.gz",
+      "processed_at": "2026-06-29T05:02:45.850350Z",
+      "output_paths": [
+        "./structured_tex_output/Exploiting_Pseudo_Image_Captions_for_Multimodal_Summarization"
+      ]
+    },
+    "1ohpeqeyn2NvJdmyomQty0GTMvKoO2y4A": {
+      "name": "GeoEval__Benchmark_for_Evaluating_LLMs_and_Multi_M.tar.gz",
+      "processed_at": "2026-06-29T05:03:11.932051Z",
+      "output_paths": [
+        "./structured_tex_output/GeoEval_Benchmark_for_Evaluating_LLMs_and_Multi-Modal_Models_on_Geometry_Problem-Solving"
+      ]
+    },
+    "1UDExxlMQ8Y5NOscMc2sChVSqgs67tvym": {
+      "name": "PARADISE__Evaluating_Implicit_Planning_Skills_of_L.tar.gz",
+      "processed_at": "2026-06-29T05:03:14.234447Z",
+      "output_paths": [
+        "./structured_tex_output/texttt_PARADISE_Evaluating_Implicit_Planning_Skills_of_Language_Models_with_Procedural_Warnings_and_Tips_Dataset"
+      ]
+    },
+    "1lmFnS6Trpm7eLh1WRxiUChfVzrnxDUPg": {
+      "name": "STICKERCONV__Generating_Multimodal_Empathetic_Resp.tar.gz",
+      "processed_at": "2026-06-29T05:03:41.245666Z",
+      "output_paths": [
+        "./structured_tex_output/S_specialsize_TICKER_C_specialsize_ONV_Generating_Multimodal_Empathetic_Responses_from_Scratch"
+      ]
+    },
+    "1oWqAwW7X6rV-GE7kkqtEVl-ijwYVWoEs": {
+      "name": "Properties_of_the_Hebrew_Calendar.tar.gz",
+      "processed_at": "2026-06-29T05:03:44.786876Z",
+      "output_paths": [
+        "./structured_tex_output/Properties_of_the_Hebrew_Calendar"
+      ]
+    },
+    "1ZBG0F_4IwIjnnFFnr7g7_FuGCV7avcEe": {
+      "name": "Importance_of_Synthesizing_High_quality_Data_for_T.tar.gz",
+      "processed_at": "2026-06-29T05:04:05.605944Z",
+      "output_paths": [
+        "./structured_tex_output/Importance_of_Synthesizing_High-quality_Data_for_Text-to-SQL_Parsing"
+      ]
+    },
+    "1_mFyRAVXJ7SEM0I_H-2CQ4dQRvW0p4K3": {
+      "name": "Language_Model_Probabilities_are_Not_Calibrated_in.tar.gz",
+      "processed_at": "2026-06-29T05:04:07.842486Z",
+      "output_paths": [
+        "./structured_tex_output/Language_Model_Probabilities_are_Not_Calibrated_in"
+      ]
+    },
+    "1Go8ibcbYJe3mu4_l42PtsPKAIpr_9g1_": {
+      "name": "CaMML__Context_Aware_Multimodal_Learner_for_Large_.tar.gz",
+      "processed_at": "2026-06-29T05:04:27.702585Z",
+      "output_paths": [
+        "./structured_tex_output/CaMML_Context-Aware_Multimodal_Learner_for_Large_Models"
+      ]
+    },
+    "1k4ZuTUSwQQeu7lrWotO1LKdQMHs6AjJt": {
+      "name": "Improving_Retrieval_Augmented_Open_Domain_Question.tar.gz",
+      "processed_at": "2026-06-29T05:04:35.463275Z",
+      "output_paths": [
+        "./structured_tex_output/Improving_Retrieval_Augmented_Open-Domain_Question-Answering_with_Vectorized_Contexts"
+      ]
+    },
+    "15ELJa9JfD3OyXNGqHOuvYl1aoJQwSeGn": {
+      "name": "CoCoLex__Confidence_guided_Copy_based_Decoding_for.tar.gz",
+      "processed_at": "2026-06-29T05:04:50.776971Z",
+      "output_paths": [
+        "./structured_tex_output/CoCoLex_Confidence-guided_Copy-based_Decoding_for_Grounded_Legal_Text_Generation"
+      ]
+    },
+    "1rrItRAVPdYPj13bh_vARHwvLzT4F_d3L": {
+      "name": "Investigating_Context_Faithfulness_in_Large_Langua.tar.gz",
+      "processed_at": "2026-06-29T05:05:00.733953Z",
+      "output_paths": [
+        "./structured_tex_output/Investigating_Context_Faithfulness_in_Large_Language_Models_The_Roles_of_Memory_Strength_and_Evidence_Style"
+      ]
+    },
+    "1X9vlfsM9kwaeXf4Wbso2kR3GUYdjCPOq": {
+      "name": "Learning_Action_Conditions_from_Instructional_Manu.tar.gz",
+      "processed_at": "2026-06-29T05:05:35.572422Z",
+      "output_paths": [
+        "./structured_tex_output/Learning_Action_Conditions_from_Instructional_Manu"
+      ]
+    },
+    "1R0xmoBDKcvok2QHjWlhRsHimUXMlQtnS": {
+      "name": "VITAL__A_New_Dataset_for_Benchmarking_Pluralistic_.tar.gz",
+      "processed_at": "2026-06-29T05:05:43.672953Z",
+      "output_paths": [
+        "./structured_tex_output/ourdataset_A_New_Dataset_for_Benchmarking_Pluralistic_Alignment_in_Healthcare"
+      ]
+    },
+    "1q8t9Tr8xZNnMCPehlebFDlCRReDLln5X": {
+      "name": "WeaQA__Weak_Supervision_via_Captions_for_Visual_Qu.tar.gz",
+      "processed_at": "2026-06-29T05:05:54.962942Z",
+      "output_paths": [
+        "./structured_tex_output/WeaQA_Weak_Supervision_via_Captions_for_Visual_Question_Answering"
+      ]
+    },
+    "1XGbvhMDEXzMiYhp6MwlL_wNQWqfA3Tcw": {
+      "name": "CARETS__A_Consistency_And_Robustness_Evaluative_Te.tar.gz",
+      "processed_at": "2026-06-29T05:06:16.449475Z",
+      "output_paths": [
+        "./structured_tex_output/CARETS__A_Consistency_And_Robustness_Evaluative_Te"
+      ]
+    },
+    "1A0JaKQhRcNP_mOQtakmuGwa89Gy-sTET": {
+      "name": "Codec_SUPERB__An_In_Depth_Analysis_of_Sound_Codec_.tar.gz",
+      "processed_at": "2026-06-29T05:06:21.006423Z",
+      "output_paths": [
+        "./structured_tex_output/Codec_SUPERB__An_In_Depth_Analysis_of_Sound_Codec"
+      ]
+    },
+    "1TfgtPKil2QMrtgfRyK4UafRmBBlv9ywl": {
+      "name": "Unique_Hard_Attention__A_Tale_of_Two_Sides.tar.gz",
+      "processed_at": "2026-06-29T05:06:22.998883Z",
+      "output_paths": [
+        "./structured_tex_output/Unique_Hard_Attention__A_Tale_of_Two_Sides"
+      ]
+    },
+    "1cBu92s1PWdgdvh3wWJxYFs3BzjZM8tpO": {
+      "name": "Tailoring_with_Targeted_Precision__Edit_Based_Agen.tar.gz",
+      "processed_at": "2026-06-29T05:06:36.337346Z",
+      "output_paths": [
+        "./structured_tex_output/Tailoring_with_Targeted_Precision_Edit-Based_Agents_for_newline_Open-Domain_Procedure_Customization"
+      ]
+    },
+    "1oDvR4ZtpVMS9ZZRthXTmcHYR8nIC4due": {
+      "name": "Middle_Layer_Representation_Alignment_for_Cross_Li.tar.gz",
+      "processed_at": "2026-06-29T05:06:45.730690Z",
+      "output_paths": [
+        "./structured_tex_output/Middle-Layer_Representation_Alignment_for_Cross-Lingual_Transfer_in_Fine-Tuned_LLMs"
+      ]
+    },
+    "12qnJsCQgAJ1faIUV0qgzAQA5hHeYRO9j": {
+      "name": "gec_metrics__A_Unified_Library_for_Grammatical_Err.tar.gz",
+      "processed_at": "2026-06-29T05:06:53.759456Z",
+      "output_paths": [
+        "./structured_tex_output/gecmetricsnospace_A_Unified_Library_for_Grammatical_Error_Correction_Evaluation"
+      ]
+    },
+    "1bSTUOQ3jL6U90-EURE_fyKWZffOJqvQC": {
+      "name": "Cross_Modal_Discrete_Representation_Learning.tar.gz",
+      "processed_at": "2026-06-29T05:07:03.353508Z",
+      "output_paths": [
+        "./structured_tex_output/Cross_Modal_Discrete_Representation_Learning"
+      ]
+    },
+    "1S2NHgy__5cABemyO2OiHviFW9Tg2vcOj": {
+      "name": "Time_Aware_Ancient_Chinese_Text_Translation_and_In.tar.gz",
+      "processed_at": "2026-06-29T05:07:05.228336Z",
+      "output_paths": [
+        "./structured_tex_output/Time-Aware_Ancient_Chinese_Text_Translation_and_Inference"
+      ]
+    },
+    "126xawVxgDhuyQeySaYuKdi8eTWXUlbj5": {
+      "name": "AutoConv__Automatically_Generating_Information_see.tar.gz",
+      "processed_at": "2026-06-29T05:07:34.388426Z",
+      "output_paths": [
+        "./structured_tex_output/AutoConv_Automatically_Generating_Information-seeking_Conversations_with_Large_Language_Models"
+      ]
+    },
+    "1ZFWGlHxg3SWfb8qheFvbQNoVf0uAv_gG": {
+      "name": "Emo_Pillars__Knowledge_Distillation_to_Support_Fin.tar.gz",
+      "processed_at": "2026-06-29T05:07:45.850559Z",
+      "output_paths": [
+        "./structured_tex_output/Emo_Pillars_emopiintitle_e_m_o_pi_Knowledge_Distillation_to_Support_Fine-Grained_Context-Aware_and_Context-Less"
+      ]
+    },
+    "1lHtZ-jGVKyV44yGltgADxNiyjivoW64T": {
+      "name": "Locate_and_Focus__Enhancing_Terminology_Translatio.tar.gz",
+      "processed_at": "2026-06-29T05:07:53.656267Z",
+      "output_paths": [
+        "./structured_tex_output/Locate-and-Focus_Enhancing_Terminology_Translation_in_Speech_Language_Models"
+      ]
+    },
+    "1xHibhV_JJTKACv4UAKYlezv6NU7MkIXZ": {
+      "name": "HLE_UPC_at_SemEval_2021_Task_5__Multi_Depth_Distil.tar.gz",
+      "processed_at": "2026-06-29T05:08:02.439780Z",
+      "output_paths": [
+        "./structured_tex_output/HLE-UPC_at_SemEval-2021_Task_5_Multi-Depth_DistilBERT_for_Toxic_Spans_Detection"
+      ]
+    },
+    "1r55CB6ju69Jua0IYisPKScc1r0pXBLnT": {
+      "name": "Language_Specific_Neurons__The_Key_to_Multilingual.tar.gz",
+      "processed_at": "2026-06-29T05:08:06.631241Z",
+      "output_paths": [
+        "./structured_tex_output/Language-Specific_Neurons_The_Key_to_Multilingual_Capabilities_in_Large_Language_Models"
+      ]
+    },
+    "1S3xec2PxkyYw0AweHYIDNSIjkDX8WlRK": {
+      "name": "Quantifying_Uncertainty_in_Answers_from_any_Langua.tar.gz",
+      "processed_at": "2026-06-29T05:08:19.467329Z",
+      "output_paths": [
+        "./structured_tex_output/Quantifying_Uncertainty_in_Answers_from_any_Language_Model_and_Enhancing_their_Trustworthiness"
+      ]
+    },
+    "1QkTiyqIushK4UA0vAr-HTTwjlrE2MXGy": {
+      "name": "BERM__Training_the_Balanced_and_Extractable_Repres.tar.gz",
+      "processed_at": "2026-06-29T05:08:25.504837Z",
+      "output_paths": [
+        "./structured_tex_output/BERM_Training_the_Balanced_and_Extractable_Representation_for_Matching_to_Improve_Generalization_Ability_of_Dense_Retri"
+      ]
+    },
+    "1aGbJlum2lDpEu1HbNU5TLAxfQOP0ySdz": {
+      "name": "What_Evidence_Do_Language_Models_Find_Convincing_.tar.gz",
+      "processed_at": "2026-06-29T05:08:35.368622Z",
+      "output_paths": [
+        "./structured_tex_output/What_Evidence_Do_Language_Models_Find_Convincing"
+      ]
+    },
+    "1hTi-AHCTDb7qCnV3I-LeWzS5Y-C0N3XE": {
+      "name": "Words_of_Warmth__Trust_and_Sociability_Norms_for_o.tar.gz",
+      "processed_at": "2026-06-29T05:08:35.930354Z",
+      "output_paths": [
+        "./structured_tex_output/Words_of_Warmth_Trust_and_Sociability_Norms_for_over_26k_English_Words"
+      ]
+    },
+    "16oE9eHQq1AmX1EPqs5YKeX6QSwaawDZh": {
+      "name": "Painsight__An_Extendable_Opinion_Mining_Framework_.tar.gz",
+      "processed_at": "2026-06-29T05:08:48.045859Z",
+      "output_paths": [
+        "./structured_tex_output/Painsight_An_Extendable_Opinion_Mining_Framework_for_Detecting_Pain_Points_Based_on_Online_Customer_Reviews"
+      ]
+    },
+    "1RNMHcQd3lbfooWMK0iI22Pd3B8iVf9fd": {
+      "name": "History_repeats__Overcoming_catastrophic_forgettin.tar.gz",
+      "processed_at": "2026-06-29T05:08:56.088554Z",
+      "output_paths": [
+        "./structured_tex_output/History_Repeats_Overcoming_Catastrophic_Forgetting_For_Event-Centric_Temporal_Knowledge_Graph_Completion"
+      ]
+    },
+    "1HOHdSUOtpL0efG4fbEgdW4vTPKAn4VYj": {
+      "name": "Analysis_of_Multi_Source_Language_Training_in_Cros.tar.gz",
+      "processed_at": "2026-06-29T05:09:17.685221Z",
+      "output_paths": [
+        "./structured_tex_output/Analysis_of_Multi-Source_Language_Training_in_Cross-Lingual_Transfer"
+      ]
+    },
+    "1NZwEeljGOSFhHmRUXfB3Vhsheefvyr1z": {
+      "name": "Bi_Granularity_Contrastive_Learning_for_Post_Train.tar.gz",
+      "processed_at": "2026-06-29T05:09:33.852644Z",
+      "output_paths": [
+        "./structured_tex_output/Bi-Granularity_Contrastive_Learning_for_Post-Training_in_Few-Shot_Scene"
+      ]
+    },
+    "19aWNubUqwb4MxpXzt9re-5mjHhI6h2Dj": {
+      "name": "Rethinking_Round_Trip_Translation_for_Machine_Tran.tar.gz",
+      "processed_at": "2026-06-29T05:09:40.483994Z",
+      "output_paths": [
+        "./structured_tex_output/Rethinking_Round_Trip_Translation_for_Machine_Tran"
+      ]
+    },
+    "1izkU6mJL8n1VsC-YCu-qsAyGRMqKG87Z": {
+      "name": "Generalisation_First__Memorisation_Second__Memoris.tar.gz",
+      "processed_at": "2026-06-29T05:09:48.238847Z",
+      "output_paths": [
+        "./structured_tex_output/Generalisation_First__Memorisation_Second__Memoris"
+      ]
+    },
+    "1hEsET2cPsPyOjaKerH5qR5Lf0seywK4i": {
+      "name": "SCOPE__Optimizing_Key_Value_Cache_Compression_in_L.tar.gz",
+      "processed_at": "2026-06-29T05:09:58.878886Z",
+      "output_paths": [
+        "./structured_tex_output/symbolSCOPE_SCOPE_Optimizing_Key-Value_Cache_Compression_in_Long-context_Generation"
+      ]
+    },
+    "18y9R2l6zEfcquMP49d_25rcL03FIiFHe": {
+      "name": "Length_Adaptive_Transformer__Train_Once_with_Lengt.tar.gz",
+      "processed_at": "2026-06-29T05:10:03.731888Z",
+      "output_paths": [
+        "./structured_tex_output/Length_Adaptive_Transformer__Train_Once_with_Lengt"
+      ]
+    },
+    "1n41yr3safOk5TFFnTFCMsG2PNDSqvRuD": {
+      "name": "Lightweight_Cross_Lingual_Sentence_Representation_.tar.gz",
+      "processed_at": "2026-06-29T05:10:12.566436Z",
+      "output_paths": [
+        "./structured_tex_output/Lightweight_Cross-Lingual_Sentence_Representation_Learning"
+      ]
+    },
+    "1cj4PdTE5SD2-SsRCga7lEk62TaGm1g3k": {
+      "name": "Linguistic_Generalizability_of_Test_Time_Scaling_i.tar.gz",
+      "processed_at": "2026-06-29T05:11:10.295993Z",
+      "output_paths": [
+        "./structured_tex_output/Linguistic_Generalizability_of_Test-Time_Scaling_in_Mathematical_Reasoning"
+      ]
+    },
+    "1qNM8P_KdZXr4BAafPz6Razo-1ObMDdpq": {
+      "name": "ACLM__A_Selective_Denoising_based_Generative_Data_.tar.gz",
+      "processed_at": "2026-06-29T05:11:53.150170Z",
+      "output_paths": [
+        "./structured_tex_output/ACLM_A_Selective-Denoising_based_Generative_Data_Augmentation_Approach_for_Low-Resource_Complex_NER"
+      ]
+    },
+    "176e1QRYSsuYxoll9cccAFA5dJxRJmN6V": {
+      "name": "LSSF__Safety_Alignment_for_Large_Language_Models_t.tar.gz",
+      "processed_at": "2026-06-29T05:12:15.392975Z",
+      "output_paths": [
+        "./structured_tex_output/LSSF_Safety_Alignment_for_Large_Language_Models_through_Low-Rank_Safety_Subspace_Fusion"
+      ]
+    },
+    "17_0o9_6QQehCmb1837D8le_kR__RntKB": {
+      "name": "ArgU__A_Controllable_Factual_Argument_Generator.tar.gz",
+      "processed_at": "2026-06-29T05:12:21.604517Z",
+      "output_paths": [
+        "./structured_tex_output/ArgU_A_Controllable_Factual_Argument_Generator"
+      ]
+    },
+    "1NRjqGyVeQo32CJ46PI9T8MmhF6GWr3oR": {
+      "name": "Mixtures_of_In_Context_Learners.tar.gz",
+      "processed_at": "2026-06-29T05:12:50.486549Z",
+      "output_paths": [
+        "./structured_tex_output/Mixtures_of_In-Context_Learners"
+      ]
+    },
+    "1gq9RmjBG3Su1KFJ0p7lBWyTNQ-2lVhyH": {
+      "name": "Learning_Sparsity_for_Effective_and_Efficient_Musi.tar.gz",
+      "processed_at": "2026-06-29T05:12:57.943330Z",
+      "output_paths": [
+        "./structured_tex_output/Learning_Sparsity_for_Effective_and_Efficient_Music_Performance_Question_Answering"
+      ]
+    },
+    "1-V7ew7GqelUB12C5wOeI67i1zORDLqK8": {
+      "name": "Guardians_of_the_Machine_Translation_Meta_Evaluati.tar.gz",
+      "processed_at": "2026-06-29T05:12:58.511842Z",
+      "output_paths": [
+        "./structured_tex_output/Guardians_of_the_Machine_Translation_Meta_Evaluati"
+      ]
+    },
+    "17eej67Uz9NlumxFqdCmD_DUARJEBaiTt": {
+      "name": "NLP_IIS_UT_at_SemEval_2021_Task_4__Machine_Reading.tar.gz",
+      "processed_at": "2026-06-29T05:13:05.693847Z",
+      "output_paths": [
+        "./structured_tex_output/NLP-IIS_UT_at_SemEval-2021_Task_4_Machine_Reading_Comprehension_using_the_Long_Document_Transformer"
+      ]
+    },
+    "1uK3CJP6okg_hrtqg0Y-IqnYLj--iHNLF": {
+      "name": "FocalPO__Enhancing_Preference_Optimizing_by_Focusi.tar.gz",
+      "processed_at": "2026-06-29T05:13:15.203884Z",
+      "output_paths": [
+        "./structured_tex_output/FocalPO_Enhancing_Preference_Optimizing_by_Focusing_on_Correct_Preference_Rankings"
+      ]
+    },
+    "1JVZ6AfU7VgQxywDzl2XvOl9Un_26inyS": {
+      "name": "Ontology_Guided_Reverse_Thinking_Makes_Large_Langu.tar.gz",
+      "processed_at": "2026-06-29T05:13:24.392268Z",
+      "output_paths": [
+        "./structured_tex_output/Ontology_Guided_Reverse_Thinking_Makes_Large_Langu"
+      ]
+    },
+    "1rfw_t2P3H0M6vGPPz_E6c9V4BRkyTh29": {
+      "name": "Large_Language_Models_are_Miscalibrated_In_Context.tar.gz",
+      "processed_at": "2026-06-29T05:13:51.905091Z",
+      "output_paths": [
+        "./structured_tex_output/Large_Language_Models_are_Miscalibrated_In-Context_Learners"
+      ]
+    },
+    "1lwf8yqpBS6Q3mFbOXeVAfoZy0spWYL85": {
+      "name": "Multi_modal_Preference_Alignment_Remedies_Degradat.tar.gz",
+      "processed_at": "2026-06-29T05:14:31.620526Z",
+      "output_paths": [
+        "./structured_tex_output/Multi-modal_Preference_Alignment_Remedies_Degradation_of_Visual_Instruction_Tuning_on_Language_Models"
+      ]
+    },
+    "1RRvqvNaOwmSZfNGB84KDZo-vfFvWidZl": {
+      "name": "Chain_of_Skills__A_Configurable_Model_for_Open_Dom.tar.gz",
+      "processed_at": "2026-06-29T05:15:00.709703Z",
+      "output_paths": [
+        "./structured_tex_output/Chain_of_Skills__A_Configurable_Model_for_Open_Dom"
+      ]
+    },
+    "1N6qgIZfNocyWUHhha9cvbrKTgJOE_BOg": {
+      "name": "Semantics_or_spelling__Probing_contextual_word_emb.tar.gz",
+      "processed_at": "2026-06-29T05:15:08.297133Z",
+      "output_paths": [
+        "./structured_tex_output/Semantics_or_spelling_Probing_contextual_word_embeddings_with_orthographic_noise"
+      ]
+    },
+    "12HUaaaq9GPMTSb0RMKTDFx6uu3UTuu-s": {
+      "name": "CodeScope__An_Execution_based_Multilingual_Multita.tar.gz",
+      "processed_at": "2026-06-29T05:15:16.416341Z",
+      "output_paths": [
+        "./structured_tex_output/CodeScope_An_Execution-based_Multilingual_Multitask_Multidimensional_Benchmark_for_Evaluating_LLMs_on_Code_Understandin"
+      ]
+    },
+    "19J3loeREu2Jjfbj078cs7Rb_ZBrzqUB3": {
+      "name": "Deal__or_no_deal__or_who_knows___Forecasting_Uncer.tar.gz",
+      "processed_at": "2026-06-29T05:15:27.561468Z",
+      "output_paths": [
+        "./structured_tex_output/Deal__or_no_deal__or_who_knows___Forecasting_Uncer"
+      ]
+    },
+    "1um-hWE3ucJVKPYC1X4YM7y8H3sXJR1ie": {
+      "name": "EasyInstruct__An_Easy_to_use_Instruction_Processin.tar.gz",
+      "processed_at": "2026-06-29T05:15:30.432127Z",
+      "output_paths": [
+        "./structured_tex_output/raisebox_-3.0pt_includegraphics_scale_0.12_figures_EasyInstruct.png_An_Easy-to-use_Instruction_Processing_Framewo"
+      ]
+    },
+    "1GGgn-DqDtEHidbg4YBfl3WPuG7ZKU6fI": {
+      "name": "Document_Level_Relation_Extraction_with_Adaptive_F.tar.gz",
+      "processed_at": "2026-06-29T05:15:54.218741Z",
+      "output_paths": [
+        "./structured_tex_output/Document-Level_Relation_Extraction_with_Adaptive_Focal_Loss_and_Knowledge_Distillation"
+      ]
+    },
+    "1oqXlYlcXixxyfTBU6bPFogWL3AWPm78k": {
+      "name": "Memory_efficient_NLLB_200__Language_specific_Exper.tar.gz",
+      "processed_at": "2026-06-29T05:16:12.941108Z",
+      "output_paths": [
+        "./structured_tex_output/Memory-efficient_NLLB-200_Language-specific_Expert_Pruning_of_a_Massively_Multilingual_Machine_Translation_Model"
+      ]
+    },
+    "19vgFF7833HmeHXifBYwv7ttedRIxmiOE": {
+      "name": "ProjectEval__A_Benchmark_for_Programming_Agents_Au.tar.gz",
+      "processed_at": "2026-06-29T05:16:14.083166Z",
+      "output_paths": [
+        "./structured_tex_output/ProjectEval_A_Benchmark_for_Programming_Agents_Automated_Evaluation_on_Project-Level_Code_Generation"
+      ]
+    },
+    "1gNcas-g2VcnoZI61L-VV8WJfssNWrJ3j": {
+      "name": "Memorizing_is_Not_Enough__Deep_Knowledge_Injection.tar.gz",
+      "processed_at": "2026-06-29T05:16:22.681379Z",
+      "output_paths": [
+        "./structured_tex_output/Memorizing_is_Not_Enough_Deep_Knowledge_Injection_Through_Reasoning"
+      ]
+    },
+    "1jiakN6qTpAeSvZxnakVnbX_LYWySK5e9": {
+      "name": "Adversarial_Training_for_Low_Resource_Disfluency_C.tar.gz",
+      "processed_at": "2026-06-29T05:16:33.935913Z",
+      "output_paths": [
+        "./structured_tex_output/Adversarial_Training_for_Low-Resource_Disfluency_Correction"
+      ]
+    },
+    "1cY-c1KSaG6icQjzEoU10VsMZ3l7AL_BR": {
+      "name": "The_Harmonic_Structure_of_Information_Contours.tar.gz",
+      "processed_at": "2026-06-29T05:17:03.496659Z",
+      "output_paths": [
+        "./structured_tex_output/The_Harmonic_Structure_of_Information_Contours"
+      ]
+    },
+    "1cmm6nuy8CDobT-CR3Uy4_6qoJe_1UyEN": {
+      "name": "DKAF__KB_Arbitration_for_Learning_Task_Oriented_Di.tar.gz",
+      "processed_at": "2026-06-29T05:17:06.898854Z",
+      "output_paths": [
+        "./structured_tex_output/DKAF_KB_Arbitration_for_Learning_Task-Oriented_Dialog_Systems_with_Dialog-KB_Inconsistencies"
+      ]
+    },
+    "1mMtkbAiQPrxNkf_jF6Oc3EX4QJUM7PpW": {
+      "name": "Iterative_Forward_Tuning_Boosts_In_Context_Learnin.tar.gz",
+      "processed_at": "2026-06-29T05:17:18.910801Z",
+      "output_paths": [
+        "./structured_tex_output/Iterative_Forward_Tuning_Boosts_In-Context_Learning_in_Language_Models"
+      ]
+    },
+    "1dEIz0hrhV8kYY2ltRLVwY1_mTGrZDHqH": {
+      "name": "A_Large_and_Balanced_Corpus_for_Fine_grained_Arabi.tar.gz",
+      "processed_at": "2026-06-29T05:17:30.559576Z",
+      "output_paths": [
+        "./structured_tex_output/A_Large_and_Balanced_Corpus_for_Fine_grained_Arabi"
+      ]
+    },
+    "1Ngcg4ml-9JPA8E533t6NX3Mz7XZvMcxb": {
+      "name": "Cross_domain_Named_Entity_Recognition_via_Graph_Ma.tar.gz",
+      "processed_at": "2026-06-29T05:17:31.270808Z",
+      "output_paths": [
+        "./structured_tex_output/Cross-domain_Named_Entity_Recognition_via_Graph_Matching"
+      ]
+    },
+    "1pmeyv_MXYwgdVPdx-n3W1Oz2FDITD52x": {
+      "name": "JARVIS_VLA__Post_Training_Large_Scale_Vision_Langu.tar.gz",
+      "processed_at": "2026-06-29T05:17:45.101558Z",
+      "output_paths": [
+        "./structured_tex_output/JARVIS_VLA__Post_Training_Large_Scale_Vision_Langu"
+      ]
+    },
+    "1ssX7-8OsSFEDQ_G7iZj5Epf9DK0AF3M1": {
+      "name": "The_Heuristic_Core__Understanding_Subnetwork_Gener.tar.gz",
+      "processed_at": "2026-06-29T05:17:54.605732Z",
+      "output_paths": [
+        "./structured_tex_output/The_Heuristic_Core__Understanding_Subnetwork_Gener"
+      ]
+    },
+    "19zkj9sBjE9wwz4xw8LKhZ8sbaRLs0WBD": {
+      "name": "Learning_to_Insert__PAUSE__Tokens_for_Better_Reaso.tar.gz",
+      "processed_at": "2026-06-29T05:18:02.273852Z",
+      "output_paths": [
+        "./structured_tex_output/Learning_to_Insert_texttt_PAUSE_Tokens_for_Better_Reasoning"
+      ]
+    },
+    "1kXNeZNL9LzzfPovnExF9UmUjACb5P9Yd": {
+      "name": "Hierarchical_Task_Aware_Multi_modal_Mixture_of_Inc.tar.gz",
+      "processed_at": "2026-06-29T05:18:18.210683Z",
+      "output_paths": [
+        "./structured_tex_output/Hierarchical-Task-Aware_Multi-modal_Mixture_of_Incremental_LoRA_Experts_for_Embodied_Continual_Learning"
+      ]
+    },
+    "16FtREMNpTrIrcHoq8Qa4NYtHSO4bkBVG": {
+      "name": "On_Evaluating_Multilingual_Compositional_Generaliz.tar.gz",
+      "processed_at": "2026-06-29T05:18:19.524879Z",
+      "output_paths": [
+        "./structured_tex_output/On_Evaluating_Multilingual_Compositional_Generalization_with_Translated_Datasets"
+      ]
+    },
+    "1fQ55yvnEJZN937WGW7UmSOXM7RT8uWYg": {
+      "name": "Attribute_Controlled_Dialogue_Prompting.tar.gz",
+      "processed_at": "2026-06-29T05:18:31.412853Z",
+      "output_paths": [
+        "./structured_tex_output/Attribute_Controlled_Dialogue_Prompting"
+      ]
+    },
+    "1f1rtGYuZjwrb97_KWSIYBNMWkYvmLapT": {
+      "name": "Democratizing_LLMs_for_Low_Resource_Languages_by_L.tar.gz",
+      "processed_at": "2026-06-29T05:18:50.888659Z",
+      "output_paths": [
+        "./structured_tex_output/Democratizing_LLMs_for_Low_Resource_Languages_by_L"
+      ]
+    },
+    "1aUh-Yv0OUfnbzpg7LXCCxJHupWeFppAw": {
+      "name": "Learning_Relation_Alignment_for_Calibrated_Cross_m.tar.gz",
+      "processed_at": "2026-06-29T05:19:05.790281Z",
+      "output_paths": [
+        "./structured_tex_output/Learning_Relation_Alignment_for_Calibrated_Cross_m"
+      ]
+    },
+    "1bmsv6a3tub2NEw3NFCUqJLWuYTa8Nm8K": {
+      "name": "Expectation_Confirmation_Preference_Optimization_f.tar.gz",
+      "processed_at": "2026-06-29T05:19:26.005989Z",
+      "output_paths": [
+        "./structured_tex_output/Expectation_Confirmation_Preference_Optimization_for_Multi-Turn_Conversational_Recommendation_Agent"
+      ]
+    },
+    "1fBz9oF_4293QN7C5OIu15GrAECRN6W-p": {
+      "name": "Continual_Knowledge_Distillation_for_Neural_Machin.tar.gz",
+      "processed_at": "2026-06-29T05:19:32.754837Z",
+      "output_paths": [
+        "./structured_tex_output/Continual_Knowledge_Distillation_for_Neural_Machine_Translation"
+      ]
+    },
+    "1i56UKB5M5uqg-G_5e4JEmiJUo8YCfasa": {
+      "name": "Explanation_Graph_Generation_via_Generative_Pre_tr.tar.gz",
+      "processed_at": "2026-06-29T05:19:46.746294Z",
+      "output_paths": [
+        "./structured_tex_output/Explanation_Graph_Generation_via_Generative_Pre-training_over_Synthetic_Graphs"
+      ]
+    },
+    "1NRT08--3Ib0z5xTqKz54Ntu2fir2Bz4P": {
+      "name": "Improving_Machine_Reading_Comprehension_with_Conte.tar.gz",
+      "processed_at": "2026-06-29T05:20:04.109634Z",
+      "output_paths": [
+        "./structured_tex_output/Improving_Machine_Reading_Comprehension_with_Conte"
+      ]
+    },
+    "1bkNYhehamt8nCIMSefNL7aAC-axyNBtj": {
+      "name": "OCR_Improves_Machine_Translation_for_Low_Resource_.tar.gz",
+      "processed_at": "2026-06-29T05:20:17.176211Z",
+      "output_paths": [
+        "./structured_tex_output/OCR_Improves_Machine_Translation_for_Low-Resource_Languages"
+      ]
+    },
+    "1ArZBX3ukzn-kD1UNhutJEqqb9O6i9oSG": {
+      "name": "Balancing_Diversity_and_Risk_in_LLM_Sampling__How_.tar.gz",
+      "processed_at": "2026-06-29T05:20:34.737243Z",
+      "output_paths": [
+        "./structured_tex_output/Balancing_Diversity_and_Risk_in_LLM_Sampling__How"
+      ]
+    },
+    "1FFboyTYhToEPgQx0s4yJOofgehD4P8Sz": {
+      "name": "Including_Signed_Languages_in_Natural_Language_Pro.tar.gz",
+      "processed_at": "2026-06-29T05:20:42.213173Z",
+      "output_paths": [
+        "./structured_tex_output/Including_Signed_Languages_in_Natural_Language_Processing"
+      ]
+    },
+    "1iuH9RzMGdtSzl7sm9bxkrYmYbmEVLOW2": {
+      "name": "Delving_into_Multilingual_Ethical_Bias__The_MSQAD_.tar.gz",
+      "processed_at": "2026-06-29T05:20:48.614390Z",
+      "output_paths": [
+        "./structured_tex_output/Delving_into_Multilingual_Ethical_Bias__The_MSQAD"
+      ]
+    },
+    "15L-HotcfNzGu_6iP83Irxx0p2KAWNrMK": {
+      "name": "A_New_Framework_for_Fast_Automated_Phonological_Re.tar.gz",
+      "processed_at": "2026-06-29T05:20:57.701653Z",
+      "output_paths": [
+        "./structured_tex_output/A_New_Framework_for_Fast_Automated_Phonological_Reconstruction_Using_Trimmed_Alignments_and_Sound_Correspondence_Pattern"
+      ]
+    },
+    "1SnYtgXGSAoB584KyL8ogLdqf7bLe4yGd": {
+      "name": "Improving_Event_Causality_Identification_via_Self_.tar.gz",
+      "processed_at": "2026-06-29T05:21:13.060995Z",
+      "output_paths": [
+        "./structured_tex_output/Improving_Event_Causality_Identification_via_Self-Supervised_Representation_Learning_on_External_Causal_Statement"
+      ]
+    },
+    "1CcCa5vRdMSR_HYtaSMAjbEql831L_M_-": {
+      "name": "LLM_Symbolic_Integration_for_Robust_Temporal_Tabul.tar.gz",
+      "processed_at": "2026-06-29T05:21:30.208197Z",
+      "output_paths": [
+        "./structured_tex_output/LLM-Symbolic_Integration_for_Robust_Temporal_Tabular_Reasoning"
+      ]
+    },
+    "1DW7pZ2X-shw_x8pjoVtOvJo0VeVHkoiz": {
+      "name": "DocMEdit__Towards_Document_Level_Model_Editing.tar.gz",
+      "processed_at": "2026-06-29T05:21:33.345734Z",
+      "output_paths": [
+        "./structured_tex_output/benchmarkname_Towards_Document-Level_Model_Editing"
+      ]
+    },
+    "15QCBuPDV4FfR0hU6pYT-tBmZdP0GSO3i": {
+      "name": "Few_shot_Transfer_Learning_for_Knowledge_Base_Ques.tar.gz",
+      "processed_at": "2026-06-29T05:21:50.235159Z",
+      "output_paths": [
+        "./structured_tex_output/Few_shot_Transfer_Learning_for_Knowledge_Base_Ques"
+      ]
+    },
+    "1pkstzTbf_tGj9mR9OAwMc1as9yU8mulM": {
+      "name": "Decoupling_Reasoning_and_Knowledge_Injection_for_I.tar.gz",
+      "processed_at": "2026-06-29T05:22:09.458680Z",
+      "output_paths": [
+        "./structured_tex_output/Decoupling_Reasoning_and_Knowledge_Injection_for_In-Context_Knowledge_Editing"
+      ]
+    },
+    "1Vyxo31ri11wuyFHDBPFVkt5cluDpRSUh": {
+      "name": "CRiskEval__A_Chinese_Multi_Level_Risk_Evaluation_B.tar.gz",
+      "processed_at": "2026-06-29T05:22:13.868863Z",
+      "output_paths": [
+        "./structured_tex_output/CRiskEval_A_Chinese_Multi-Level_Risk_Evaluation_Benchmark_Dataset_for_Large_Language_Models"
+      ]
+    },
+    "1NoyAzpPP9bp3QJ5rvLWXpHeCNmMEbbmT": {
+      "name": "Zero_shot_Cross_lingual_Transfer_is_Under_specifie.tar.gz",
+      "processed_at": "2026-06-29T05:22:17.198947Z",
+      "output_paths": [
+        "./structured_tex_output/Zero-shot_Cross-lingual_Transfer_is_Under-specified_Optimization"
+      ]
+    },
+    "1ficxbIKVfYWySgTz89eO7MVqnMQyup9Y": {
+      "name": "Sliding_Windows_Are_Not_the_End__Exploring_Full_Ra.tar.gz",
+      "processed_at": "2026-06-29T05:22:29.333714Z",
+      "output_paths": [
+        "./structured_tex_output/Sliding_Windows_Are_Not_the_End_Exploring_Full_Ranking_with_Long-Context_Large_Language_Models"
+      ]
+    },
+    "10Ncf1SllVV3vk196um6KWI1h1cjlbUtq": {
+      "name": "Large_Language_Models_are_Good_Relational_Learners.tar.gz",
+      "processed_at": "2026-06-29T05:22:53.163107Z",
+      "output_paths": [
+        "./structured_tex_output/Large_Language_Models_are_Good_Relational_Learners"
+      ]
+    },
+    "1zq8TVzaooOfw5CoO5z6LwWR2pwZaR6ho": {
+      "name": "OS_Kairos__Adaptive_Interaction_for_MLLM_Powered_G.tar.gz",
+      "processed_at": "2026-06-29T05:23:01.282796Z",
+      "output_paths": [
+        "./structured_tex_output/raisebox_-0.5em_includegraphics_width_1cm_icon.png_OS-Kairos_Adaptive_Interaction_for_MLLM-Powered_GUI_Agents"
+      ]
+    },
+    "19jcFL46m0Pp3AApltp7SNp50QF_g3LnF": {
+      "name": "CulFiT__A_Fine_grained_Cultural_aware_LLM_Training.tar.gz",
+      "processed_at": "2026-06-29T05:23:12.206323Z",
+      "output_paths": [
+        "./structured_tex_output/CulFiT__A_Fine_grained_Cultural_aware_LLM_Training"
+      ]
+    },
+    "10h-1FRbfyRQ1_NT0Fi1_T6liGq3VO4CT": {
+      "name": "How_do_Transformer_Embeddings_Represent_Compositio.tar.gz",
+      "processed_at": "2026-06-29T05:23:27.478670Z",
+      "output_paths": [
+        "./structured_tex_output/How_do_Transformer_Embeddings_Represent_Compositions_newline_A_Functional_Analysis"
+      ]
+    },
+    "1t4AO3VC_GscEOUW8wu7-nmN4mXzSNsWJ": {
+      "name": "Quantifying_Semantic_Emergence_in_Language_Models.tar.gz",
+      "processed_at": "2026-06-29T05:23:28.255114Z",
+      "output_paths": [
+        "./structured_tex_output/Quantifying_Semantic_Emergence_in_Language_Models"
+      ]
+    },
+    "1crhvsBzBFO4LJzBPJbRJ-oI27vZkdlNF": {
+      "name": "Zero_Shot_Cross_lingual_Semantic_Parsing.tar.gz",
+      "processed_at": "2026-06-29T05:23:52.841554Z",
+      "output_paths": [
+        "./structured_tex_output/Zero_Shot_Cross_lingual_Semantic_Parsing"
+      ]
+    },
+    "1LYZNYUJntlJfRZvSx_mcqAqbm_Ayamvz": {
+      "name": "Commonsense_Knowledge_Transfer_for_Pre_trained_Lan.tar.gz",
+      "processed_at": "2026-06-29T05:24:10.535890Z",
+      "output_paths": [
+        "./structured_tex_output/Commonsense_Knowledge_Transfer_for_Pre-trained_Language_Models"
+      ]
+    },
+    "1fZOT3vTD-qtZaTYqmoSJ6gq6gr8Nn_Lc": {
+      "name": "Soundwave__Less_is_More_for_Speech_Text_Alignment_.tar.gz",
+      "processed_at": "2026-06-29T05:24:11.110528Z",
+      "output_paths": [
+        "./structured_tex_output/Soundwave__Less_is_More_for_Speech_Text_Alignment"
+      ]
+    },
+    "1HTHHJk98A2fkJKhHtyI-VpumDGbkziVv": {
+      "name": "Enhancing_Idiomatic_Representation_in_Multiple_Lan.tar.gz",
+      "processed_at": "2026-06-29T05:24:23.905582Z",
+      "output_paths": [
+        "./structured_tex_output/Enhancing_Idiomatic_Representation_in_Multiple_Languages_via_an_Adaptive_Contrastive_Triplet_Loss"
+      ]
+    },
+    "1AQN-csThiRGFxYbephH4jkUcJDRnooOg": {
+      "name": "Training_Dynamics_Underlying_Language_Model_Scalin.tar.gz",
+      "processed_at": "2026-06-29T05:24:31.280785Z",
+      "output_paths": [
+        "./structured_tex_output/Training_Dynamics_Underlying_Language_Model_Scaling_Laws_Loss_Deceleration_and_Zero-Sum_Learning"
+      ]
+    },
+    "1Kfqm2wuMkEKaV5vVkCCieVx-SV-ecGKd": {
+      "name": "On_Synthesizing_Data_for_Context_Attribution_in_Qu.tar.gz",
+      "processed_at": "2026-06-29T05:24:34.787569Z",
+      "output_paths": [
+        "./structured_tex_output/On_Synthesizing_Data_for_Context_Attribution_in_Question_Answering"
+      ]
+    },
+    "1GSwF3Vds6CCOge7UTOhyvRBfGcvk_ekB": {
+      "name": "Morphological_Inflection_with_Phonological_Feature.tar.gz",
+      "processed_at": "2026-06-29T05:24:47.955963Z",
+      "output_paths": [
+        "./structured_tex_output/Morphological_Inflection_with_Phonological_Features"
+      ]
+    },
+    "1uBniZ6hv6bVQG4B4JaxsoFsqN3KJsilO": {
+      "name": "Sparse_Rewards_Can_Self_Train_Dialogue_Agents.tar.gz",
+      "processed_at": "2026-06-29T05:24:51.510122Z",
+      "output_paths": [
+        "./structured_tex_output/Sparse_Rewards_Can_Self-Train_Dialogue_Agents"
+      ]
+    },
+    "1M_F630LGSulaKn9NkyRdCK38oSA12vS1": {
+      "name": "Integrating_Multi_scale_Contextualized_Information.tar.gz",
+      "processed_at": "2026-06-29T05:25:08.232430Z",
+      "output_paths": [
+        "./structured_tex_output/Integrating_Multi-scale_Contextualized_Information_for_Byte-based_Neural_Machine_Translation"
+      ]
+    },
+    "1NSpy82sfiTIes69gIE0rExE2dGgMvRTm": {
+      "name": "On_the_Interpretability_and_Significance_of_Bias_M.tar.gz",
+      "processed_at": "2026-06-29T05:25:18.941389Z",
+      "output_paths": [
+        "./structured_tex_output/O_n_the_I_nterpretability_and_S_ignificance_of_B_ias_M_etrics_in_T_exts_a_PMI_-based_A_pproach"
+      ]
+    },
+    "17sJMNRClFoszYKCk46RgWV2AqO3KVoqs": {
+      "name": "CLIP_Models_are_Few_Shot_Learners__Empirical_Studi.tar.gz",
+      "processed_at": "2026-06-29T05:25:53.827739Z",
+      "output_paths": [
+        "./structured_tex_output/CLIP_Models_are_Few-shot_Learners_Empirical_Studies_on_VQA_and_Visual_Entailment"
+      ]
+    },
+    "1t0O1k7-D30PYOQzm_IULExNSmLIOXBAH": {
+      "name": "TARGA__Targeted_Synthetic_Data_Generation_for_Prac.tar.gz",
+      "processed_at": "2026-06-29T05:25:54.725545Z",
+      "output_paths": [
+        "./structured_tex_output/ours_Targeted_Synthetic_Data_Generation_for_Practical_Reasoning_over_Structured_Data"
+      ]
+    },
+    "14-8igjsFSKSSHNy1Y9BjPpr_PBP3hwJo": {
+      "name": "DevEval__A_Manually_Annotated_Code_Generation_Benc.tar.gz",
+      "processed_at": "2026-06-29T05:26:09.747550Z",
+      "output_paths": [
+        "./structured_tex_output/DevEval__A_Manually_Annotated_Code_Generation_Benc"
+      ]
+    },
+    "1iT8FPk42Jf4dGDRXSOCbAjxPSdt-9a-G": {
+      "name": "Conditional_Bilingual_Mutual_Information_Based_Ada.tar.gz",
+      "processed_at": "2026-06-29T05:26:26.935466Z",
+      "output_paths": [
+        "./structured_tex_output/Conditional_Bilingual_Mutual_Information_Based_Adaptive_Training_for_Neural_Machine_Translation"
+      ]
+    },
+    "1Cl5FVYwSiLnnCjxG4oeNVzlqIzJYc_BZ": {
+      "name": "McBE__A_Multi_task_Chinese_Bias_Evaluation_Benchma.tar.gz",
+      "processed_at": "2026-06-29T05:26:37.649167Z",
+      "output_paths": [
+        "./structured_tex_output/McBE_A_Multi-task_Chinese_Bias_Evaluation_Benchmark_for_Large_Language_Models"
+      ]
+    },
+    "1oISylaSkcuLUdwFEIVkrzmRS9r-7D-NK": {
+      "name": "AVATAR__A_Parallel_Corpus_for_Java_Python_Program_.tar.gz",
+      "processed_at": "2026-06-29T05:27:02.897804Z",
+      "output_paths": [
+        "./structured_tex_output/tool_A_Parallel_Corpus_for_Java-Python_Program_Translation"
+      ]
+    },
+    "1cQYSbpxmTIlOeTx3zwA5VlXozxN3Iwur": {
+      "name": "DolphCoder__Echo_Locating_Code_Large_Language_Mode.tar.gz",
+      "processed_at": "2026-06-29T05:27:21.138178Z",
+      "output_paths": [
+        "./structured_tex_output/raisebox_-0.3cm_includegraphics_width_1cm_height_0.9cm_keepaspectratio_image_figtitle.png_DolphCoder_Echo-Locatin"
+      ]
+    },
+    "19OBBCRxkGPODDps9_svded49v6oGI1j5": {
+      "name": "Multi3NLU____A_Multilingual__Multi_Intent__Multi_D.tar.gz",
+      "processed_at": "2026-06-29T05:27:22.897638Z",
+      "output_paths": [
+        "./structured_tex_output/dataset_A_Multilingual_Multi-Intent_Multi-Domain_Dataset_for_Natural_Language_Understanding_in_Task-Oriented_Dialogu"
+      ]
+    },
+    "1TVZoqb1PH35iOhp_qI6witaWH3F1vLiR": {
+      "name": "Boosting_Event_Extraction_with_Denoised_Structure_.tar.gz",
+      "processed_at": "2026-06-29T05:27:41.341943Z",
+      "output_paths": [
+        "./structured_tex_output/Boosting_Event_Extraction_with_Denoised_Structure"
+      ]
+    },
+    "1WUa2i9JfdPZdob8Ok6Y2cRkAPz_GLu4i": {
+      "name": "What_Makes_a_Good_Natural_Language_Prompt_.tar.gz",
+      "processed_at": "2026-06-29T05:27:46.093831Z",
+      "output_paths": [
+        "./structured_tex_output/What_Makes_a_emph_Good_Natural_Language_Prompt"
+      ]
+    },
+    "1gpPjyb6JpH80xpHk0xquWhGwjPeUK3ED": {
+      "name": "OPI_at_SemEval_2023_Task_9__A_Simple_But_Effective.tar.gz",
+      "processed_at": "2026-06-29T05:27:57.244371Z",
+      "output_paths": [
+        "./structured_tex_output/OPI_at_SemEval_2023_Task_9_A_Simple_But_Effective_Approach_to_Multilingual_Tweet_Intimacy_Analysis"
+      ]
+    },
+    "1fSves-b4wT3B46fSWOgohoyea-CN--dm": {
+      "name": "Adverse_Event_Extraction_from_Discharge_Summaries_.tar.gz",
+      "processed_at": "2026-06-29T05:28:10.756212Z",
+      "output_paths": [
+        "./structured_tex_output/Adverse_Event_Extraction_from_Discharge_Summaries_A_New_Dataset_Annotation_Scheme_and_Initial_Findings"
+      ]
+    },
+    "1n5fygqngLKpT2miP7uBEQ03tSk3BCUhp": {
+      "name": "Improving_Medical_Large_Vision_Language_Models_wit.tar.gz",
+      "processed_at": "2026-06-29T05:28:25.827850Z",
+      "output_paths": [
+        "./structured_tex_output/Improving_Medical_Large_Vision-Language_Models_with_Abnormal-Aware_Feedback"
+      ]
+    },
+    "1HygOmxIrLojxx1A3OH0YxoW8oTrRqb18": {
+      "name": "Value_Residual_Learning.tar.gz",
+      "processed_at": "2026-06-29T05:28:41.279906Z",
+      "output_paths": [
+        "./structured_tex_output/Value_Residual_Learning"
+      ]
+    },
+    "1PK5p2KkMlkPTxGtgCiBiV0A3849cfFhy": {
+      "name": "WirelessMathBench__A_Mathematical_Modeling_Benchma.tar.gz",
+      "processed_at": "2026-06-29T05:28:55.760342Z",
+      "output_paths": [
+        "./structured_tex_output/textbf_method_A_Mathematical_Modeling_Benchmark_for_LLMs_in_Wireless_Communications"
+      ]
+    },
+    "1MbBXYJRpNQXYClawA7rs5k3TIIzvghaU": {
+      "name": "Cultural_Learning_Based_Culture_Adaptation_of_Lang.tar.gz",
+      "processed_at": "2026-06-29T05:29:17.519283Z",
+      "output_paths": [
+        "./structured_tex_output/Cultural_Learning-Based_Culture_Adaptation_of_Language_Models"
+      ]
+    },
+    "1cpleNpgp3CS8ovN9KgSqi6z-_K1xndRN": {
+      "name": "Segment_First_or_Comprehend_First__Explore_the_Lim.tar.gz",
+      "processed_at": "2026-06-29T05:29:21.542797Z",
+      "output_paths": [
+        "./structured_tex_output/Segment_First_or_Comprehend_First_Explore_the_Limit_of_Unsupervised_Word_Segmentation_with_Large_Language_Models"
+      ]
+    },
+    "1MDn7gsNeShwA0W6vxf27mXBiOAng_Ej0": {
+      "name": "Probing_the_Multi_turn_Planning_Capabilities_of_LL.tar.gz",
+      "processed_at": "2026-06-29T05:29:56.204576Z",
+      "output_paths": [
+        "./structured_tex_output/Probing_the_Multi_turn_Planning_Capabilities_of_LL"
+      ]
+    },
+    "1uql18Ez4uiqzZM820sOO3hUw9JCmqsSj": {
+      "name": "Beyond_Perception__Evaluating_Abstract_Visual_Reas.tar.gz",
+      "processed_at": "2026-06-29T05:30:04.371936Z",
+      "output_paths": [
+        "./structured_tex_output/Beyond_Perception_Evaluating_Abstract_Visual_Reasoning_through_Multi-Stage_Task"
+      ]
+    },
+    "1-yXk1r_6mfihAj6K-S1ty2IlCw_7czVP": {
+      "name": "Mitigating_Confounding_in_Speech_Based_Dementia_De.tar.gz",
+      "processed_at": "2026-06-29T05:30:09.650230Z",
+      "output_paths": [
+        "./structured_tex_output/Mitigating_Confounding_in_Speech-Based_Dementia_Detection_through_Weight_Masking"
+      ]
+    },
+    "1oIRo-3KbL4wqzmtZF_OPzvMMe8dvbO-X": {
+      "name": "Evaluating_Factuality_in_Text_Simplification.tar.gz",
+      "processed_at": "2026-06-29T05:30:33.265715Z",
+      "output_paths": [
+        "./structured_tex_output/Evaluating_Factuality_in_Text_Simplification"
+      ]
+    },
+    "1SVNAfK2-OzMVBef1pzV_hZ_46FOy1EF0": {
+      "name": "LGAR__Zero_Shot_LLM_Guided_Neural_Ranking_for_Abst.tar.gz",
+      "processed_at": "2026-06-29T05:30:33.893552Z",
+      "output_paths": [
+        "./structured_tex_output/LGAR_Zero-Shot_LLM-Guided_Neural_Ranking_for_Abstract_Screening_in_Systematic_Literature_Reviews"
+      ]
+    },
+    "1o1PxUyjnaAfYVTG7XgsnKXYanIZ6wDS6": {
+      "name": "Instruction_Tuning_on_Public_Government_and_Cultur.tar.gz",
+      "processed_at": "2026-06-29T05:31:14.024664Z",
+      "output_paths": [
+        "./structured_tex_output/Instruction_Tuning_on_Public_Government_and_Cultural_Data_for_Low-Resource_Language_a_Case_Study_in_Kazakh"
+      ]
+    },
+    "1fHmBFhifYLaHoZPHADy0TJfcfdl-auUv": {
+      "name": "Towards_Robustness_of_Text_to_SQL_Models_Against_N.tar.gz",
+      "processed_at": "2026-06-29T05:31:44.906132Z",
+      "output_paths": [
+        "./structured_tex_output/Towards_Robustness_of_Text_to_SQL_Models_Against_N"
+      ]
+    },
+    "1vV42C-FJRfh4ayVxwmd-fQUKruYIMOdP": {
+      "name": "Automated_Focused_Feedback_Generation_for_Scientif.tar.gz",
+      "processed_at": "2026-06-29T05:32:06.135813Z",
+      "output_paths": [
+        "./structured_tex_output/Automated_Focused_Feedback_Generation_for_Scientific_Writing_Assistance"
+      ]
+    },
+    "1mAm2M2Sf0ot5rAnk3nqWdHYxnkr7WdEi": {
+      "name": "Re_ranking_Using_Large_Language_Models_for_Mitigat.tar.gz",
+      "processed_at": "2026-06-29T05:32:11.685850Z",
+      "output_paths": [
+        "./structured_tex_output/Re-ranking_Using_Large_Language_Models_for_Mitigating_Exposure_to_Harmful_Content_on_Social_Media_Platforms"
+      ]
+    },
+    "1ydn0z4UwbAmTveRSmO5S3igwnwimkwJu": {
+      "name": "Improving_Dialog_Systems_for_Negotiation_with_Pers.tar.gz",
+      "processed_at": "2026-06-29T05:32:22.983378Z",
+      "output_paths": [
+        "./structured_tex_output/Improving_Dialog_Systems_for_Negotiation_with_Pers"
+      ]
+    },
+    "1CwHbNB77Sr3JpQAireJn_EboIZmbiwOB": {
+      "name": "Rule_or_Story__Which_is_a_Better_Commonsense_Expre.tar.gz",
+      "processed_at": "2026-06-29T05:32:36.417976Z",
+      "output_paths": [
+        "./structured_tex_output/Rule_or_Story_Which_is_a_Better_Commonsense_Expression_for_Talking_with_Large_Language_Models"
+      ]
+    },
+    "1LeBhvNKwUNsejPUghapqFLsbQHBPYP8B": {
+      "name": "Improving_Zero_Shot_Cross_lingual_Transfer_Between.tar.gz",
+      "processed_at": "2026-06-29T05:32:42.796167Z",
+      "output_paths": [
+        "./structured_tex_output/Improving_Zero-Shot_Cross-lingual_Transfer_Between_Closely_Related_Languages_by_Injecting_Character-Level_Noise"
+      ]
+    },
+    "1T7HJLmwFkICnPjozsEL7R3hRzSDrv_CG": {
+      "name": "A_Variational_Hierarchical_Model_for_Neural_Cross_.tar.gz",
+      "processed_at": "2026-06-29T05:33:01.223510Z",
+      "output_paths": [
+        "./structured_tex_output/A_Variational_Hierarchical_Model_for_Neural_Cross-Lingual_Summarization"
+      ]
+    },
+    "1XaZgR9PO39x3w7p79AsPrEQRDqWHlnT1": {
+      "name": "Cascaded_Span_Extraction_and_Response_Generation_f.tar.gz",
+      "processed_at": "2026-06-29T05:33:13.694814Z",
+      "output_paths": [
+        "./structured_tex_output/Cascaded_Span_Extraction_and_Response_Generation_for_Document-Grounded_Dialog"
+      ]
+    },
+    "15BpbB9HuAcDJ8zuuy98yaYOUABZKXM_7": {
+      "name": "MARS__Benchmarking_the_Metaphysical_Reasoning_Abil.tar.gz",
+      "processed_at": "2026-06-29T05:33:27.968435Z",
+      "output_paths": [
+        "./structured_tex_output/emoji_name_Benchmarking_the_Metaphysical_Reasoning_Abilities_of_Language_Models_with_a_Multi-task_Evaluation_Dataset"
+      ]
+    },
+    "1vsJ11zlQO5pc_9G9gZXR51th0fZgrN9Z": {
+      "name": "Inferring_Rewards_from_Language_in_Context.tar.gz",
+      "processed_at": "2026-06-29T05:33:28.742972Z",
+      "output_paths": [
+        "./structured_tex_output/Inferring_Rewards_from_Language_in_Context"
+      ]
+    },
+    "1j-OUZSgJvyuPUrCE7bvik7DgV_K7ophy": {
+      "name": "Automatic_Bug_Detection_in_LLM_Powered_Text_Based_.tar.gz",
+      "processed_at": "2026-06-29T05:33:45.493119Z",
+      "output_paths": [
+        "./structured_tex_output/Automatic_Bug_Detection_in_LLM_Powered_Text_Based"
+      ]
+    },
+    "1OD3D0rhHlhIZn6EGZVnaXuQfgrMCbrin": {
+      "name": "Tulun__Transparent_and_Adaptable_Low_resource_Mach.tar.gz",
+      "processed_at": "2026-06-29T05:33:54.301336Z",
+      "output_paths": [
+        "./structured_tex_output/textsc_Tulun_Transparent_and_Adaptable_Low-resource_Machine_Translation"
+      ]
+    },
+    "1z0jhm5WC0ORhTcys-2tpdZqB7-FJPwHG": {
+      "name": "Domain_Aware_Contrastive_Knowledge_Transfer_for_Mu.tar.gz",
+      "processed_at": "2026-06-29T05:34:13.274894Z",
+      "output_paths": [
+        "./structured_tex_output/Domain-Aware_Contrastive_Knowledge_Transfer_for_Multi-domain_Imbalanced_Data"
+      ]
+    },
+    "1zAcfolNt65VO8IaZaMjZgvQVLCphFrNw": {
+      "name": "Addressing_Blind_Guessing__Calibration_of_Selectio.tar.gz",
+      "processed_at": "2026-06-29T05:34:13.358028Z",
+      "output_paths": [
+        "./structured_tex_output/Addressing_Blind_Guessing__Calibration_of_Selectio"
+      ]
+    },
+    "1BRhcHxS7uIPkYRCsYCb7QN4GW54nl-6n": {
+      "name": "Scalable_and_Safe_Remediation_of_Defective_Actions.tar.gz",
+      "processed_at": "2026-06-29T05:34:21.223282Z",
+      "output_paths": [
+        "./structured_tex_output/Scalable_and_Safe_Remediation_of_Defective_Actions"
+      ]
+    },
+    "1L9R9isLA7BMEPqR53DF8tKSGeN0J74fg": {
+      "name": "RepCodec__A_Speech_Representation_Codec_for_Speech.tar.gz",
+      "processed_at": "2026-06-29T05:34:39.204782Z",
+      "output_paths": [
+        "./structured_tex_output/RepCodec_A_Speech_Representation_Codec_for_Speech_Tokenization"
+      ]
+    },
+    "1Lh6spDaiP0NPdwSYSfwrnCuDb6qt0hqf": {
+      "name": "COLA__Contextualized_Commonsense_Causal_Reasoning_.tar.gz",
+      "processed_at": "2026-06-29T05:34:42.301334Z",
+      "output_paths": [
+        "./structured_tex_output/modelname_Contextualized_Commonsense_Causal_Reasoning_from_the_Causal_Inference_Perspective"
+      ]
+    },
+    "13D36C5ktojdJv8pNtAOBhwiLgoolEjM_": {
+      "name": "S\u00b2GSL__Incorporating_Segment_to_Syntactic_Enhanced.tar.gz",
+      "processed_at": "2026-06-29T05:34:52.616251Z",
+      "output_paths": [
+        "./structured_tex_output/S_2_GSL_Incorporating_Segment_to_Syntactic_Enhanced_Graph_Structure_Learning_for_Aspect-based_Sentiment_Analysis"
+      ]
+    },
+    "1x78ma67nHv8K-sFcKFNXUCNzDnrpaHqa": {
+      "name": "Multilingual_Molecular_Representation_Learning_via.tar.gz",
+      "processed_at": "2026-06-29T05:34:54.253421Z",
+      "output_paths": [
+        "./structured_tex_output/Multilingual_Molecular_Representation_Learning_via_Contrastive_Pre-training"
+      ]
+    },
+    "16IKwJ0neqA2fZSAs8OH8aWx2hK7xN4DE": {
+      "name": "ZmBART__An_Unsupervised_Cross_lingual_Transfer_Fra.tar.gz",
+      "processed_at": "2026-06-29T05:35:15.259903Z",
+      "output_paths": [
+        "./structured_tex_output/ZmBART_An_Unsupervised_Cross-lingual_Transfer_Framework_for_Language_Generation"
+      ]
+    },
+    "1r1jpD9rGKbmOQiyiycDLWsTNpyvGTD5T": {
+      "name": "NeuralWOZ__Learning_to_Collect_Task_Oriented_Dialo.tar.gz",
+      "processed_at": "2026-06-29T05:35:15.492718Z",
+      "output_paths": [
+        "./structured_tex_output/NeuralWOZ__Learning_to_Collect_Task_Oriented_Dialo"
+      ]
     }
   },
   "skipped": [
@@ -96414,6 +98262,8 @@
     "1Yd17QlXuCAMJRgo-BGfNSR1GHri7qBa1",
     "1KiaD0s9a_uJ4aihdXgNwRK7MWw-Mc68j",
     "1Hg9VgmKdMtQBrv7p1p1KIHH_TLBTJweG",
-    "1CqH4BgugZ2XibHe7Hhx-NFQjc8T2GnFG"
+    "1CqH4BgugZ2XibHe7Hhx-NFQjc8T2GnFG",
+    "1Jpa-t2pq0tUD5o-L7drWu1XLCzTwKgf6",
+    "1Enq9KnAqRv6Im833X9I1-Q0Rn83xcK_0"
   ]
 }
