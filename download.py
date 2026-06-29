@@ -7,7 +7,7 @@ import openreview
 import time
 import re
 import json
-import xml.etree.ElementTree as ET
+from lxml import etree as ET
 from urllib.parse import urlencode, quote
 from dotenv import load_dotenv, set_key
 import shutil
@@ -309,69 +309,62 @@ def get_openreview_papers_fixed(conference_id, years):
         time.sleep(1)
     return list(set(titles))
 
-def get_dblp_papers(conference_id, years):
+def prefetch_all_dblp_papers(conferences, years, xml_path="dblp.xml"):
     """
-    Fetches accepted paper titles from DBLP for conferences not hosted on OpenReview.
-    Uses pagination to bypass DBLP's 1000 items per page limit.
+    Scans the massive dblp.xml file iteratively and extracts all papers 
+    for the requested conferences and years in a single pass.
+    Returns a dictionary: { "CVPR": [title1, title2], ... }
     """
-    titles = []
-    for year in years:
-        print(f"Đang quét bài từ DBLP cho {conference_id} năm {year}...")
-        f = 0
-        h = 1000 
-        year_titles = 0
-        while True:
-            url = f"https://dblp.org/search/publ/api?q=venue:{conference_id}+year:{year}&format=json&h={h}&f={f}"
-            
-            # Retry loop for DBLP network requests
-            response = None
-            for attempt in range(5):
-                try:
-                    # Use DIRECT_SESSION first to avoid Tor drops, fallback to SESSION if blocked
-                    sess = DIRECT_SESSION if attempt < 2 else SESSION
-                    response = sess.get(url, timeout=30)
-                    if response.status_code == 200:
-                        break
-                    elif response.status_code == 429:
-                        print("   ⚠️ DBLP Rate limit reached. Sleeping 5s...")
-                        time.sleep(5)
-                except Exception as e:
-                    print(f"   ⚠️ DBLP connection glitch (Attempt {attempt+1}/5): {e}")
-                    time.sleep(3)
-            
-            if response is None or response.status_code != 200:
-                print(f"❌ Cannot fetch DBLP page after retries. Stopping for {year}.")
-                break
-                
-            try:
-                data = response.json()
-                hits = data.get('result', {}).get('hits', {})
-                total = int(hits.get('@total', 0))
-                
-                if total == 0:
-                    break
+    print(f"🔄 Scanning {xml_path} for {len(conferences)} conferences over years {years}...")
+    results = {conf: set() for conf in conferences}
+    target_years_str = {str(y) for y in years}
+    target_conf_lower = {conf: conf.lower() for conf in conferences}
+    
+    if not os.path.exists(xml_path):
+        print(f"❌ {xml_path} not found. Cannot parse local DBLP data.")
+        return {conf: [] for conf in conferences}
+        
+    try:
+        context = ET.iterparse(xml_path, events=("end",), load_dtd=True, resolve_entities=True)
+        for event, elem in context:
+            if elem.tag in ("inproceedings", "article"):
+                year_elem = elem.find("year")
+                if year_elem is not None and year_elem.text in target_years_str:
                     
-                hit_list = hits.get('hit', [])
-                if not hit_list:
-                    break
+                    venue = ""
+                    booktitle = elem.find("booktitle")
+                    if booktitle is not None and booktitle.text:
+                        venue = booktitle.text.lower()
+                    else:
+                        journal = elem.find("journal")
+                        if journal is not None and journal.text:
+                            venue = journal.text.lower()
                     
-                for hit in hit_list:
-                    title = hit.get('info', {}).get('title', '')
-                    if title:
-                        if title.endswith('.'):
-                            title = title[:-1]
-                        titles.append(title.strip())
-                        year_titles += 1
-                        
-                f += len(hit_list)
-                if f >= total:
-                    break
-                time.sleep(1.5) # Polite delay
-            except Exception as e:
-                print(f"❌ Lỗi khi xử lý dữ liệu DBLP: {e}")
-                break
-        print(f"-> [Thành công] Tìm thấy {year_titles} bài từ DBLP cho năm {year}")
-    return list(set(titles))
+                    if venue:
+                        # Check if this venue matches any of our targets
+                        for conf, conf_lower in target_conf_lower.items():
+                            if conf_lower in venue:
+                                title_elem = elem.find("title")
+                                if title_elem is not None and title_elem.text:
+                                    title = title_elem.text.strip()
+                                    if title.endswith('.'):
+                                        title = title[:-1]
+                                    results[conf].add(title)
+                                    break
+                                    
+                # Aggressively clear memory to prevent OOM on 5GB XML
+                elem.clear()
+                while elem.getprevious() is not None:
+                    del elem.getparent()[0]
+                    
+    except Exception as e:
+        print(f"❌ Error while parsing {xml_path}: {e}")
+        
+    final_results = {conf: list(titles) for conf, titles in results.items()}
+    for conf, titles in final_results.items():
+        print(f"-> [Thành công] Found {len(titles)} papers from DBLP for {conf}")
+        
+    return final_results
 class ArxivRateLimiter:
     def __init__(self, max_requests=4, window=1.0):
         self.max_requests = max_requests
@@ -782,11 +775,24 @@ def main():
         print(f"❌ Failed to connect to Google Drive: {e}")
         return
 
+    non_openreview_confs = [c for c in CONFERENCE_ID if c not in ["NeurIPS.cc", "ICLR.cc", "ICML.cc"]]
+    DBLP_CACHE_FILE = "dblp_cache.json"
+    
+    if os.path.exists(DBLP_CACHE_FILE):
+        print(f"🔄 Loading pre-computed DBLP papers from {DBLP_CACHE_FILE}...")
+        with open(DBLP_CACHE_FILE, "r") as f:
+            dblp_papers_cache = json.load(f)
+    else:
+        dblp_papers_cache = prefetch_all_dblp_papers(non_openreview_confs, TARGET_YEARS, "dblp.xml")
+        with open(DBLP_CACHE_FILE, "w") as f:
+            json.dump(dblp_papers_cache, f)
+        print(f"✅ Saved DBLP papers to {DBLP_CACHE_FILE}")
+
     for conf in CONFERENCE_ID:
         if conf in ["NeurIPS.cc", "ICLR.cc", "ICML.cc"]:
             paper_titles = get_openreview_papers_fixed(conf, TARGET_YEARS)
         else:
-            paper_titles = get_dblp_papers(conf, TARGET_YEARS)
+            paper_titles = dblp_papers_cache.get(conf, [])
         
         # Filter out already processed AND files that actually exist on Google Drive
         unprocessed_titles = []

@@ -7,4 +7,5 @@ __pycache__
 credentials.json
 dblp.xml.gz
 dblp.xml
+dblp.dtd
 .codegraph

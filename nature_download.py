@@ -159,6 +159,71 @@ def scrape_nature_comp_sci(target_years):
                         # Create a temporary directory to store downloaded files before zipping
                         with tempfile.TemporaryDirectory() as temp_dir:
                             downloaded_files = []
+                            
+                            # 1. EXTRACT TEXT SECTIONS
+                            article_data = {
+                                "id": article_id,
+                                "url": url,
+                                "title": title_text,
+                                "sections": [],
+                                "figures": []
+                            }
+                            
+                            ignore_sections = [
+                                "explore content", "about the journal", "publish with us", 
+                                "search", "associated content", "rights and permissions",
+                                "about this article", "this article is cited by", "nature.com footer links",
+                                "source data", "data availability", "code availability"
+                            ]
+                            
+                            for sec in sections:
+                                h2 = sec.query_selector("h2")
+                                if h2:
+                                    section_title = h2.inner_text().strip()
+                                    if section_title.lower() in ignore_sections:
+                                        continue
+                                    
+                                    section_text = sec.inner_text().strip()
+                                    article_data["sections"].append({
+                                        "title": section_title,
+                                        "text": section_text
+                                    })
+                            
+                            # 2. EXTRACT FIGURES
+                            figures = page.query_selector_all("figure")
+                            for idx, fig in enumerate(figures):
+                                img = fig.query_selector("img")
+                                if img:
+                                    src = img.get_attribute("src") or img.get_attribute("data-src")
+                                    if src:
+                                        if src.startswith("//"):
+                                            src = "https:" + src
+                                        elif src.startswith("/"):
+                                            src = base_url + src
+                                            
+                                        # Extract figure caption if available
+                                        caption_element = fig.query_selector("figcaption")
+                                        caption = caption_element.inner_text().strip() if caption_element else f"Figure {idx+1}"
+                                        
+                                        fig_filename = f"figure_{idx+1}.png"
+                                        fig_path = os.path.join(temp_dir, fig_filename)
+                                        
+                                        logging.info(f"  -> Downloading image {fig_filename} ...")
+                                        if download_file(src, fig_path):
+                                            downloaded_files.append((fig_filename, fig_path))
+                                            article_data["figures"].append({
+                                                "filename": fig_filename,
+                                                "caption": caption,
+                                                "original_url": src
+                                            })
+                            
+                            # Save JSON text
+                            json_path = os.path.join(temp_dir, "article_text.json")
+                            with open(json_path, "w", encoding="utf-8") as f:
+                                json.dump(article_data, f, ensure_ascii=False, indent=4)
+                            downloaded_files.append(("article_text.json", json_path))
+                            
+                            # 3. DOWNLOAD SOURCE DATA FILES
                             for i, (link_text, link_url) in enumerate(source_data_links):
                                 # Attempt to extract a sensible filename from URL or link text
                                 filename = link_url.split('/')[-1]
@@ -199,4 +264,4 @@ def scrape_nature_comp_sci(target_years):
         browser.close()
 
 if __name__ == "__main__":
-    scrape_nature_comp_sci([2024])
+    scrape_nature_comp_sci([2021, 2022, 2023, 2024, 2025])
