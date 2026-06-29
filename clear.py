@@ -1,5 +1,5 @@
 import json
 
-with open('tex_pipeline_checkpoint.json', 'r') as f:
+with open('download_progress.json', 'r') as f:
     data = json.load(f)
-print(len(data["processed"]))
+print(len(data["processed_titles"]))
