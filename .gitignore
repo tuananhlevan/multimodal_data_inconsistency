@@ -1,6 +1,7 @@
 structured_tex_output
 tex_pipeline_work
 downloaded_tex
+nature_source_data
 .vscode
 __pycache__
 .env
