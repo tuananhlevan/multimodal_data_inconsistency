@@ -47,7 +47,7 @@ log = _setup_logger()
 # ---------------------------------------------------------------------------
 # Checkpoint — persists completed Drive file IDs so runs can be resumed.
 # ---------------------------------------------------------------------------
-CHECKPOINT_FILE = "tex_pipeline_checkpoint.json"
+CHECKPOINT_FILE = os.path.join("checkpoint", "tex_pipeline_checkpoint.json")
 
 
 import threading
@@ -86,6 +86,7 @@ class Checkpoint:
         return {"processed": {}, "skipped": []}
 
     def _save(self) -> None:
+        os.makedirs(os.path.dirname(self.path), exist_ok=True)
         tmp = self.path + ".tmp"
         with open(tmp, "w", encoding="utf-8") as f:
             json.dump(self._data, f, indent=2)

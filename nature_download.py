@@ -12,20 +12,29 @@ import json
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(message)s')
 
-CHECKPOINT_FILE = "nature_pipeline_checkpoint.json"
+PROGRESS_DIR = "checkpoint"
+CHECKPOINT_FILE = os.path.join(PROGRESS_DIR, "nature_pipeline_checkpoint.json")
 
 def load_checkpoint():
     if os.path.exists(CHECKPOINT_FILE):
         try:
             with open(CHECKPOINT_FILE, 'r', encoding='utf-8') as f:
-                return set(json.load(f))
+                data = json.load(f)
+                if isinstance(data, list):
+                    return set(data), 0, 0
+                return set(data.get("processed_ids", [])), data.get("skipped_count", 0), data.get("success_count", 0)
         except Exception as e:
             logging.warning(f"Could not load checkpoint: {e}")
-    return set()
+    return set(), 0, 0
 
-def save_checkpoint(processed_ids):
+def save_checkpoint(processed_ids, skipped_count, success_count):
+    os.makedirs(PROGRESS_DIR, exist_ok=True)
     with open(CHECKPOINT_FILE, 'w', encoding='utf-8') as f:
-        json.dump(list(processed_ids), f, indent=4)
+        json.dump({
+            "processed_ids": list(processed_ids),
+            "skipped_count": skipped_count,
+            "success_count": success_count
+        }, f, indent=4)
 
 def sanitize_filename(filename):
     """Sanitize the paper title to be a valid file name."""
@@ -51,9 +60,6 @@ def scrape_nature_comp_sci(target_years):
     Finds the 'Source data' section of each article, downloads the files,
     and zips them together with the file name as the paper's title.
     """
-    year_to_volume = {
-        2021: 1, 2022: 2, 2023: 3, 2024: 4, 2025: 5
-    }
     
     base_url = "https://www.nature.com"
     journal_paths = ["/natcomputsci", "/nathumbehav", "/mp", "/dpn", "/nm", "/npjdigitalmed", "/emm", "/nclimate", "/npjclimataction", "/npjclimatsci", "/natfood", "/npjscifood", "/nutd", "/ejcn"]
@@ -70,8 +76,8 @@ def scrape_nature_comp_sci(target_years):
         logging.error(f"Failed to connect to Google Drive: {e}")
         return
         
-    processed_articles = load_checkpoint()
-    logging.info(f"Loaded checkpoint with {len(processed_articles)} processed articles.")
+    processed_articles, skipped_count, success_count = load_checkpoint()
+    logging.info(f"Loaded checkpoint with {len(processed_articles)} processed, {skipped_count} skipped, {success_count} succeeded.")
     
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -80,25 +86,56 @@ def scrape_nature_comp_sci(target_years):
             viewport={"width": 1920, "height": 1080}
         )
         
-        if os.path.exists("cookies.json"):
+        cookies_path = os.path.join(PROGRESS_DIR, "cookies.json")
+        if os.path.exists(cookies_path):
             try:
-                with open("cookies.json", "r") as f:
+                with open(cookies_path, "r") as f:
                     cookies = json.load(f)
                 context.add_cookies(cookies)
-                logging.info("Loaded session cookies from cookies.json for institutional access.")
+                logging.info(f"Loaded session cookies from {cookies_path} for institutional access.")
             except Exception as e:
-                logging.warning(f"Failed to load cookies.json: {e}")
+                logging.warning(f"Failed to load {cookies_path}: {e}")
                 
         page = context.new_page()
         
-        for year in target_years:
-            for journal_path in journal_paths:
-                if year not in year_to_volume:
-                    logging.warning(f"Year {year} is out of bounds for Nature Computational Science. Skipping.")
+        for journal_path in journal_paths:
+            logging.info(f"Fetching volumes map for journal: {journal_path}")
+            vol_url = f"{base_url}{journal_path}/volumes"
+            
+            try:
+                page.goto(vol_url, wait_until="domcontentloaded")
+                page.wait_for_timeout(1500)
+                
+                volumes_data = page.eval_on_selector_all(
+                    "a[href*='/volumes/']",
+                    "elements => elements.map(e => ({href: e.getAttribute('href'), text: e.parentElement.innerText}))"
+                )
+            except Exception as e:
+                logging.warning(f"Could not extract volumes for {journal_path}: {e}")
+                continue
+                
+            journal_year_to_volume = {}
+            for item in volumes_data:
+                if f"{journal_path}/volumes/" in item['href']:
+                    text = item['text']
+                    year_match = re.search(r'\b(19\d\d|20\d\d)\b', text)
+                    if year_match:
+                        year_val = int(year_match.group(1))
+                        vol_num_str = item['href'].split('/')[-1]
+                        if vol_num_str.isdigit():
+                            journal_year_to_volume[year_val] = int(vol_num_str)
+                            
+            if not journal_year_to_volume:
+                logging.warning(f"Could not build year-to-volume map for {journal_path}. Skipping.")
+                continue
+                
+            for year in target_years:
+                if year not in journal_year_to_volume:
+                    logging.warning(f"Year {year} is out of bounds for {journal_path}. Skipping.")
                     continue
                     
-                volume = year_to_volume[year]
-                logging.info(f"Scraping Volume {volume} (Year {year})...")
+                volume = journal_year_to_volume[year]
+                logging.info(f"Scraping {journal_path} Volume {volume} (Year {year})...")
                 
                 for issue in range(1, 13):
                     issue_url = f"{base_url}{journal_path}/volumes/{volume}/issues/{issue}"
@@ -136,12 +173,24 @@ def scrape_nature_comp_sci(target_years):
                             page.goto(url, wait_until="domcontentloaded")
                             page.wait_for_timeout(2000)
                             
+                            # Check if the article is Open Access
+                            is_open_access = page.query_selector("[data-test='open-access']") is not None
+                            if not is_open_access:
+                                logging.info(f"Article {article_id} is not Open Access. Skipping.")
+                                processed_articles.add(article_id)
+                                skipped_count += 1
+                                save_checkpoint(processed_articles, skipped_count, success_count)
+                                continue
+                            
                             title_text = page.title().replace(' | Nature Computational Science', '').strip()
                             safe_title = sanitize_filename(title_text)
                             archive_path = os.path.join(output_dir, f"{safe_title}.tar.gz")
                             
                             if os.path.exists(archive_path):
                                 logging.info(f"Source data for '{safe_title}' already downloaded. Skipping.")
+                                processed_articles.add(article_id)
+                                skipped_count += 1
+                                save_checkpoint(processed_articles, skipped_count, success_count)
                                 continue
                                 
                             # Find all sections and look for 'Source Data'
@@ -167,6 +216,12 @@ def scrape_nature_comp_sci(target_years):
                             # Create a temporary directory to store downloaded files before zipping
                             with tempfile.TemporaryDirectory() as temp_dir:
                                 downloaded_files = []
+                                
+                                fig_dir = os.path.join(temp_dir, "fig")
+                                os.makedirs(fig_dir, exist_ok=True)
+                                
+                                source_data_dir = os.path.join(temp_dir, "source_data")
+                                os.makedirs(source_data_dir, exist_ok=True)
                                 
                                 # 1. EXTRACT TEXT SECTIONS
                                 article_data = {
@@ -213,15 +268,21 @@ def scrape_nature_comp_sci(target_years):
                                             caption_element = fig.query_selector("figcaption")
                                             caption = caption_element.inner_text().strip() if caption_element else f"Figure {idx+1}"
                                             
-                                            fig_filename = f"figure_{idx+1}.png"
-                                            fig_path = os.path.join(temp_dir, fig_filename)
+                                            # Extract figure context (the detailed description below the image)
+                                            desc_element = fig.query_selector("div[data-test='bottom-caption'], div.c-article-section__figure-description")
+                                            context_text = desc_element.inner_text().strip() if desc_element else ""
                                             
-                                            logging.info(f"  -> Downloading image {fig_filename} ...")
+                                            fig_basename = f"figure_{idx+1}.png"
+                                            fig_rel_path = f"fig/{fig_basename}"
+                                            fig_path = os.path.join(fig_dir, fig_basename)
+                                            
+                                            logging.info(f"  -> Downloading image {fig_basename} ...")
                                             if download_file(src, fig_path):
-                                                downloaded_files.append((fig_filename, fig_path))
+                                                downloaded_files.append((fig_rel_path, fig_path))
                                                 article_data["figures"].append({
-                                                    "filename": fig_filename,
+                                                    "filename": fig_rel_path,
                                                     "caption": caption,
+                                                    "context": context_text,
                                                     "original_url": src
                                                 })
                                 
@@ -240,11 +301,12 @@ def scrape_nature_comp_sci(target_years):
                                     if not filename or len(filename) > 50:
                                         filename = f"source_data_{i+1}.file"
                                         
-                                    file_path = os.path.join(temp_dir, filename)
+                                    file_path = os.path.join(source_data_dir, filename)
+                                    arcname = f"source_data/{filename}"
                                     logging.info(f"  -> Downloading {filename} ...")
                                     
                                     if download_file(link_url, file_path):
-                                        downloaded_files.append((filename, file_path))
+                                        downloaded_files.append((arcname, file_path))
                                     
                                 if downloaded_files:
                                     with tarfile.open(archive_path, 'w:gz') as tarf:
@@ -262,7 +324,8 @@ def scrape_nature_comp_sci(target_years):
                                     logging.info(f"Deleted local file {archive_path}")
                                     
                                     processed_articles.add(article_id)
-                                    save_checkpoint(processed_articles)
+                                    success_count += 1
+                                    save_checkpoint(processed_articles, skipped_count, success_count)
                                 else:
                                     logging.warning(f"Failed to download any source data files for {article_id}")
                                     

@@ -29,7 +29,7 @@ load_dotenv()
 CONFERENCE_ID = ["NeurIPS.cc", "ICLR.cc", "ICML.cc", "ACL", "EMNLP", "CVPR", "ECCV", "SIGIR", "KDD", "WSDM", "ICDM", "SIGMOD", "ICDE"]
 TARGET_YEARS = [2025, 2024, 2023, 2022, 2021]
 DOWNLOAD_DIR = "./downloaded_tex"
-CHECKPOINT_FILE = "download_progress.json"
+CHECKPOINT_FILE = os.path.join("checkpoint", "download_checkpoint.json")
 GDRIVE_FOLDER_NAME = 'FFT_DataInconsistency/Data'  # Now handles nested creation correctly
 
 SCOPES = ['https://www.googleapis.com/auth/drive.file']
@@ -255,6 +255,7 @@ def load_checkpoint():
     return {"processed_titles": [], "not_found_titles": [], "success_count": 0}
 
 def save_checkpoint(processed_titles, not_found_titles, success_count):
+    os.makedirs(os.path.dirname(CHECKPOINT_FILE), exist_ok=True)
     with open(CHECKPOINT_FILE, 'w', encoding='utf-8') as f:
         json.dump({"processed_titles": processed_titles, "not_found_titles": not_found_titles, "success_count": success_count}, f, ensure_ascii=False, indent=4)
 
