@@ -3,4 +3,4 @@ python3 /home/levantuananh/FFT_FPT/data_inconsistency/tex_drive_pipeline.py \
   --output-folder-id 1PqhB3lAWt5j1lilXg0Mg5ldM2U8M_1_- \
   --checkpoint-file checkpoint/tex_pipeline_checkpoint.json \
   --delete-source \
-  --workers 3
+  --workers 8

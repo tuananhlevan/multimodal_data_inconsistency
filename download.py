@@ -3,7 +3,6 @@ import os
 import tarfile
 import gzip
 import requests
-import openreview
 import time
 import re
 import json
@@ -12,7 +11,8 @@ from urllib.parse import urlencode, quote
 from dotenv import load_dotenv, set_key
 import shutil
 import difflib
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import threading
 import socket
 from stem import Signal
 from stem.control import Controller
@@ -26,7 +26,7 @@ from googleapiclient.http import MediaFileUpload
 load_dotenv()
 
 # --- CONFIGURATION ---
-CONFERENCE_ID = ["NeurIPS.cc", "ICLR.cc", "ICML.cc", "ACL", "EMNLP", "CVPR", "ECCV", "SIGIR", "KDD", "WSDM", "ICDM", "SIGMOD", "ICDE"]
+CONFERENCE_ID = ["NeurIPS", "ICLR", "ICML", "ACL", "EMNLP", "CVPR", "ECCV", "SIGIR", "KDD", "WSDM", "ICDM", "SIGMOD", "ICDE"]
 TARGET_YEARS = [2025, 2024, 2023, 2022, 2021]
 DOWNLOAD_DIR = "./downloaded_tex"
 CHECKPOINT_FILE = os.path.join("checkpoint", "download_checkpoint.json")
@@ -51,25 +51,40 @@ DIRECT_SESSION.headers.update({
 TOR_PROXY = "socks5h://127.0.0.1:9050"
 TOR_CONTROL_PORT = 9051
 
+# --- THREAD LOCKS ---
+gdrive_lock = threading.Lock()
+checkpoint_lock = threading.Lock()
+tor_lock = threading.Lock()
+rate_limit_lock = threading.Lock()
+last_tor_rotation = 0.0
+
 def rotate_ip():
     """Requests a new IP address from the local Tor daemon."""
-    try:
-        with Controller.from_port(port=TOR_CONTROL_PORT) as controller:
-            controller.authenticate()  # Tries various authentication methods including cookie auth
-            controller.signal(Signal.NEWNYM)
-            print("   🔄 [Tor] Successfully requested new IP identity. Waiting 10s for circuit...")
-            # Wait for Tor to establish a new stable circuit
-            time.sleep(10)
-    except Exception as e:
-        error_msg = str(e)
-        if "Permission denied" in error_msg and "control.authcookie" in error_msg:
-            print(f"   ⚠️ [Tor] Authentication failed due to strict permissions on the Tor cookie.")
-            print("   ⚠️ To fix this, run these commands in your terminal and restart the script:")
-            print("      sudo usermod -aG debian-tor $USER")
-            print("      sudo chmod 644 /run/tor/control.authcookie")
-        else:
-            print(f"   ⚠️ [Tor] Failed to rotate IP: {e}")
-            print("   ⚠️ Ensure Tor is installed (`sudo apt install tor`) and ControlPort 9051 is enabled in /etc/tor/torrc.")
+    global last_tor_rotation
+    
+    with tor_lock:
+        # Prevent multiple threads from triggering rotation within 10 seconds of each other
+        if time.time() - last_tor_rotation < 10.0:
+            return
+            
+        try:
+            with Controller.from_port(port=TOR_CONTROL_PORT) as controller:
+                controller.authenticate()  # Tries various authentication methods including cookie auth
+                controller.signal(Signal.NEWNYM)
+                print("   🔄 [Tor] Successfully requested new IP identity. Waiting 10s for circuit...")
+                # Wait for Tor to establish a new stable circuit
+                time.sleep(10)
+                last_tor_rotation = time.time()
+        except Exception as e:
+            error_msg = str(e)
+            if "Permission denied" in error_msg and "control.authcookie" in error_msg:
+                print(f"   ⚠️ [Tor] Authentication failed due to strict permissions on the Tor cookie.")
+                print("   ⚠️ To fix this, run these commands in your terminal and restart the script:")
+                print("      sudo usermod -aG debian-tor $USER")
+                print("      sudo chmod 644 /run/tor/control.authcookie")
+            else:
+                print(f"   ⚠️ [Tor] Failed to rotate IP: {e}")
+                print("   ⚠️ Ensure Tor is installed (`sudo apt install tor`) and ControlPort 9051 is enabled in /etc/tor/torrc.")
 
 def configure_tor(session):
     """Checks if Tor is running locally and configures the session to use it."""
@@ -255,60 +270,8 @@ def load_checkpoint():
     return {"processed_titles": [], "not_found_titles": [], "success_count": 0}
 
 def save_checkpoint(processed_titles, not_found_titles, success_count):
-    os.makedirs(os.path.dirname(CHECKPOINT_FILE), exist_ok=True)
     with open(CHECKPOINT_FILE, 'w', encoding='utf-8') as f:
         json.dump({"processed_titles": processed_titles, "not_found_titles": not_found_titles, "success_count": success_count}, f, ensure_ascii=False, indent=4)
-
-def get_openreview_papers_fixed(conference_id, years):
-    titles = []
-    for year in years:
-        venue_id = f"{conference_id}/{year}/Conference"
-        print(f"Đang quét bài được chấp nhận tại {venue_id}...")
-        
-        if year <= 2022:
-            try:
-                client_v1 = openreview.Client(baseurl='https://api.openreview.net')
-                submissions = client_v1.get_all_notes(invitation=f"{venue_id}/-/Blind_Submission")
-                if not submissions:
-                    submissions = client_v1.get_all_notes(invitation=f"{venue_id}/-/Submission")
-                
-                year_titles_count = 0
-                for note in submissions:
-                    content = note.content
-                    venue_status = content.get('venue', '')
-                    bibtex_status = content.get('_bibtex', '')
-                    
-                    is_accepted = any(
-                        keyword in str(venue_status).lower() or keyword in str(bibtex_status).lower()
-                        for keyword in ['accept', 'poster', 'oral', 'spotlight']
-                    )
-                    
-                    if is_accepted and 'workshop' not in str(venue_status).lower():
-                        title = content.get('title')
-                        if title:
-                            titles.append(title.strip())
-                            year_titles_count += 1
-                print(f"-> [Thành công V1] Lọc được {year_titles_count} bài ACCEPTED cho năm {year}")
-            except Exception as e:
-                print(f"❌ Lỗi lọc bài hệ thống cũ năm {year}: {e}")
-        else:
-            try:
-                client_v2 = openreview.api.OpenReviewClient(baseurl='https://api2.openreview.net')
-                submissions = client_v2.get_all_notes(content={'venueid': venue_id})
-                for note in submissions:
-                    content = note.content
-                    venue_name = content.get('venue', {}).get('value', '') if isinstance(content.get('venue'), dict) else content.get('venue', '')
-                    if 'workshop' in str(venue_name).lower():
-                        continue
-                    title_obj = content.get('title', {})
-                    title = title_obj.get('value') if isinstance(title_obj, dict) else title_obj
-                    if title: 
-                        titles.append(title.strip())
-                print(f"-> [Thành công V2] Tìm thấy {len(submissions)} bài ACCEPTED cho năm {year}")
-            except Exception as e:
-                print(f"❌ Lỗi lọc bài hệ thống mới năm {year}: {e}")
-        time.sleep(1)
-    return list(set(titles))
 
 def prefetch_all_dblp_papers(conferences, years, xml_path="dblp.xml"):
     """
@@ -373,27 +336,28 @@ class ArxivRateLimiter:
         self.requests = []
 
     def wait(self):
-        now = time.time()
-        # Clean up timestamps older than the sliding window
-        self.requests = [t for t in self.requests if now - t < self.window]
-        
-        if len(self.requests) >= self.max_requests:
-            # Calculate how long to sleep until the oldest request falls out of the window
-            sleep_time = self.window - (now - self.requests[0])
-            if sleep_time > 0:
-                print(f"   [Rate Limiter] Rate limit ({self.max_requests} req/{self.window}s) reached. Sleeping for {sleep_time:.2f}s...")
-                time.sleep(sleep_time)
-            
-            # Update timestamps after sleeping
+        with rate_limit_lock:
             now = time.time()
+            # Clean up timestamps older than the sliding window
             self.requests = [t for t in self.requests if now - t < self.window]
             
-        self.requests.append(time.time())
+            if len(self.requests) >= self.max_requests:
+                # Calculate how long to sleep until the oldest request falls out of the window
+                sleep_time = self.window - (now - self.requests[0])
+                if sleep_time > 0:
+                    time.sleep(sleep_time)
+                
+                # Update timestamps after sleeping
+                now = time.time()
+                self.requests = [t for t in self.requests if now - t < self.window]
+                
+            self.requests.append(time.time())
 
-arxiv_rate_limiter = ArxivRateLimiter(max_requests=4, window=1.0)
+arxiv_rate_limiter = ArxivRateLimiter(max_requests=1, window=3.0)
 
-def make_arxiv_request(url, headers=None, stream=False, timeout=45, max_retries=7, use_direct_fallback=False):
+def make_arxiv_request(url, headers=None, stream=False, timeout=45, max_retries=7, use_direct_fallback=False, force_direct=False):
     """Makes a rate-limited request to arXiv with retry logic for rate limits and server errors.
+    If force_direct is True, it will bypass Tor completely (good for unstable mirrors like export.arxiv.org).
     If use_direct_fallback is True, it will bypass Tor and use DIRECT_SESSION for the final 2 retries.
     """
     if headers is None:
@@ -406,7 +370,9 @@ def make_arxiv_request(url, headers=None, stream=False, timeout=45, max_retries=
         arxiv_rate_limiter.wait()
         
         session_to_use = SESSION
-        if use_direct_fallback and attempt >= max_retries - 2:
+        if force_direct:
+            session_to_use = DIRECT_SESSION
+        elif use_direct_fallback and attempt >= max_retries - 2:
             session_to_use = DIRECT_SESSION
             if attempt == max_retries - 2:
                 print(f"   ⚠️ Tor failed repeatedly. Falling back to DIRECT connection...")
@@ -511,7 +477,7 @@ def query_arxiv_via_oai_pmh_batch(titles):
             results[normalize_title(found_title)] = {"id": arxiv_id}
             
     except Exception as e:
-        print(f"⚠️ Lỗi xử lý cổng API lô bài báo: {e}")
+        print(f"   ⚠️ Lỗi xử lý cổng API lô bài báo: {e}")
         
     return results
 
@@ -625,13 +591,14 @@ def query_arxiv_via_api_single(title):
     if not api_query_title:
         return None
         
-    url = f"https://export.arxiv.org/api/query?search_query=ti:%22{quote(api_query_title)}%22&max_results=3"
+    url = f"http://export.arxiv.org/api/query?search_query=ti:%22{quote(api_query_title)}%22&max_results=3"
     
     # Respect rate limit
     time.sleep(1.0)
     
     try:
-        response = make_arxiv_request(url, timeout=45, max_retries=7, use_direct_fallback=True)
+        # Force direct connection because export.arxiv.org frequently drops Tor circuits causing 45s timeouts
+        response = make_arxiv_request(url, timeout=30, max_retries=3, force_direct=True)
         if response and response.status_code == 200:
             root = ET.fromstring(response.content)
             namespaces = {'atom': 'http://www.w3.org/2005/Atom'}
@@ -682,7 +649,7 @@ def download_source_from_harvester(arxiv_id, title):
     # arxiv.org/src/ is primary because export.arxiv.org forces 1MB stream drops.
     src_url = f"https://arxiv.org/src/{quote(arxiv_id)}"
     
-    def try_download(url, max_retries):
+    def try_download(url, max_retries, force_direct=False):
         safe_title = "".join([c if c.isalnum() else "_" for c in title[:50]])
         paper_dir = os.path.join(DOWNLOAD_DIR, safe_title)
         os.makedirs(paper_dir, exist_ok=True)
@@ -699,7 +666,7 @@ def download_source_from_harvester(arxiv_id, title):
                     headers['Range'] = f'bytes={initial_size}-'
                     mode = 'ab'
                     
-            response = make_arxiv_request(url, headers=headers, stream=True, timeout=45, max_retries=7, use_direct_fallback=True)
+            response = make_arxiv_request(url, headers=headers, stream=True, timeout=45, max_retries=7, use_direct_fallback=True, force_direct=force_direct)
             if response is None:
                 continue
                 
@@ -742,9 +709,10 @@ def download_source_from_harvester(arxiv_id, title):
     
     # If it fails, fallback to export.arxiv.org
     if not result_path:
-        fallback_url = f"https://export.arxiv.org/e-print/{quote(arxiv_id)}"
+        fallback_url = f"http://export.arxiv.org/e-print/{quote(arxiv_id)}"
         print(f"   ⚠️ arxiv.org failed. Falling back to export.arxiv.org...")
-        result_path = try_download(fallback_url, max_retries=20)
+        # Force direct on export.arxiv.org to bypass Tor instability
+        result_path = try_download(fallback_url, max_retries=10, force_direct=True)
     return result_path is not None
 
 def main():
@@ -752,7 +720,6 @@ def main():
     parser.add_argument("--use_ckpt", action="store_true", help="Skip Google Drive file checking and use local checkpoint.")
     args = parser.parse_args()
 
-    # FIXED: Removed duplicate 'flow.run_local_server' lines that forced double authentication.
     checkpoint = load_checkpoint()
     processed_titles = set(checkpoint["processed_titles"])
     not_found_titles = set(checkpoint["not_found_titles"])
@@ -776,7 +743,6 @@ def main():
         print(f"❌ Failed to connect to Google Drive: {e}")
         return
 
-    non_openreview_confs = [c for c in CONFERENCE_ID if c not in ["NeurIPS.cc", "ICLR.cc", "ICML.cc"]]
     DBLP_CACHE_FILE = "dblp_cache.json"
     
     if os.path.exists(DBLP_CACHE_FILE):
@@ -784,16 +750,16 @@ def main():
         with open(DBLP_CACHE_FILE, "r") as f:
             dblp_papers_cache = json.load(f)
     else:
-        dblp_papers_cache = prefetch_all_dblp_papers(non_openreview_confs, TARGET_YEARS, "dblp.xml")
+        dblp_papers_cache = prefetch_all_dblp_papers(CONFERENCE_ID, TARGET_YEARS, "dblp.xml")
         with open(DBLP_CACHE_FILE, "w") as f:
             json.dump(dblp_papers_cache, f)
         print(f"✅ Saved DBLP papers to {DBLP_CACHE_FILE}")
 
     for conf in CONFERENCE_ID:
-        if conf in ["NeurIPS.cc", "ICLR.cc", "ICML.cc"]:
-            paper_titles = get_openreview_papers_fixed(conf, TARGET_YEARS)
-        else:
-            paper_titles = dblp_papers_cache.get(conf, [])
+        print(f"\n" + "="*50)
+        print(f"ĐANG XỬ LÝ HỘI NGHỊ: {conf}")
+        print("="*50)
+        paper_titles = dblp_papers_cache.get(conf, [])
         
         # Filter out already processed AND files that actually exist on Google Drive
         unprocessed_titles = []
@@ -827,8 +793,8 @@ def main():
             batch_titles = unprocessed_titles[start_idx:start_idx + batch_size]
             print(f"\n[{start_idx + 1}-{start_idx + len(batch_titles)}/{total_unprocessed}] Đang tìm kiếm mã arXiv qua HTML search...")
             
-            # Process each paper in the batch
-            for title in batch_titles:
+            def process_single_paper(title):
+                nonlocal success_count
                 print(f"   => Đang tìm kiếm: '{title[:50]}...'")
                 paper_info = resolve_arxiv_id(title)
                             
@@ -840,7 +806,7 @@ def main():
                         
                         if os.path.exists(paper_dir):
                             try:
-                                print(f"   => Pushing compressed archive to Google Drive...")
+                                print(f"   => Pushing compressed archive to Google Drive for '{title[:30]}...'")
                                 tar_file_name = f"{safe_title}.tar.gz"
                                 local_tar_path = os.path.join(paper_dir, tar_file_name)
                                 
@@ -850,7 +816,8 @@ def main():
                                 max_retries = 3
                                 for attempt in range(max_retries):
                                     try:
-                                        gdrive_service.files().create(body=file_metadata, media_body=media, fields='id').execute()
+                                        with gdrive_lock:
+                                            gdrive_service.files().create(body=file_metadata, media_body=media, fields='id').execute()
                                         break
                                     except Exception as e:
                                         if attempt + 1 < max_retries:
@@ -860,8 +827,9 @@ def main():
                                             raise e
                                 
                                 shutil.rmtree(paper_dir) # Clear local temp cache
-                                success_count += 1
-                                processed_titles.add(title)
+                                with checkpoint_lock:
+                                    success_count += 1
+                                    processed_titles.add(title)
                                 is_success = True
                             except Exception as e:
                                 print(f"   ❌ Lỗi đồng bộ lên Google Drive cho bài '{title[:30]}...': {e}")
@@ -869,11 +837,19 @@ def main():
                             print(f"   ❌ Thư mục tải xuống không tồn tại: {paper_dir}")
                 
                 if not is_success:
-                    not_found_titles.add(title)
-                    if title in processed_titles:
-                        processed_titles.remove(title)
+                    with checkpoint_lock:
+                        not_found_titles.add(title)
+                        if title in processed_titles:
+                            processed_titles.remove(title)
                 
-                save_checkpoint(list(processed_titles), list(not_found_titles), success_count)
+                with checkpoint_lock:
+                    save_checkpoint(list(processed_titles), list(not_found_titles), success_count)
+
+            # Process the batch concurrently with 5 workers
+            with ThreadPoolExecutor(max_workers=5) as executor:
+                futures = [executor.submit(process_single_paper, title) for title in batch_titles]
+                for future in as_completed(futures):
+                    future.result() # Catch and raise any exceptions from threads
             
     print(f"\nHoàn thành! Đã tải thành công nguồn .tex của {success_count} bài báo lên Google Drive.")
 
