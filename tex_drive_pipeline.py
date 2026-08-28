@@ -4,6 +4,7 @@ import io
 import json
 import logging
 import os
+import random
 import re
 import shutil
 import sys
@@ -683,6 +684,21 @@ def extract_archive(archive_path: str, destination_dir: str) -> None:
     if tarfile.is_tarfile(archive_path):
         safe_extract_tar(archive_path, destination_dir)
         return
+        
+    # ArXiv sometimes provides a single gzipped .tex file instead of a tar archive
+    # for single-file submissions. Attempt to decompress it as a raw gzip file.
+    try:
+        import gzip
+        with gzip.open(archive_path, 'rb') as f:
+            content = f.read()
+        # Since it's a single file, we save it as main.tex
+        dest_file = os.path.join(destination_dir, "main.tex")
+        with open(dest_file, "wb") as out:
+            out.write(content)
+        return
+    except Exception:
+        pass
+
     raise ValueError(f"Unsupported archive format: {archive_path}")
 
 
@@ -758,15 +774,16 @@ def upload_drive_file(service, local_path: str, folder_id: str) -> None:
     metadata = {"name": os.path.basename(local_path), "parents": [folder_id]}
     media = MediaFileUpload(local_path, resumable=True)
     
-    max_retries = 3
+    max_retries = 6
     for attempt in range(max_retries):
         try:
             service.files().create(body=metadata, media_body=media, fields="id").execute()
             break
         except Exception as e:
             if attempt + 1 < max_retries:
-                log.warning("Upload failed for %s: %s. Retrying in 5s...", os.path.basename(local_path), e)
-                time.sleep(5)
+                wait_time = (2 ** attempt) + random.uniform(0, 1)
+                log.warning("Upload failed for %s: %s. Retrying in %.1fs...", os.path.basename(local_path), e, wait_time)
+                time.sleep(wait_time)
             else:
                 raise e
 
@@ -783,7 +800,7 @@ def upload_drive_folder_recursive(service, local_dir: str, parent_folder_id: str
         "parents": [parent_folder_id],
     }
     
-    max_retries = 3
+    max_retries = 6
     drive_folder = None
     for attempt in range(max_retries):
         try:
@@ -791,8 +808,9 @@ def upload_drive_folder_recursive(service, local_dir: str, parent_folder_id: str
             break
         except Exception as e:
             if attempt + 1 < max_retries:
-                log.warning("Folder creation failed for %s: %s. Retrying in 5s...", folder_name, e)
-                time.sleep(5)
+                wait_time = (2 ** attempt) + random.uniform(0, 1)
+                log.warning("Folder creation failed for %s: %s. Retrying in %.1fs...", folder_name, e, wait_time)
+                time.sleep(wait_time)
             else:
                 raise e
                 
@@ -935,7 +953,7 @@ def _copy_ref_assets_list(
 
 
 # ---------------------------------------------------------------------------
-# Table → PDF compilation
+# Table → PDF → PNG compilation
 # ---------------------------------------------------------------------------
 
 # Common academic LaTeX packages that tables typically use.
@@ -1027,6 +1045,67 @@ def _collect_custom_commands(tex_files: List[str]) -> str:
     return '\n'.join(chunks)
 
 
+def _remove_cite_commands(tex: str) -> str:
+    r"""Remove valid ``\cite`` commands without altering malformed TeX.
+
+    Supports starred citations and up to two optional note arguments.
+    Brace-aware parsing avoids consuming text following a citation.
+    """
+    pattern = re.compile(r"\\cite\*?(?![A-Za-z@])")
+    chunks: List[str] = []
+    copied_until = 0
+    search_from = 0
+
+    while True:
+        match = pattern.search(tex, search_from)
+        if not match:
+            break
+        cursor = match.end()
+
+        for _ in range(2):
+            while cursor < len(tex) and tex[cursor].isspace():
+                cursor += 1
+            if cursor >= len(tex) or tex[cursor] != "[":
+                break
+            depth = 0
+            escaped = False
+            for index in range(cursor, len(tex)):
+                char = tex[index]
+                if char == "[" and not escaped:
+                    depth += 1
+                elif char == "]" and not escaped:
+                    depth -= 1
+                    if depth == 0:
+                        cursor = index + 1
+                        break
+                escaped = char == "\\" and not escaped
+            else:
+                cursor = -1
+                break
+
+        if cursor >= 0:
+            while cursor < len(tex) and tex[cursor].isspace():
+                cursor += 1
+        if cursor < 0 or cursor >= len(tex) or tex[cursor] != "{":
+            search_from = match.end()
+            continue
+
+        try:
+            _keys, end = read_balanced_braces(tex, cursor)
+        except ValueError:
+            search_from = match.end()
+            continue
+
+        chunks.append(tex[copied_until:match.start()])
+        copied_until = end
+        search_from = end
+
+    if not chunks:
+        return tex
+    chunks.append(tex[copied_until:])
+    return "".join(chunks)
+
+
 def _extract_tabular_block(table_block: str) -> Optional[str]:
     """Extract the innermost tabular-like environment from a table block."""
     for env in ("longtable", "tabularx", "tabulary", "tabular", "array"):
@@ -1066,6 +1145,7 @@ def _compile_table_pdf(
         content=inner,
         custom_commands=custom_cmds,
     )
+    standalone_src = _remove_cite_commands(standalone_src)
 
     try:
         with tempfile.TemporaryDirectory() as tmp:
@@ -1104,18 +1184,124 @@ def _compile_table_pdf(
     return None
 
 
-def _compile_table_pdfs(
+def _convert_pdf_to_pngs(
+    pdf_path: str,
+    dpi: int = 100,
+    timeout: int = 60,
+) -> List[str]:
+    """Convert a single-page PDF to PNG, preferring PyMuPDF (fitz) for robustness.
+
+    Falls back to pdf2image and pdftocairo. The PDF is removed only after
+    a valid PNG has been written.
+    """
+    output_path = os.path.splitext(pdf_path)[0] + ".png"
+
+    # Attempt 1: PyMuPDF (fitz) - Fast, robust, handles large files well
+    # We run fitz in a subprocess because its underlying C library (MuPDF) is not
+    # perfectly thread-safe and can crash the entire Python process with a core dump
+    # if it hits a fatal error on a corrupt PDF while in a ThreadPoolExecutor.
+    try:
+        script = f"""
+import fitz
+import sys
+try:
+    doc = fitz.open({repr(pdf_path)})
+    if len(doc) == 0:
+        sys.exit(1)
+    page = doc.load_page(0)
+    zoom = {dpi} / 72.0
+    max_dim = 2000
+    if page.rect.width * zoom > max_dim:
+        zoom = max_dim / page.rect.width
+    if page.rect.height * zoom > max_dim:
+        zoom = max_dim / page.rect.height
+    mat = fitz.Matrix(zoom, zoom)
+    pix = page.get_pixmap(matrix=mat, alpha=False)
+    pix.save({repr(output_path)})
+    doc.close()
+except Exception as e:
+    sys.stderr.write(str(e))
+    sys.exit(1)
+"""
+        result = subprocess.run(
+            [sys.executable, "-c", script],
+            capture_output=True, timeout=timeout
+        )
+        if result.returncode != 0:
+            raise RuntimeError(f"PyMuPDF subprocess failed: {result.stderr.decode(errors='replace')}")
+        
+        if not os.path.isfile(output_path) or os.path.getsize(output_path) == 0:
+            raise RuntimeError("PyMuPDF produced an empty PNG")
+        
+        os.remove(pdf_path)
+        log.debug("Converted table PDF → %s with PyMuPDF", output_path)
+        return [output_path]
+    except Exception as exc:
+        log.warning("PyMuPDF failed for %s: %s; trying pdf2image.", pdf_path, exc)
+        if os.path.exists(output_path):
+            os.remove(output_path)
+
+    # Attempt 2: pdf2image
+    try:
+        from pdf2image import convert_from_path
+
+        images = convert_from_path(
+            pdf_path, dpi=dpi, fmt="png", first_page=1, last_page=1,
+            single_file=True, timeout=timeout,
+        )
+        if len(images) != 1:
+            raise RuntimeError(f"Expected one rendered page, received {len(images)}")
+        images[0].save(output_path, format="PNG")
+        if not os.path.isfile(output_path) or os.path.getsize(output_path) == 0:
+            raise RuntimeError("pdf2image produced an empty PNG")
+        os.remove(pdf_path)
+        log.debug("Converted table PDF → %s with pdf2image", output_path)
+        return [output_path]
+    except Exception as exc:
+        log.warning("pdf2image failed for %s: %s; trying pdftocairo.", pdf_path, exc)
+        if os.path.exists(output_path):
+            os.remove(output_path)
+
+    # Attempt 3: pdftocairo
+    pdftocairo = shutil.which("pdftocairo")
+    if not pdftocairo:
+        log.error("All PDF conversion paths are unavailable for %s.", pdf_path)
+        return []
+
+    try:
+        result = subprocess.run(
+            [pdftocairo, "-png", "-singlefile", "-r", str(dpi),
+             pdf_path, os.path.splitext(pdf_path)[0]],
+            capture_output=True, timeout=timeout,
+        )
+        if (result.returncode != 0 or not os.path.isfile(output_path)
+                or os.path.getsize(output_path) == 0):
+            log.error("pdftocairo also failed for %s (rc=%d): %s",
+                      pdf_path, result.returncode,
+                      result.stderr.decode(errors="replace")[-600:])
+            return []
+        os.remove(pdf_path)
+        log.debug("Converted table PDF → %s with pdftocairo fallback", output_path)
+        return [output_path]
+    except subprocess.TimeoutExpired:
+        log.error("PDF-to-PNG fallback timed out for %s.", pdf_path)
+    except Exception as exc:
+        log.error("PDF-to-PNG fallback failed for %s: %s", pdf_path, exc)
+    return []
+
+
+def _compile_table_images(
     assets: List[Dict[str, object]],
     ref_dir: str,
     source_dir: str,
 ) -> int:
-    """Compile every table asset to PDF.
+    """Compile every table asset and rasterize the resulting PDF to PNG.
 
     Custom command definitions are harvested once from *source_dir*'s .tex
     preambles and injected into every standalone document so paper-specific
     macros like ``\\ours`` or ``\\MS`` resolve correctly.
 
-    Returns the number of PDFs successfully produced.
+    Returns the number of table assets successfully rendered to images.
     """
     # Harvest custom commands once for the whole paper.
     tex_files = find_tex_files(source_dir)
@@ -1131,6 +1317,7 @@ def _compile_table_pdfs(
     for asset in assets:
         if asset.get("kind") != "table":
             asset.setdefault("compiled_pdf", None)
+            asset.setdefault("compiled_images", [])
             continue
 
         labels = asset.get("labels") or []
@@ -1145,10 +1332,79 @@ def _compile_table_pdfs(
         latex_code = asset.get("latex_code", "")
         pdf_rel = _compile_table_pdf(latex_code, stem, ref_dir, source_dir,
                                      custom_cmds=custom_cmds)
-        asset["compiled_pdf"] = pdf_rel
         if pdf_rel:
+            pdf_path = os.path.join(os.path.dirname(ref_dir), pdf_rel)
+            image_paths = _convert_pdf_to_pngs(pdf_path)
+        else:
+            image_paths = []
+
+        # Retain the legacy key only when rasterization failed and the PDF remains.
+        asset["compiled_pdf"] = pdf_rel if pdf_rel and not image_paths else None
+        asset["compiled_images"] = [
+            os.path.join("ref", os.path.basename(path)) for path in image_paths
+        ]
+        if image_paths:
             n_compiled += 1
     return n_compiled
+
+
+def _convert_all_ref_pdfs(
+    assets: List[Dict[str, object]],
+    ref_dir: str,
+) -> int:
+    """Convert every PDF in ``ref_dir`` and rewrite asset paths in-place.
+
+    This final sweep handles both copied PDF figures and table PDFs whose first
+    conversion attempt failed. It raises if a PDF remains, preventing an
+    archive with silently unprocessed files from being uploaded.
+    """
+    converted: Dict[str, List[str]] = {}
+    pdf_names = sorted(
+        name for name in os.listdir(ref_dir) if name.lower().endswith(".pdf")
+    )
+    for name in pdf_names:
+        pdf_path = os.path.join(ref_dir, name)
+        image_paths = _convert_pdf_to_pngs(pdf_path)
+        if image_paths:
+            old_rel = os.path.join("ref", name)
+            converted[old_rel] = [
+                os.path.join("ref", os.path.basename(path)) for path in image_paths
+            ]
+
+    remaining = sorted(
+        name for name in os.listdir(ref_dir) if name.lower().endswith(".pdf")
+    )
+    if remaining:
+        log.warning(
+            "PDF conversion failed for some files; they will be removed: %s",
+            ", ".join(remaining)
+        )
+        for name in remaining:
+            try:
+                os.remove(os.path.join(ref_dir, name))
+            except Exception as e:
+                log.warning("Failed to remove unprocessed PDF %s: %s", name, e)
+
+    for asset in assets:
+        rewritten_paths = []
+        for path in asset.get("includegraphics_paths", []) or []:
+            if path in converted:
+                rewritten_paths.extend(converted[path])
+            else:
+                if not path.lower().endswith(".pdf"):
+                    rewritten_paths.append(path)
+        asset["includegraphics_paths"] = rewritten_paths
+
+        compiled_pdf = asset.get("compiled_pdf")
+        if compiled_pdf:
+            if compiled_pdf in converted:
+                existing = asset.get("compiled_images", []) or []
+                asset["compiled_images"] = list(dict.fromkeys(
+                    existing + converted[compiled_pdf]
+                ))
+            asset["compiled_pdf"] = None
+
+    return len(converted)
 
 
 def _propagate_meta(documents: List[Dict[str, object]]) -> None:
@@ -1233,40 +1489,50 @@ def process_local_source(source_dir: str, output_dir: str, source_name: str) -> 
 
     # output_dir/<paper_folder>/
     paper_output_dir = os.path.join(output_dir, paper_folder_name)
-    ensure_dir(paper_output_dir)
-    # output_dir/<paper_folder>/ref/
-    ref_dir = os.path.join(paper_output_dir, "ref")
-    ensure_dir(ref_dir)
+    try:
+        ensure_dir(paper_output_dir)
+        # output_dir/<paper_folder>/ref/
+        ref_dir = os.path.join(paper_output_dir, "ref")
+        ensure_dir(ref_dir)
 
-    # Copy referenced image files into ref/ and rewrite paths in-place.
-    n_copied = _copy_ref_assets_list(assets, source_dir, ref_dir)
-    log.info("[%s] Copied %d referenced asset file(s) into ref/.", source_name, n_copied)
+        # Copy referenced image files into ref/ and rewrite paths in-place.
+        n_copied = _copy_ref_assets_list(assets, source_dir, ref_dir)
+        log.info("[%s] Copied %d referenced asset file(s) into ref/.", source_name, n_copied)
 
-    # Compile table assets to PDF.
-    n_tables = _compile_table_pdfs(assets, ref_dir, source_dir)
-    log.info("[%s] Compiled %d table PDF(s) into ref/.", source_name, n_tables)
+        # Compile table assets and rasterize the intermediate PDFs before upload.
+        n_tables = _compile_table_images(assets, ref_dir, source_dir)
+        log.info("[%s] Compiled %d table image set(s) into ref/.", source_name, n_tables)
 
-    json_filename = f"{sanitize_name(source_name)}.json"
-    output_path = os.path.join(paper_output_dir, json_filename)
+        # Convert copied PDF figures and retry any table conversion failures.
+        n_pdf_assets = _convert_all_ref_pdfs(assets, ref_dir)
+        log.info("[%s] Converted %d remaining PDF asset(s) before upload.",
+                 source_name, n_pdf_assets)
 
-    # Flatten: emit a single document record that holds all assets and the
-    # best available metadata.
-    best_meta = next(
-        (doc["meta"] for doc in documents if doc.get("meta", {}).get("title")),
-        documents[0]["meta"] if documents else {"source_name": source_name},
-    )
-    payload = {
-        "schema_version": 2,
-        "processed_at": dt.datetime.utcnow().isoformat() + "Z",
-        "source": {"source_name": source_name, "source_type": "local"},
-        "meta": best_meta,
-        "assets": assets,
-    }
-    save_json_file(output_path, payload)
-    log.info("[%s] ✅ Output folder → %s  (%d asset(s), %d ref file(s))",
-             source_name, paper_output_dir, len(assets), n_copied)
-    # Return the paper folder so the caller can upload the whole directory.
-    return [paper_output_dir]
+        json_filename = f"{sanitize_name(source_name)}.json"
+        output_path = os.path.join(paper_output_dir, json_filename)
+
+        # Flatten: emit a single document record that holds all assets and the
+        # best available metadata.
+        best_meta = next(
+            (doc["meta"] for doc in documents if doc.get("meta", {}).get("title")),
+            documents[0]["meta"] if documents else {"source_name": source_name},
+        )
+        payload = {
+            "schema_version": 2,
+            "processed_at": dt.datetime.utcnow().isoformat() + "Z",
+            "source": {"source_name": source_name, "source_type": "local"},
+            "meta": best_meta,
+            "assets": assets,
+        }
+        save_json_file(output_path, payload)
+        log.info("[%s] ✅ Output folder → %s  (%d asset(s), %d ref file(s))",
+                 source_name, paper_output_dir, len(assets), n_copied)
+        # Return the paper folder so the caller can upload the whole directory.
+        return [paper_output_dir]
+    except Exception:
+        if os.path.exists(paper_output_dir):
+            shutil.rmtree(paper_output_dir)
+        raise
 
 
 def remove_local_contents(path: str) -> None:
@@ -1316,7 +1582,7 @@ def process_drive_item(service, item: SourceItem, work_dir: str, output_dir: str
         return produced_paths
     except Exception as exc:
         log.error("❌ Error processing item '%s': %s", item.name, exc, exc_info=True)
-        return []
+        raise
     finally:
         for path in (archive_path, extracted_root, item_work_dir):
             try:
@@ -1406,15 +1672,17 @@ def process_drive_folder(
             
             if upload_ok:
                 checkpoint.mark_done(item.file_id, item.name, produced_paths)
-                for produced_path in produced_paths:
-                    try:
-                        if os.path.isdir(produced_path):
-                            shutil.rmtree(produced_path)
-                        else:
-                            os.remove(produced_path)
-                        log.debug("  Cleaned up local output: %s", produced_path)
-                    except Exception as e:
-                        log.warning("  Failed to clean up local output %s: %s", produced_path, e)
+            
+            # Always clean up local output to save disk space
+            for produced_path in produced_paths:
+                try:
+                    if os.path.isdir(produced_path):
+                        shutil.rmtree(produced_path)
+                    else:
+                        os.remove(produced_path)
+                    log.debug("  Cleaned up local output: %s", produced_path)
+                except Exception as e:
+                    log.warning("  Failed to clean up local output %s: %s", produced_path, e)
             return produced_paths
         except Exception as e:
             log.error("Worker exception on item %s: %s", item.name, e)
